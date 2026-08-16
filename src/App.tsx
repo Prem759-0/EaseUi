@@ -4,7 +4,7 @@ type Props = {};
 
 function App({}: Props) {
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full relative">
       <AppRouter />
     </div>
   );

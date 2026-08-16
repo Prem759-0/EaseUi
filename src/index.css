@@ -1,9 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-comic: "Comic Neue", cursive;
+  
+  --color-neo-yellow: #fde047;
+  --color-neo-pink: #f472b6;
+  --color-neo-blue: #60a5fa;
+  --color-neo-green: #4ade80;
+  --color-neo-red: #f87171;
+  --color-neo-bg: #fffbf0;
+}
+
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
   --primary-color: #2563eb;
-  /* --card-bg: #f3f4f6; */
+  --neo-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  --neo-shadow-hover: 2px 2px 0px 0px rgba(0,0,0,1);
+  --neo-border: 3px solid #000;
+  --radius-comic: 12px;
 }
 
 [data-theme="dark"] {
@@ -11,12 +27,67 @@
   --text-color: #f4f4f5;
   --primary-color: #3b82f6;
   --card-bg: #27272a;
+  --neo-shadow: 4px 4px 0px 0px rgba(255,255,255,1);
+  --neo-shadow-hover: 2px 2px 0px 0px rgba(255,255,255,1);
+  --neo-border: 3px solid #fff;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: var(--font-sans);
   transition: background-color 0.25s, color 0.25s;
+}
+
+/* Neo-Brutalist Utilities */
+.neo-box {
+  border: var(--neo-border);
+  box-shadow: var(--neo-shadow);
+  border-radius: var(--radius-comic);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.neo-box:hover {
+  transform: translate(2px, 2px);
+  box-shadow: var(--neo-shadow-hover);
+}
+
+.neo-box-no-hover {
+  border: var(--neo-border);
+  box-shadow: var(--neo-shadow);
+  border-radius: var(--radius-comic);
+}
+
+/* Comic Grid Background */
+.comic-bg {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-color: var(--bg-color);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.comic-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 2px, transparent 2px);
+  background-size: 20px 20px;
+  background-position: 10px 10px;
+}
+
+[data-theme="dark"] .comic-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .comic-bg::after {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
 }
 
 @keyframes fadeIn {
@@ -32,4 +103,19 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 15s linear infinite;
 }
