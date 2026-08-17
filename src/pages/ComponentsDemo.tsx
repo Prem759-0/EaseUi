@@ -15,7 +15,7 @@ const ComponentDemo = ({ children, code, tabs }: ComponentDemoProps) => {
 
   useEffect(() => {
     if (!codeContainerRef.current) return;
-    
+
     if (isCodeVisible) {
       gsap.to(codeContainerRef.current, {
         height: "auto",
@@ -35,7 +35,7 @@ const ComponentDemo = ({ children, code, tabs }: ComponentDemoProps) => {
 
   return (
     <div className="neo-box-no-hover overflow-hidden bg-white dark:bg-zinc-800 mb-8 mt-4 border-[3px] border-black dark:border-white">
-      <div className="flex items-center justify-between px-4 py-2 border-b-[4px] border-black dark:border-white bg-[#d1d5db] dark:bg-zinc-700">
+      <div className="flex items-center justify-between px-4 py-2 border-b-[4px] border-black dark:border-white bg-gray-300 dark:bg-zinc-700">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5 mr-4">
             <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-neo-red"></div>
@@ -60,7 +60,7 @@ const ComponentDemo = ({ children, code, tabs }: ComponentDemoProps) => {
         <div className="z-10 w-full flex justify-center">{children}</div>
       </div>
 
-      <div 
+      <div
         ref={codeContainerRef}
         className="border-black dark:border-white overflow-hidden h-0 opacity-0"
         style={{ borderTopWidth: isCodeVisible ? '3px' : '0px' }}

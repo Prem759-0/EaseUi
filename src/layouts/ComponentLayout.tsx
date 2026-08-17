@@ -54,7 +54,7 @@ const ComponentLayout = ({ }: Props) => {
         className={`
           ${sidebarOpen ? "flex" : "hidden"} md:flex
           w-full md:w-72 p-6 flex-col
-          border-r-[3px] border-black dark:border-white bg-neo-bg dark:bg-zinc-900
+          border-r-[3px] border-black dark:border-white bg-gray-50 dark:bg-zinc-900
           fixed md:sticky top-20 left-0 h-[calc(100vh-5rem)] z-30 md:self-start
           overflow-y-auto
         `}
@@ -84,7 +84,7 @@ const ComponentLayout = ({ }: Props) => {
         <div className="flex flex-col gap-8 pb-10">
           {componentGroups.map((group, gIdx) => (
             <div key={gIdx} className="flex flex-col gap-3">
-              <h3 className="font-comic font-bold text-lg text-gray-500 dark:text-gray-400 uppercase tracking-widest">
+              <h3 className="font-comic font-bold text-lg text-gray-600 dark:text-gray-400 uppercase tracking-widest">
                 {group.name}
               </h3>
               <ul className="flex flex-col gap-3">
@@ -102,7 +102,7 @@ const ComponentLayout = ({ }: Props) => {
                         neo-box border-[3px]
                         ${isActive
                           ? "bg-neo-blue text-black border-black translate-x-2"
-                          : "bg-white text-black hover:bg-neo-pink hover:translate-x-1 dark:bg-zinc-800 dark:text-white dark:border-white"}
+                          : "bg-gray-100 text-black hover:bg-neo-pink hover:translate-x-1 dark:bg-zinc-800 dark:text-white dark:border-white"}
                       `}
                     >
                       {item}

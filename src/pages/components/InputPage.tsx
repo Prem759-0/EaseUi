@@ -122,11 +122,11 @@ export default function App() {
         </p>
       </header>
 
-      <section className="page-section space-y-6 opacity-0">
+      <section className="page-section space-y-6 opacity-0 bg-white dark:bg-zinc-800 border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] p-8">
         <h2 className="text-3xl font-comic font-black uppercase text-black dark:text-white bg-neo-blue inline-block px-3 py-1 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">Examples</h2>
         
         <div className="space-y-4 mt-8">
-          <h3 className="text-2xl font-comic font-bold text-black dark:text-white border-b-[3px] border-black pb-2 inline-block">Normal Inputs</h3>
+          <h3 className="text-2xl font-comic font-bold text-black dark:text-white border-b-[3px] border-black dark:border-white pb-2 inline-block">Normal Inputs</h3>
           <ComponentDemo tabs={tabsNormal}>
             <div className="flex flex-col gap-4 w-full max-w-sm">
               <Input
@@ -151,7 +151,7 @@ export default function App() {
         </div>
 
         <div className="space-y-4 mt-12">
-          <h3 className="text-2xl font-comic font-bold text-black dark:text-white border-b-[3px] border-black pb-2 inline-block">Advanced Types</h3>
+          <h3 className="text-2xl font-comic font-bold text-black dark:text-white border-b-[3px] border-black dark:border-white pb-2 inline-block">Advanced Types</h3>
           <ComponentDemo tabs={tabsAdvanced}>
             <div className="flex flex-col gap-6 w-full max-w-sm">
               <AnimatedInput label="Animated" placeholder="Focus me" />
@@ -164,7 +164,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="page-section space-y-6 opacity-0">
+      <section className="page-section space-y-6 opacity-0 bg-white dark:bg-zinc-800 border-[3px] border-black dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] p-8">
         <h2 className="text-3xl font-comic font-black uppercase text-black dark:text-white bg-neo-green inline-block px-3 py-1 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">API Reference</h2>
         <PropsTable data={propsData} />
       </section>

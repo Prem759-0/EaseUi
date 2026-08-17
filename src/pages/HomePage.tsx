@@ -84,7 +84,7 @@ const HomePage = () => {
   }, []);
 
   const copyCode = () => {
-    navigator.clipboard.writeText(`npm i easeui-react`);
+    navigator.clipboard.writeText(`npx easeui@latest init`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -159,32 +159,53 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* Floating Code Preview Window */}
+        {/* Floating Terminal Window */}
         <div className="hero-code-window hidden md:block flex-1 w-full max-w-lg transform rotate-2">
-          <div className="neo-box-no-hover border-[4px] border-black dark:border-white bg-[#1e1e1e] rounded-xl overflow-hidden shadow-[12px_12px_0px_0px_rgba(244,114,182,1)]">
+          <div className="neo-box-no-hover border-[4px] border-black dark:border-white bg-[#0d1117] rounded-xl overflow-hidden shadow-[12px_12px_0px_0px_rgba(244,114,182,1)]">
+            {/* Terminal Title Bar */}
             <div className="flex items-center justify-between px-4 py-3 border-b-[4px] border-black dark:border-white bg-neo-green">
               <div className="flex gap-2">
                 <div className="w-4 h-4 rounded-full border-2 border-black bg-neo-red"></div>
                 <div className="w-4 h-4 rounded-full border-2 border-black bg-neo-yellow"></div>
                 <div className="w-4 h-4 rounded-full border-2 border-black bg-neo-blue"></div>
               </div>
-              <span className="font-comic font-bold text-black tracking-wider uppercase text-sm">Button.tsx</span>
+              <span className="font-comic font-bold text-black tracking-wider uppercase text-sm">Terminal</span>
             </div>
-            <div className="p-6 text-left relative group">
-              <pre className="text-neo-green font-mono text-sm leading-relaxed overflow-x-auto">
-                <code className="text-neo-pink">import</code> {'{'} Button {'}'} <code className="text-neo-pink">from</code> <code className="text-neo-yellow">"@easeui/react"</code>;<br/><br/>
-                <code className="text-neo-blue">export default</code> <code className="text-neo-pink">function</code> <code className="text-neo-yellow">App</code>() {'{'}<br/>
-                {'  '}<code className="text-neo-pink">return</code> (<br/>
-                {'    '}&lt;<code className="text-neo-blue">Button</code><br/>
-                {'      '}<code className="text-neo-yellow">variant</code>=<code className="text-neo-green">"neo-brutalist"</code><br/>
-                {'      '}<code className="text-neo-yellow">size</code>=<code className="text-neo-green">"lg"</code><br/>
-                {'    '}&gt;<br/>
-                {'      '}Click Me!<br/>
-                {'    '}&lt;/<code className="text-neo-blue">Button</code>&gt;<br/>
-                {'  '});<br/>
-                {'}'}
-              </pre>
-              <button 
+            {/* Terminal Body */}
+            <div className="p-6 text-left relative group font-mono text-sm leading-relaxed">
+              {/* Command line */}
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-neo-green font-bold">$</span>
+                <span className="text-white">
+                  <span className="text-neo-blue">npx</span>
+                  {' '}<span className="text-neo-yellow">easeui@latest</span>
+                  {' '}<span className="text-neo-pink">init</span>
+                </span>
+              </div>
+              {/* Simulated output */}
+              <div className="space-y-1.5 pl-4 text-xs">
+                <p className="text-neo-green">✔ EaseUI initialized successfully!</p>
+                <p className="text-gray-400">→ Installing dependencies...</p>
+                <p className="text-gray-400">→ Setting up tailwind config...</p>
+                <p className="text-gray-400">→ Adding component registry...</p>
+                <p className="text-neo-green mt-2">✔ Done! Start adding components:</p>
+                <div className="flex items-center gap-2 mt-2">
+                  <span className="text-neo-green font-bold">$</span>
+                  <span className="text-white">
+                    <span className="text-neo-blue">npx</span>
+                    {' '}<span className="text-neo-yellow">easeui@latest</span>
+                    {' '}<span className="text-neo-pink">add button</span>
+                  </span>
+                </div>
+                <p className="text-neo-green">✔ Button component added!</p>
+              </div>
+              {/* Blinking cursor */}
+              <div className="flex items-center gap-2 mt-4">
+                <span className="text-neo-green font-bold">$</span>
+                <span className="w-2 h-4 bg-neo-green animate-pulse inline-block"></span>
+              </div>
+              {/* Copy button */}
+              <button
                 onClick={copyCode}
                 className="absolute top-4 right-4 neo-box p-2 bg-white text-black opacity-0 group-hover:opacity-100 transition-opacity"
               >
@@ -203,18 +224,18 @@ const HomePage = () => {
         </p>
         <div className="w-full overflow-hidden flex">
           <div className="animate-marquee flex items-center justify-around whitespace-nowrap min-w-full gap-10 sm:gap-20 px-4 sm:px-10">
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">ACME CORP</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">GLOBEX</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">SOYUZ</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">STARK IND</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">WAYNE ENT</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">ACME CORP</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">GLOBEX</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">SOIUZ</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">STARK IND</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">WAYNE ENT</span>
           </div>
           <div className="animate-marquee flex items-center justify-around whitespace-nowrap min-w-full gap-10 sm:gap-20 px-4 sm:px-10">
-             <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">ACME CORP</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">GLOBEX</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">SOYUZ</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">STARK IND</span>
-            <span className="text-2xl sm:text-4xl font-black text-gray-300 dark:text-gray-700">WAYNE ENT</span>
+             <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">ACME CORP</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">GLOBEX</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">SOIUZ</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">STARK IND</span>
+            <span className="text-2xl sm:text-4xl font-black text-gray-400 dark:text-gray-600">WAYNE ENT</span>
           </div>
         </div>
       </div>

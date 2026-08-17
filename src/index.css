@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Apply dark class to html when data-theme="dark" is set */
+
 @theme {
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-comic: "Comic Neue", cursive;
@@ -12,31 +16,40 @@
   --color-neo-bg: #fffbf0;
 }
 
+/* ── Light Mode Tokens ─────────────────────────────── */
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
   --primary-color: #2563eb;
-  --neo-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
-  --neo-shadow-hover: 2px 2px 0px 0px rgba(0,0,0,1);
+  --card-bg: #ffffff;
+  --neo-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --neo-shadow-hover: 2px 2px 0px 0px rgba(0, 0, 0, 1);
   --neo-border: 3px solid #000;
   --radius-comic: 12px;
+  --grid-line-color: rgba(0, 0, 0, 0.1);
+  --dot-color: rgba(0, 0, 0, 0.15);
 }
 
+/* ── Dark Mode Tokens ──────────────────────────────── */
 [data-theme="dark"] {
   --bg-color: #18181b;
   --text-color: #f4f4f5;
   --primary-color: #3b82f6;
   --card-bg: #27272a;
-  --neo-shadow: 4px 4px 0px 0px rgba(255,255,255,1);
-  --neo-shadow-hover: 2px 2px 0px 0px rgba(255,255,255,1);
-  --neo-border: 3px solid #fff;
+  --neo-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 1);
+  --neo-shadow-hover: 2px 2px 0px 0px rgba(255, 255, 255, 1);
+  --neo-border: 3px solid #ffffff;
+  --grid-line-color: rgba(255, 255, 255, 0.05);
+  --dot-color: rgba(255, 255, 255, 0.1);
 }
 
+/* ── Base ──────────────────────────────────────────── */
+html,
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-sans);
-  transition: background-color 0.25s, color 0.25s;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Neo-Brutalist Utilities */
@@ -58,36 +71,27 @@ body {
   border-radius: var(--radius-comic);
 }
 
-/* Comic Grid Background */
+/* ── Comic Grid Background ─────────────────────────── */
 .comic-bg {
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
   background-size: 40px 40px;
   background-color: var(--bg-color);
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  transition: background-color 0.25s ease;
 }
 
 .comic-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.15) 2px, transparent 2px);
+  background-image: radial-gradient(var(--dot-color) 2px, transparent 2px);
   background-size: 20px 20px;
   background-position: 10px 10px;
-}
-
-[data-theme="dark"] .comic-bg {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-}
-
-[data-theme="dark"] .comic-bg::after {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
 }
 
 @keyframes fadeIn {

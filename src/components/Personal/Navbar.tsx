@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav ref={navRef} className="h-20 w-full flex items-center justify-between px-4 md:px-10 bg-white dark:bg-zinc-900 border-b-[3px] border-black dark:border-white z-50 sticky top-0">
+      <nav ref={navRef} className="h-20 w-full flex items-center justify-between px-4 md:px-10 bg-white dark:bg-zinc-900 border-b-[3px] border-black dark:border-white z-50 sticky top-0 shadow-[0_2px_0_0_rgba(0,0,0,1)]">
         <div className="flex items-center gap-6 md:gap-10">
           <h1
             onClick={() => navigate("/")}

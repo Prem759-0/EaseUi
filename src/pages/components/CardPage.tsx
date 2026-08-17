@@ -214,7 +214,7 @@ export default function App() {
       <section className="page-section space-y-6 opacity-0">
         <h2 className="text-3xl font-comic font-black uppercase text-black dark:text-white bg-neo-blue inline-block px-3 py-1 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">Usage</h2>
         <div className="flex flex-col gap-12 mt-8">
-          
+
           <div className="space-y-4">
             <h3 className="text-2xl font-comic font-bold text-black dark:text-white border-b-[3px] border-black pb-2 inline-block">Dark Variant</h3>
             <ComponentDemo tabs={tabsDark}>
@@ -268,7 +268,7 @@ export default function App() {
               </div>
             </ComponentDemo>
           </div>
-          
+
           <div className="space-y-4">
             <h3 className="text-2xl font-comic font-bold text-black dark:text-white border-b-[3px] border-black pb-2 inline-block">Light Variant (Float3D)</h3>
             <ComponentDemo tabs={tabsLight}>
