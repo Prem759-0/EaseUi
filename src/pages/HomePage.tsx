@@ -84,9 +84,11 @@ const HomePage = () => {
   }, []);
 
   const copyCode = () => {
-    navigator.clipboard.writeText(`npx easeui@latest init`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const npxCommand = "npx @prem_gaikwad/easeui@latest init";
+    navigator.clipboard.writeText(npxCommand).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
   };
 
   const features = [
