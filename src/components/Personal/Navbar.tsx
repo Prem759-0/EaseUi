@@ -46,13 +46,16 @@ const Navbar = () => {
 
         <ul className="hidden md:flex items-center gap-8 font-bold text-lg">
           <li
-            onClick={() => navigate("components")}
+            onClick={() => navigate("/components/button")}
             className="cursor-pointer hover:text-neo-blue transition-colors hover:-translate-y-1 relative group"
           >
             Components
             <span className="absolute -bottom-1 left-0 w-0 h-1 bg-neo-blue transition-all group-hover:w-full"></span>
           </li>
-          <li className="cursor-pointer hover:text-neo-pink transition-colors hover:-translate-y-1 relative group">
+          <li
+            onClick={() => navigate("/about")}
+            className="cursor-pointer hover:text-neo-pink transition-colors hover:-translate-y-1 relative group"
+          >
             About
             <span className="absolute -bottom-1 left-0 w-0 h-1 bg-neo-pink transition-all group-hover:w-full"></span>
           </li>
@@ -63,7 +66,7 @@ const Navbar = () => {
           
           <li className="ml-4 flex items-center gap-4">
             <a 
-              href="https://github.com/devendradhote/Easeui-project" 
+              href="https://github.com/Prem759-0/EaseUi.git" 
               target="_blank" 
               rel="noreferrer"
               className="flex items-center gap-2 neo-box bg-white dark:bg-zinc-800 px-3 py-1.5 hover:bg-neo-pink dark:hover:bg-neo-pink transition-colors text-black dark:text-white dark:hover:text-black group"
@@ -130,19 +133,25 @@ const Navbar = () => {
             <li
               onClick={() => {
                 setMobileMenuOpen(false);
-                navigate("components");
+                navigate("/components/button");
               }}
               className="cursor-pointer hover:text-neo-pink w-max border-b-4 border-transparent hover:border-black transition-all"
             >
               Components
             </li>
-            <li className="cursor-pointer hover:text-neo-yellow w-max border-b-4 border-transparent hover:border-black transition-all">About</li>
+            <li
+              onClick={() => {
+                setMobileMenuOpen(false);
+                navigate("/about");
+              }}
+              className="cursor-pointer hover:text-neo-yellow w-max border-b-4 border-transparent hover:border-black transition-all"
+            >About</li>
             <li className="cursor-pointer hover:text-neo-green w-max border-b-4 border-transparent hover:border-black transition-all">Templates</li>
           </ul>
 
           <div className="mt-auto pb-4">
             <a 
-              href="https://github.com/devendradhote/Easeui-project" 
+              href="https://github.com/Prem759-0/EaseUi.git" 
               target="_blank" 
               rel="noreferrer"
               className="flex items-center justify-center gap-2 neo-box bg-white dark:bg-zinc-800 px-6 py-4 text-black dark:text-white text-xl font-bold w-full"

@@ -22,6 +22,10 @@ const ComponentLayout = ({ }: Props) => {
 
   const componentGroups = [
     {
+      name: "Getting Started",
+      items: ["Installation"],
+    },
+    {
       name: "Elements",
       items: ["Button", "Card", "Input"],
     },

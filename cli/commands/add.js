@@ -24,10 +24,43 @@ export async function addCommand(componentName) {
     const configData = await fs.readFile(easeuiConfigPath, 'utf-8');
     config = JSON.parse(configData);
   } catch (error) {
-    console.log(pc.red(`Could not find easeui.json. Please run ${pc.cyan('npx easeui init')} first.`));
+    console.log(pc.red(`Could not find easeui.json. Please run ${pc.cyan('npx @prem_gaikwad/easeui init')} first.`));
     process.exit(1);
   }
 
+  const sourceComponentsDir = path.resolve(__dirname, `../../src/components`);
+  
+  if (componentName.toLowerCase() === 'all') {
+    console.log(pc.cyan(`\n→ Installing all components...`));
+    try {
+      const items = await fs.readdir(sourceComponentsDir, { withFileTypes: true });
+      let installedCount = 0;
+      
+      for (const item of items) {
+        if (item.isDirectory() && item.name !== 'Personal') {
+          // Recursive copy
+          const srcPath = path.join(sourceComponentsDir, item.name);
+          const destPath = path.join(cwd, config.components, item.name);
+          
+          await fs.cp(srcPath, destPath, { recursive: true });
+          installedCount++;
+          console.log(pc.green(`✔ Added ${pc.bold(item.name)}`));
+        }
+      }
+      
+      console.log(pc.cyan(`→ Installing @radix-ui/react-slot...`));
+      execSync(`npm install @radix-ui/react-slot`, { stdio: 'inherit' });
+      
+      console.log(pc.green(`\n✨ Successfully installed ${installedCount} components!`));
+      return;
+    } catch (error) {
+      console.log(pc.red(`✖ Failed to copy all components.`));
+      console.log(error.message);
+      return;
+    }
+  }
+
+  // Single component installation
   const targetComponentsDir = path.join(cwd, config.components, nameCapitalized);
   await fs.mkdir(targetComponentsDir, { recursive: true });
 
@@ -37,19 +70,12 @@ export async function addCommand(componentName) {
   try {
     let componentCode = await fs.readFile(sourceComponentFile, 'utf-8');
     
-    // We need to replace the import aliases if the user chose a different path
-    // Default in source is '@/libs/utils' and '@/libs/animations/...'
-    // If the user set libsPath to something else, we should theoretically rewrite the imports.
-    // For simplicity, we assume their tsconfig maps @/ to src/. 
-    // Shadcn modifies imports based on components.json. We will do a simple rewrite.
     const relativeLibsPath = config.libs.startsWith('src/') ? config.libs.slice(4) : config.libs;
     componentCode = componentCode.replace(/@\/libs\//g, `@/${relativeLibsPath}/`);
 
     await fs.writeFile(destComponentFile, componentCode);
     console.log(pc.green(`✔ Added ${pc.bold(nameCapitalized)} component to ${config.components}/${nameCapitalized}`));
 
-    // Install component specific dependencies
-    // Radix UI is needed for Button
     if (componentName.toLowerCase() === 'button') {
       console.log(pc.cyan(`→ Installing @radix-ui/react-slot for Button...`));
       execSync(`npm install @radix-ui/react-slot`, { stdio: 'inherit' });

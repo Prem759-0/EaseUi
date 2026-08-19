@@ -11,7 +11,6 @@ const __dirname = path.dirname(__filename);
 export async function initCommand() {
   console.log(pc.cyan('\nWelcome to EaseUI! Let\'s get your project set up.\n'));
 
-  // 1. Ask for directories
   const response = await prompts([
     {
       type: 'text',
@@ -24,6 +23,12 @@ export async function initCommand() {
       name: 'libsPath',
       message: 'Where would you like to put utility and animation files?',
       initial: 'src/libs'
+    },
+    {
+      type: 'text',
+      name: 'cssPath',
+      message: 'Where is your global CSS file?',
+      initial: 'src/index.css'
     }
   ]);
 
@@ -83,6 +88,35 @@ export async function initCommand() {
 
   } catch (error) {
     console.log(pc.yellow(`\n⚠ Note: Could not copy some utility files. Are you running this directly from the EaseUI project folder instead of via npx? Error: ${error.message}`));
+  }
+
+  // 4.5 Inject CSS variables
+  console.log(pc.cyan('\n→ Injecting CSS variables...'));
+  try {
+    const userCssPath = path.join(cwd, response.cssPath);
+    const easeuiCssPath = path.resolve(__dirname, '../../src/index.css');
+    
+    const easeuiCssContent = await fs.readFile(easeuiCssPath, 'utf-8');
+    
+    // Extract everything except the first 2 lines (tailwind imports)
+    const lines = easeuiCssContent.split('\n');
+    const cssToInject = lines.slice(2).join('\n');
+
+    let userCss = '';
+    try {
+      userCss = await fs.readFile(userCssPath, 'utf-8');
+    } catch (e) {
+      // File doesn't exist, we will create it
+    }
+
+    if (!userCss.includes('--neo-shadow')) {
+      await fs.writeFile(userCssPath, userCss + '\n\n/* EaseUI Neo-Brutalist Variables */\n' + cssToInject);
+      console.log(pc.green(`✔ Injected CSS variables into ${pc.bold(response.cssPath)}`));
+    } else {
+      console.log(pc.green(`✔ CSS variables already exist in ${pc.bold(response.cssPath)}`));
+    }
+  } catch (error) {
+    console.log(pc.yellow(`\n⚠ Note: Could not automatically inject CSS variables into your stylesheet.`));
   }
 
   // 5. Install dependencies
