@@ -13,7 +13,6 @@ import {
   Trash2Icon,
   ArrowRightIcon,
   PlusIcon,
-  CircleFadingArrowUpIcon,
   ChevronLeft,
   ChevronRight
 } from "lucide-react"

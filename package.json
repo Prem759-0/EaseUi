@@ -1,6 +1,6 @@
 {
   "name": "@prem_gaikwad/easeui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Neo-Brutalist React UI component library with bold colors, hard shadows, and GSAP animations",
   "author": "Devendra Dhote",
   "license": "MIT",
@@ -15,13 +15,13 @@
     "design-system",
     "easeui"
   ],
-  "homepage": "https://github.com/devendradhote/Easeui-project#readme",
+  "homepage": "https://github.com/Prem759-0/EaseUi#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/devendradhote/Easeui-project.git"
+    "url": "git+https://github.com/Prem759-0/EaseUi.git"
   },
   "bugs": {
-    "url": "https://github.com/devendradhote/Easeui-project/issues"
+    "url": "https://github.com/Prem759-0/EaseUi/issues"
   },
   "main": "dist/easeui.umd.js",
   "module": "dist/easeui.es.js",

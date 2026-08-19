@@ -66,14 +66,14 @@ function Button({
     entranceAnimations[animation as keyof typeof entranceAnimations]?.(el);
   }, [animation]);
 
-  const handleMouseEnter = (e: any) => {
+  const handleMouseEnter = () => {
     const el = buttonRef.current;
     if (el && hoverAnimation !== "none") {
       hoverAnimations[hoverAnimation as keyof typeof hoverAnimations]?.(el);
     }
   };
 
-  const handleMouseLeave = (e: any) => {
+  const handleMouseLeave = () => {
     if (buttonRef.current && hoverAnimation !== "none") {
       gsap.to(buttonRef.current, {
         scale: 1,

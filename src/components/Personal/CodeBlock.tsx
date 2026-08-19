@@ -29,7 +29,7 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
   };
 
   return (
-    <div className="relative bg-white dark:bg-zinc-800 flex flex-col w-full">
+    <div className="relative bg-white dark:bg-zinc-800 flex flex-col w-full rounded-xl overflow-hidden">
       <div className="flex items-center justify-between bg-neo-blue border-b-[4px] border-black dark:border-white px-4 py-3">
         <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
           {hasTabs ? (
@@ -38,7 +38,7 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
                 <button
                   key={tab.name}
                   onClick={() => setActiveTabIndex(index)}
-                  className={`text-sm font-bold font-comic uppercase tracking-wider px-3 py-1 border-2 border-black transition-all whitespace-nowrap ${
+                  className={`text-sm font-bold font-comic uppercase tracking-wider px-3 py-1 rounded-lg border-2 border-black transition-all whitespace-nowrap ${
                     activeTabIndex === index 
                       ? "bg-neo-yellow text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] -translate-y-0.5" 
                       : "bg-white text-gray-700 hover:bg-gray-100 shadow-none translate-y-0"
@@ -54,7 +54,7 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
         </div>
         <button
           onClick={copyToClipboard}
-          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold bg-white text-black border-2 border-black hover:bg-neo-yellow transition-all hover:-translate-y-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] shrink-0 ml-4"
+          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-lg bg-white text-black border-2 border-black hover:bg-neo-yellow transition-all hover:-translate-y-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] shrink-0 ml-4"
         >
           {copied ? <Check size={14} className="text-neo-green" /> : <Copy size={14} />}
           {copied ? "Copied!" : "Copy"}

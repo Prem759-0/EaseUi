@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, Box, Copy, Palette, Zap, Check, Code, Layers,
-  MousePointerClick, Star, Users, Package, Github, Twitter, Linkedin,
+  MousePointerClick, Star, Users, Package, Github, Linkedin,
   Sparkles, Shield, Rocket, Heart
 } from "lucide-react";
 import gsap from "gsap";

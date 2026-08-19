@@ -34,7 +34,7 @@ const ComponentDemo = ({ children, code, tabs }: ComponentDemoProps) => {
   }, [isCodeVisible]);
 
   return (
-    <div className="neo-box-no-hover overflow-hidden bg-white dark:bg-zinc-800 mb-8 mt-4 border-[3px] border-black dark:border-white">
+    <div className="neo-box-no-hover rounded-xl overflow-hidden bg-white dark:bg-zinc-800 mb-8 mt-4 border-[3px] border-black dark:border-white">
       <div className="flex items-center justify-between px-4 py-2 border-b-[4px] border-black dark:border-white bg-gray-300 dark:bg-zinc-700">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5 mr-4">
@@ -48,7 +48,7 @@ const ComponentDemo = ({ children, code, tabs }: ComponentDemoProps) => {
         </div>
         <button
           onClick={() => setIsCodeVisible(!isCodeVisible)}
-          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold bg-white text-black border-2 border-black hover:bg-neo-pink transition-colors neo-box-no-hover hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-lg bg-white text-black border-2 border-black hover:bg-neo-pink transition-colors neo-box-no-hover hover:-translate-y-0.5 active:translate-y-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
         >
           <Code size={14} />
           {isCodeVisible ? "Hide Code" : "View Code"}

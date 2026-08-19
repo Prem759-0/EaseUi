@@ -3,10 +3,48 @@ import gsap from "gsap";
 import { Button } from "@/components/Button/Button";
 import ComponentDemo from "../ComponentsDemo";
 import PropsTable from "@/components/Personal/PropsTable";
-import { Copy, Check, ChevronLeft, ChevronRight, Terminal, ArrowUp, ArrowUpRight, GitBranch, GitFork } from "lucide-react";
+import { Copy, Check, ChevronLeft, ChevronRight, ArrowUp, ArrowUpRight, GitBranch, GitFork } from "lucide-react";
 import { useNavigate } from "react-router";
 import { ButtonLoading, ButtonGroupDemo, ButtonRender, ButtonRtl, BaseButtonIcon } from "@/components/BaseButtonDemos";
-import { baseButtonVariants } from "@/components/ui/base-button";
+import {
+  EasyAccessButtons,
+  CommunicationButtons,
+  BorderedButtons,
+  ButtonBottomBorderAnimation,
+  TextRollingAnimationButton,
+  ButtonCircleBorderAnimation,
+  ButtonDualBorderAnimation,
+  DownloadButton,
+  PremiumButtons,
+  ButtonGlassAnimation,
+  QuickActionButton,
+  ButtonColorfulBorderAnimation,
+  ButtonVariants,
+  FlatEdgeButtons,
+  GlowingButtonHoverEffect,
+  CompactMsgButtons,
+  ActionButtons,
+} from "@/components/CustomButtonDemos";
+
+import {
+  easyAccessButtonsCode,
+  communicationButtonsCode,
+  borderedButtonsCode,
+  buttonBottomBorderAnimationCode,
+  textRollingAnimationButtonCode,
+  buttonCircleBorderAnimationCode,
+  buttonDualBorderAnimationCode,
+  downloadButtonCode,
+  premiumButtonsCode,
+  buttonGlassAnimationCode,
+  quickActionButtonCode,
+  buttonColorfulBorderAnimationCode,
+  buttonVariantsCode,
+  flatEdgeButtonsCode,
+  glowingButtonHoverEffectCode,
+  compactMsgButtonsCode,
+  actionButtonsCode,
+} from "@/components/CustomButtonCodes";
 
 const ButtonPage = () => {
   const navigate = useNavigate();
@@ -433,6 +471,133 @@ export function AllButtonExamples() {
           <h3 className="text-2xl font-bold text-black dark:text-white">RTL Support</h3>
           <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/ui/base-button"\nimport { useTranslation } from "@/components/language-selector"\n\nexport function ButtonRtl() {\n  // (Implementation in source code)\n}' }]}>
              <ButtonRtl />
+          </ComponentDemo>
+        </div>
+      </section>
+
+      {/* More Custom Examples Section */}
+      <section className="page-section space-y-12 opacity-0 pt-12 border-t-4 border-black dark:border-white">
+        <div>
+          <h2 className="text-3xl font-comic font-black text-black dark:text-white mb-2">More Custom Examples</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 font-bold">Various custom standalone button examples with unique animations and styles.</p>
+        </div>
+        
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Easy Access Buttons</h3>
+          <ComponentDemo tabs={easyAccessButtonsCode}>
+             <EasyAccessButtons />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Communication Buttons</h3>
+          <ComponentDemo tabs={communicationButtonsCode}>
+             <CommunicationButtons />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Bordered Buttons</h3>
+          <ComponentDemo tabs={borderedButtonsCode}>
+             <BorderedButtons />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Bottom Border Animation</h3>
+          <ComponentDemo tabs={buttonBottomBorderAnimationCode}>
+             <ButtonBottomBorderAnimation />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Text Rolling Animation</h3>
+          <ComponentDemo tabs={textRollingAnimationButtonCode}>
+             <TextRollingAnimationButton />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Circle Border Animation</h3>
+          <ComponentDemo tabs={buttonCircleBorderAnimationCode}>
+             <ButtonCircleBorderAnimation />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Dual Border Animation</h3>
+          <ComponentDemo tabs={buttonDualBorderAnimationCode}>
+             <ButtonDualBorderAnimation />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Download Buttons</h3>
+          <ComponentDemo tabs={downloadButtonCode}>
+             <DownloadButton />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Premium Buttons</h3>
+          <ComponentDemo tabs={premiumButtonsCode}>
+             <PremiumButtons />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Glass Animation</h3>
+          <ComponentDemo tabs={buttonGlassAnimationCode}>
+             <ButtonGlassAnimation />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Quick Action Buttons</h3>
+          <ComponentDemo tabs={quickActionButtonCode}>
+             <QuickActionButton />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Colorful Border Animation</h3>
+          <ComponentDemo tabs={buttonColorfulBorderAnimationCode}>
+             <ButtonColorfulBorderAnimation />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Button Variants</h3>
+          <ComponentDemo tabs={buttonVariantsCode}>
+             <ButtonVariants />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Flat Edge Buttons</h3>
+          <ComponentDemo tabs={flatEdgeButtonsCode}>
+             <FlatEdgeButtons />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Glowing Hover Effect</h3>
+          <ComponentDemo tabs={glowingButtonHoverEffectCode}>
+             <GlowingButtonHoverEffect />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Compact Message Buttons</h3>
+          <ComponentDemo tabs={compactMsgButtonsCode}>
+             <CompactMsgButtons />
+          </ComponentDemo>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-black dark:text-white">Action Buttons</h3>
+          <ComponentDemo tabs={actionButtonsCode}>
+             <ActionButtons />
           </ComponentDemo>
         </div>
       </section>
