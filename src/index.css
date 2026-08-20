@@ -14,12 +14,32 @@
   --color-neo-green: #4ade80;
   --color-neo-red: #f87171;
   --color-neo-bg: #fffbf0;
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
 }
 
 /* ── Light Mode Tokens ─────────────────────────────── */
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
+  --background: #ffffff;
+  --foreground: #000000;
   --primary-color: #2563eb;
   --card-bg: #ffffff;
   --neo-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
@@ -28,12 +48,31 @@
   --radius-comic: 12px;
   --grid-line-color: rgba(0, 0, 0, 0.1);
   --dot-color: rgba(0, 0, 0, 0.15);
+  
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --border: #e2e8f0;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --input: #e2e8f0;
+  --ring: #0f172a;
+  
+  --primary: #0f172a;
+  --primary-foreground: #f8fafc;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
 }
 
 /* ── Dark Mode Tokens ──────────────────────────────── */
 [data-theme="dark"] {
   --bg-color: #18181b;
   --text-color: #f4f4f5;
+  --background: #18181b;
+  --foreground: #f4f4f5;
   --primary-color: #3b82f6;
   --card-bg: #27272a;
   --neo-shadow: 4px 4px 0px 0px rgba(255, 255, 255, 1);
@@ -41,6 +80,23 @@
   --neo-border: 3px solid #ffffff;
   --grid-line-color: rgba(255, 255, 255, 0.05);
   --dot-color: rgba(255, 255, 255, 0.1);
+  
+  --card: #18181b;
+  --card-foreground: #f4f4f5;
+  --border: #27272a;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
+  --input: #27272a;
+  --ring: #d4d4d8;
+  
+  --primary: #f8fafc;
+  --primary-foreground: #0f172a;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f8fafc;
 }
 
 /* ── Base ──────────────────────────────────────────── */

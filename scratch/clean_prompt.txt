@@ -1,0 +1,3362 @@
+<USER_REQUEST>
+all this add all cards above of all olds cards existing in card page compontent page  1 . import { Button } from "@/components/ui/button"import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"import { Input } from "@/components/ui/input"import { Label } from "@/components/ui/label"export function CardDemo() { return ( <Card className="w-full max-w-sm"> <CardHeader> <CardTitle>Login to your account</CardTitle> <CardDescription> Enter your email below to login to your account </CardDescription> <CardAction> <Button variant="link">Sign Up</Button> </CardAction> </CardHeader> <CardContent> <form> <div className="flex flex-col gap-6"> <div className="grid gap-2"> <Label htmlFor="email">Email</Label> <Input id="email" type="email" placeholder="m@example.com" required /> </div> <div className="grid gap-2"> <div className="flex items-center"> <Label htmlFor="password">Password</Label> <a href="#" className="ml-auto inline-block text-sm underline-offset-4 hover:underline" > Forgot your password? </a> </div> <Input id="password" type="password" required /> </div> </div> </form> </CardContent> <CardFooter className="flex-col gap-2"> <Button type="submit" className="w-full"> Login </Button> <Button variant="outline" className="w-full"> Login with Google </Button> </CardFooter> </Card> )}
+[Installation#](https://ui.shadcn.com/docs/components/base/card#installation)
+CommandManual
+pnpmnpmyarnbun
+npx shadcn@latest add card
+Copy
+[Usage#](https://ui.shadcn.com/docs/components/base/card#usage)
+Copyimport { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
+Copy<Card> <CardHeader> <CardTitle>Card Title</CardTitle> <CardDescription>Card Description</CardDescription> <CardAction>Card Action</CardAction> </CardHeader> <CardContent> <p>Card Content</p> </CardContent> <CardFooter> <p>Card Footer</p> </CardFooter></Card>
+[Composition#](https://ui.shadcn.com/docs/components/base/card#composition)
+Use the following composition to build a Card:
+CopyCard ├── CardHeader │ ├── CardTitle │ ├── CardDescription │ └── CardAction ├── CardContent └── CardFooter manual ==> CommandManual
+Copy and paste the following code into your project.
+Expand
+components/ui/card.tsx
+Copyimport * as React from "react"import { cn } from "@/lib/utils"function Card({ className, size = "default", ...props}: React.ComponentProps<"div"> & { size?: "default" | "sm" }) { return ( <div data-slot="card" data-size={size} className={cn( "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl", className )} {...props} /> )}function CardHeader({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-header" className={cn( "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)", className )} {...props} /> )}function CardTitle({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-title" className={cn( "cn-font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm", className )} {...props} /> )}function CardDescription({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-description" className={cn("text-sm text-muted-foreground", className)} {...props} /> )}function CardAction({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-action" className={cn( "col-start-2 row-span-2 row-start-1 self-start justify-self-end", className )} {...props} /> )}function CardContent({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-content" className={cn("px-(--card-spacing)", className)} {...props} /> )}function CardFooter({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-footer" className={cn( "flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)", className )} {...props} /> )}export { Card, CardHeader, CardFooter, CardTitle, CardAction, CardDescription, CardContent,}
+Expand
+Update the import paths to match your project setup.
+[Usage#](https://ui.shadcn.com/docs/components/base/card#usage)
+Copyimport { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
+Copy<Card> <CardHeader> <CardTitle>Card Title</CardTitle> <CardDescription>Card Description</CardDescription> <CardAction>Card Action</CardAction> </CardHeader> <CardContent> <p>Card Content</p> </CardContent> <CardFooter> <p>Card Footer</p> </CardFooter></Card>
+[Composition#](https://ui.shadcn.com/docs/components/base/card#composition)
+Use the following composition to build a Card:
+CopyCard ├── CardHeader │ ├── CardTitle │ ├── CardDescription │ └── CardAction ├── CardContent └── CardFooter    2 size . npm dlx shadcn@latest add item . import { ChevronRightIcon } from "lucide-react"
+
+
+
+import { Button } from "@/components/ui/button"
+
+import {
+
+  Card,
+
+  CardContent,
+
+  CardDescription,
+
+  CardFooter,
+
+  CardHeader,
+
+  CardTitle,
+
+} from "@/components/ui/card"
+
+
+
+export function CardSmall() {
+
+  const featureName = "Scheduled reports"
+
+
+
+  return (
+
+    <Card size="sm" className="mx-auto w-full max-w-xs">
+
+      <CardHeader>
+
+        <CardTitle>{featureName}</CardTitle>
+
+        <CardDescription>
+
+          Weekly snapshots. No more manual exports.
+
+        </CardDescription>
+
+      </CardHeader>
+
+      <CardContent>
+
+        <ul className="grid gap-2 py-2 text-sm">
+
+          <li className="flex gap-2">
+
+            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+
+            <span>Choose a schedule (daily, or weekly).</span>
+
+          </li>
+
+          <li className="flex gap-2">
+
+            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+
+            <span>Send to channels or specific teammates.</span>
+
+          </li>
+
+          <li className="flex gap-2">
+
+            <ChevronRightIcon className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
+
+            <span>Include charts, tables, and key metrics.</span>
+
+          </li>
+
+        </ul>
+
+      </CardContent>
+
+      <CardFooter className="flex-col gap-2">
+
+        <Button size="sm" className="w-full">
+
+          Set up scheduled reports
+
+        </Button>
+
+        <Button variant="outline" size="sm" className="w-full">
+
+          See what&apos;s new
+
+        </Button>
+
+      </CardFooter>
+
+    </Card>
+
+  )
+
+}   3 spacing . In addition to the size prop, you can use the --card-spacing CSS variable to control the spacing between sections and the inset of card parts. "use client"
+
+
+
+import * as React from "react"
+
+
+
+import { Button } from "@/components/ui/button"
+
+import {
+
+  Card,
+
+  CardAction,
+
+  CardContent,
+
+  CardDescription,
+
+  CardFooter,
+
+  CardHeader,
+
+  CardTitle,
+
+} from "@/components/ui/card"
+
+import { Input } from "@/components/ui/input"
+
+import { Label } from "@/components/ui/label"
+
+import {
+
+  ToggleGroup,
+
+  ToggleGroupItem,
+
+} from "@/components/ui/toggle-group"
+
+
+
+const spacingOptions = [
+
+  {
+
+    className: "[--card-spacing:--spacing(4)]",
+
+    label: "16px",
+
+    value: "4",
+
+  },
+
+  {
+
+    className: "[--card-spacing:--spacing(5)]",
+
+    label: "20px",
+
+    value: "5",
+
+  },
+
+  {
+
+    className: "[--card-spacing:--spacing(6)]",
+
+    label: "24px",
+
+    value: "6",
+
+  },
+
+  {
+
+    className: "[--card-spacing:--spacing(8)]",
+
+    label: "32px",
+
+    value: "8",
+
+  },
+
+]
+
+
+
+export function CardSpacing() {
+
+  const [spacing, setSpacing] = React.useState("4")
+
+  const selectedSpacing = spacingOptions.find(
+
+    (option) => option.value === spacing
+
+  )
+
+
+
+  return (
+
+    <div className="mx-auto grid w-full max-w-sm gap-4">
+
+      <ToggleGroup
+
+        value={[spacing]}
+
+        onValueChange={(value) => {
+
+          if (value[0]) {
+
+            setSpacing(value[0])
+
+          }
+
+        }}
+
+        variant="outline"
+
+        size="sm"
+
+        className="justify-center"
+
+      >
+
+        {spacingOptions.map((option) => (
+
+          <ToggleGroupItem key={option.value} value={option.value}>
+
+            {option.label}
+
+          </ToggleGroupItem>
+
+        ))}
+
+      </ToggleGroup>
+
+      <Card className={selectedSpacing?.className}>
+
+        <CardHeader>
+
+          <CardTitle>Login to your account</CardTitle>
+
+          <CardDescription>
+
+            Enter your email below to login to your account
+
+          </CardDescription>
+
+          <CardAction>
+
+            <Button variant="link">Sign Up</Button>
+
+          </CardAction>
+
+        </CardHeader>
+
+        <CardContent>
+
+          <form>
+
+            <div className="flex flex-col gap-6">
+
+              <div className="grid gap-2">
+
+                <Label htmlFor="email-spacing">Email</Label>
+
+                <Input
+
+                  id="email-spacing"
+
+                  type="email"
+
+                  placeholder="m@example.com"
+
+                  required
+
+                />
+
+              </div>
+
+              <div className="grid gap-2">
+
+                <div className="flex items-center">
+
+                  <Label htmlFor="password-spacing">Password</Label>
+
+                  <a
+
+                    href="#"
+
+                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+
+                  >
+
+                    Forgot your password?
+
+                  </a>
+
+                </div>
+
+                <Input id="password-spacing" type="password" required />
+
+              </div>
+
+            </div>
+
+          </form>
+
+        </CardContent>
+
+        <CardFooter className="flex-col gap-2">
+
+          <Button type="submit" className="w-full">
+
+            Login
+
+          </Button>
+
+          <Button variant="outline" className="w-full">
+
+            Login with Google
+
+          </Button>
+
+        </CardFooter>
+
+      </Card>
+
+    </div>
+
+  )
+
+}   
+
+     Use negative margins with -mx-(--card-spacing) to make content go edge to edge while keeping it aligned with the card inset. When the edge-to-edge content sits above a footer, use -mb-(--card-spacing) on CardContent to remove the section gap.   import { Button } from "@/components/ui/button"
+
+import {
+
+  Card,
+
+  CardContent,
+
+  CardDescription,
+
+  CardFooter,
+
+  CardHeader,
+
+  CardTitle,
+
+} from "@/components/ui/card"
+
+
+
+export function CardEdgeToEdge() {
+
+  return (
+
+    <Card className="mx-auto w-full max-w-sm">
+
+      <CardHeader>
+
+        <CardTitle>Terms of Service</CardTitle>
+
+        <CardDescription>
+
+          Review the terms before accepting the agreement.
+
+        </CardDescription>
+
+      </CardHeader>
+
+      <CardContent className="-mb-(--card-spacing)">
+
+        <div className="-mx-(--card-spacing) max-h-48 space-y-4 overflow-y-scroll border-t bg-muted/50 px-(--card-spacing) py-4 text-sm leading-relaxed">
+
+          <p>
+
+            These terms govern your use of the workspace, including access to
+
+            shared documents, project files, and collaboration tools.
+
+          </p>
+
+          <p>
+
+            You are responsible for the content you upload and for ensuring that
+
+            your team has the appropriate permissions to view or edit it.
+
+          </p>
+
+          <p>
+
+            We may update features or limits as the service evolves. When those
+
+            changes materially affect your workflow, we will notify your
+
+            workspace administrators.
+
+          </p>
+
+          <p>
+
+            By continuing, you agree to keep your account credentials secure and
+
+            to follow your organization&apos;s acceptable use policies.
+
+          </p>
+
+        </div>
+
+      </CardContent>
+
+      <CardFooter className="justify-end gap-2">
+
+        <Button variant="outline">Decline</Button>
+
+        <Button>Accept</Button>
+
+      </CardFooter>
+
+    </Card>
+
+  )
+
+}     image . Add an image before the card header to create a card with an image.
+
+
+
+ . import { Badge } from "@/components/ui/badge"
+
+import { Button } from "@/components/ui/button"
+
+import {
+
+  Card,
+
+  CardAction,
+
+  CardDescription,
+
+  CardFooter,
+
+  CardHeader,
+
+  CardTitle,
+
+} from "@/components/ui/card"
+
+
+
+export function CardImage() {
+
+  return (
+
+    <Card className="relative mx-auto w-full max-w-sm pt-0">
+
+      <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
+
+      <img
+
+        src="https://avatar.vercel.sh/shadcn1"
+
+        alt="Event cover"
+
+        className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+
+      />
+
+      <CardHeader>
+
+        <CardAction>
+
+          <Badge variant="secondary">Featured</Badge>
+
+        </CardAction>
+
+        <CardTitle>Design systems meetup</CardTitle>
+
+        <CardDescription>
+
+          A practical talk on component APIs, accessibility, and shipping
+
+          faster.
+
+        </CardDescription>
+
+      </CardHeader>
+
+      <CardFooter>
+
+        <Button className="w-full">View Event</Button>
+
+      </CardFooter>
+
+    </Card>
+
+  )
+
+}
+
+    rtl . npm dlx shadcn@latest add item . // You will notice this example uses dir and data-lang attributes. // This is because this site is not RTL by default. // In your application, you won't need these.
+// See the [RTL guide](https://ui.shadcn.com/docs/rtl) for more information.
+Copy"use client"import * as React from "react"import { useTranslation, type Translations,} from "@/components/language-selector"import { Button } from "@/components/ui/button"import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"import { Input } from "@/components/ui/input"import { Label } from "@/components/ui/label"const translations: Translations = { en: { dir: "ltr", values: { title: "Login to your account", description: "Enter your email below to login to your account", signUp: "Sign Up", email: "Email", emailPlaceholder: "m@example.com", password: "Password", forgotPassword: "Forgot your password?", login: "Login", loginWithGoogle: "Login with Google", }, }, ar: { dir: "rtl", values: { title: "تسجيل الدخول إلى حسابك", description: "أدخل بريدك الإلكتروني أدناه لتسجيل الدخول إلى حسابك", signUp: "إنشاء حساب", email: "البريد الإلكتروني", emailPlaceholder: "m@example.com", password: "كلمة المرور", forgotPassword: "نسيت كلمة المرور؟", login: "تسجيل الدخول", loginWithGoogle: "تسجيل الدخول باستخدام Google", }, }, he: { dir: "rtl", values: { title: "התחבר לחשבון שלך", description: "הזן את האימייל שלך למטה כדי להתחבר לחשבון שלך", signUp: "הירשם", email: "אימייל", emailPlaceholder: "m@example.com", password: "סיסמה", forgotPassword: "שכחת את הסיסמה?", login: "התחבר", loginWithGoogle: "התחבר עם Google", }, },}export function CardRtl() { const { dir, t } = useTranslation(translations, "ar") return ( <Card className="w-full max-w-sm" dir={dir}> <CardHeader> <CardTitle>{t.title}</CardTitle> <CardDescription>{t.description}</CardDescription> <CardAction> <Button variant="link">{t.signUp}</Button> </CardAction> </CardHeader> <CardContent> <form> <div className="flex flex-col gap-6"> <div className="grid gap-2"> <Label htmlFor="email-rtl">{t.email}</Label> <Input id="email-rtl" type="email" placeholder={t.emailPlaceholder} required /> </div> <div className="grid gap-2"> <div className="flex items-center"> <Label htmlFor="password-rtl">{t.password}</Label> <a href="#" className="ms-auto inline-block text-sm underline-offset-4 hover:underline" > {t.forgotPassword} </a> </div> <Input id="password-rtl" type="password" required /> </div> </div> </form> </CardContent> <CardFooter className="flex-col gap-2"> <Button type="submit" className="w-full"> {t.login} </Button> <Button variant="outline" className="w-full"> {t.loginWithGoogle} </Button> </CardFooter> </Card> )}
+[API Reference#](https://ui.shadcn.com/docs/components/base/card#api-reference)
+[Card#](https://ui.shadcn.com/docs/components/base/card#card)
+The Card component is the root container for card content.
+Prop
+Type
+Default
+size
+"default" | "sm"
+"default"
+className
+string
+-
+[CardHeader#](https://ui.shadcn.com/docs/components/base/card#cardheader)
+The CardHeader component is used for a title, description, and optional action.
+Prop
+Type
+Default
+className
+string
+-
+[CardTitle#](https://ui.shadcn.com/docs/components/base/card#cardtitle)
+The CardTitle component is used for the card title.
+Prop
+Type
+Default
+className
+string
+-
+[CardDescription#](https://ui.shadcn.com/docs/components/base/card#carddescription)
+The CardDescription component is used for helper text under the title.
+Prop
+Type
+Default
+className
+string
+-
+[CardAction#](https://ui.shadcn.com/docs/components/base/card#cardaction)
+The CardAction component places content in the top-right of the header (for example, a button or a badge).
+Prop
+Type
+Default
+className
+string
+-
+[CardContent#](https://ui.shadcn.com/docs/components/base/card#cardcontent)
+The CardContent component is used for the main card body.
+Prop
+Type
+Default
+className
+string
+-
+[CardFooter#](https://ui.shadcn.com/docs/components/base/card#cardfooter)
+The CardFooter component is used for actions and secondary content at the bottom of the card.
+Prop
+Type
+Default
+className
+string
+-
+[Changelog#](https://ui.shadcn.com/docs/components/base/card#changelog)
+[Spacing Variable#](https://ui.shadcn.com/docs/components/base/card#spacing-variable)
+If you're upgrading from a previous version of the Card component, you'll need to apply the following updates to use the --card-spacing variable:
+Update the Card root spacing classes.
+Replace the hard-coded gap and vertical padding with --card-spacing, and set the default and small size values on the root:
+Copy className={cn(- "group/card flex flex-col gap-4 overflow-hidden rounded-xl bg-card py-4 text-sm text-card-foreground ring-1 ring-foreground/10 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl",+ "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-xl bg-card py-(--card-spacing) text-sm text-card-foreground ring-1 ring-foreground/10 [--card-spacing:--spacing(4)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl", className )}
+Update CardHeader spacing classes.
+Replace the horizontal padding and border spacing with the shared variable:
+Copy className={cn(- "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-4 group-data-[size=sm]/card:px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3",+ "group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)", className )}
+Update CardContent and CardFooter spacing classes.
+Use --card-spacing for the content inset and footer padding:
+Copy function CardContent({ className, ...props }: React.ComponentProps<"div">) { return ( <div data-slot="card-content"- className={cn("px-4 group-data-[size=sm]/card:px-3", className)}+ className={cn("px-(--card-spacing)", className)} {...props} /> ) }
+Copy className={cn(- "flex items-center rounded-b-xl border-t bg-muted/50 p-4 group-data-[size=sm]/card:p-3",+ "flex items-center rounded-b-xl border-t bg-muted/50 p-(--card-spacing)", className )}
+After applying these changes, you can customize card spacing by setting --card-spacing on the Card with an arbitrary property class:
+Copyfunction Example() { return <Card className="[--card-spacing:--spacing(6)]">...</Card>}     Real Estate Prperty listing cards  . html . <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+    *{ font-family: "Geist", sans-serif; }
+
+</style>
+
+
+
+<div class="flex flex-col items-center justify-center gap-3 py-20 px-4">
+
+    <!-- Card 1 -->
+
+    <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-full max-w-[420px]">
+
+        <img src="https://assets.prebuiltui.com/components/card/card-houseImage1.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+        <div class="ml-4">
+
+            <h3 class="text-lg text-zinc-900">The Ridgewood Apartment</h3>
+
+            <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+            <p class="text-lg text-zinc-900 mt-3">$2.5 M</p>
+
+            <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                4 Bed
+
+                <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                3 Bath
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Card 2 -->
+
+    <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-full max-w-[420px]">
+
+        <img src="https://assets.prebuiltui.com/components/card/card-houseImage2.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+        <div class="ml-4">
+
+            <h3 class="text-lg text-zinc-900">The Amethyst Arbour</h3>
+
+            <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+            <p class="text-lg text-zinc-900 mt-3">$3.2 M</p>
+
+            <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                3 Bed
+
+                <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                2 Bath
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Card 3 -->
+
+    <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-full max-w-[420px]">
+
+        <img src="https://assets.prebuiltui.com/components/card/card-houseImage1.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+        <div class="ml-4">
+
+            <h3 class="text-lg text-zinc-900">The Ridgewood Apartment</h3>
+
+            <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+            <p class="text-lg text-zinc-900 mt-3">$2.5 M</p>
+
+            <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                4 Bed
+
+                <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                3 Bath
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Card 4 -->
+
+    <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-full max-w-[420px]">
+
+        <img src="https://assets.prebuiltui.com/components/card/card-houseImage2.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+        <div class="ml-4">
+
+            <h3 class="text-lg text-zinc-900">The Amethyst Arbour</h3>
+
+            <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+            <p class="text-lg text-zinc-900 mt-3">$3.2 M</p>
+
+            <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                3 Bed
+
+                <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                2 Bath
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>     react . const App = () => {
+
+    const cards = [
+
+        { id: 1, img: "https://assets.prebuiltui.com/components/card/card-houseImage1.png", title: "The Ridgewood Apartment", location: "Aspen, Colorado", price: "$2.5 M", specs1: "4 Bed", specs2: "3 Bath" },
+
+        { id: 2, img: "https://assets.prebuiltui.com/components/card/card-houseImage2.png", title: "The Amethyst Arbour", location: "Aspen, Colorado", price: "$3.2 M", specs1: "3 Bed", specs2: "2 Bath" },
+
+        { id: 3, img: "https://assets.prebuiltui.com/components/card/card-houseImage1.png", title: "The Ridgewood Apartment", location: "Aspen, Colorado", price: "$2.5 M", specs1: "4 Bed", specs2: "3 Bath" },
+
+        { id: 4, img: "https://assets.prebuiltui.com/components/card/card-houseImage2.png", title: "The Amethyst Arbour", location: "Aspen, Colorado", price: "$3.2 M", specs1: "3 Bed", specs2: "2 Bath" }
+
+    ];
+
+
+
+    return (
+
+        <>  
+
+            <style>
+
+                {`
+
+                    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+                    *{ font-family: "Geist", sans-serif; }
+
+                `}
+
+            </style>
+
+
+
+            <div className="flex flex-col items-center justify-center gap-3 py-20 px-4">
+
+                {cards.map((card) => (
+
+                    <div key={card.id} className="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-full max-w-[420px]">
+
+                        <img src={card.img} alt="House" className="w-full max-w-[118px] rounded-lg object-cover" />
+
+                        <div className="ml-4">
+
+                            <p className="text-lg text-zinc-900">{card.title}</p>
+
+                            <p className="text-base text-zinc-600">{card.location}</p>
+
+                            <p className="text-lg text-zinc-900 mt-3">{card.price}</p>
+
+                            <div className="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                                {card.specs1}
+
+                                <div className='size-1 rounded-full bg-[#777777]'></div>
+
+                                {card.specs2}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                ))}
+
+            </div>
+
+        </>
+
+    )
+
+}     glowing  border on hover card  const App = () => {
+
+    const [visible, setVisible] = React.useState(false);
+
+    const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+    const divRef = React.useRef(null);
+
+
+
+    const handleMouseMove = (e) => {
+
+        const bounds = divRef.current.getBoundingClientRect();
+
+        setPosition({ x: e.clientX - bounds.left, y: e.clientY - bounds.top });
+
+    };
+
+
+
+    return (
+
+        <div ref={divRef} onMouseMove={handleMouseMove} onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}
+
+            className="relative w-80 h-96 rounded-xl p-px bg-gray-900 backdrop-blur-md text-gray-800 overflow-hidden shadow-lg cursor-pointer"
+
+        >
+
+                <div className={`pointer-events-none blur-3xl rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-300 size-60 absolute z-0 transition-opacity duration-500 ${visible ? 'opacity-100' : 'opacity-0'}`}
+
+                    style={{ top: position.y - 120, left: position.x - 120, }}
+
+                />
+
+
+
+            <div className="relative z-10 bg-gray-900/75 p-6 h-full w-full rounded-[11px] flex flex-col items-center justify-center text-center">
+
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="Profile Avatar" className="w-24 h-24 rounded-full shadow-md my-4" />
+
+                <h2 className="text-2xl font-bold text-white mb-1">Richard Nelson</h2>
+
+                <p className="text-sm text-indigo-500 font-medium mb-4">Software Developer</p>
+
+                <p className="text-sm text-slate-400 mb-4 px-4">
+
+                    Passionate about clean code, scalable systems, and solving real-world problems with elegant software.
+
+                </p>
+
+                <div className="flex space-x-4 mb-4 text-xl text-slate-400">
+
+                    <a href="#" target="_blank" className='hover:-translate-y-0.5 transition'>
+
+                        <svg className="size-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+
+                            <path fillRule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clipRule="evenodd" />
+
+                        </svg>
+
+                    </a>
+
+                    <a href="#" target="_blank" className='hover:-translate-y-0.5 transition'>
+
+                        <svg className="size-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+
+                            <path fillRule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clipRule="evenodd" />
+
+                            <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
+
+                        </svg>
+
+                    </a>
+
+                    <a href="#" target="_blank" className='hover:-translate-y-0.5 transition'>
+
+                        <svg className="size-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+
+                            <path fillRule="evenodd" d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z" clipRule="evenodd" />
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+}    real estate property listing grid . html . <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+    *{ font-family: "Geist", sans-serif; }
+
+</style>
+
+
+
+<div class="flex flex-col items-center justify-center py-20 px-4">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4.5">
+
+        <!-- Card 1 -->
+
+        <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-sm sm:w-[420px]">
+
+            <img src="https://assets.prebuiltui.com/components/card/card-houseImage1.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+            <div class="ml-4">
+
+                <h3 class="text-lg text-zinc-900">The Ridgewood Apartment</h3>
+
+                <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+                <p class="text-lg text-zinc-900 mt-3">$2.5 M</p>
+
+                <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                    4 Bed
+
+                    <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                    3 Bath
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Card 2 -->
+
+        <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-sm sm:w-[420px]">
+
+            <img src="https://assets.prebuiltui.com/components/card/card-houseImage2.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+            <div class="ml-4">
+
+                <h3 class="text-lg text-zinc-900">The Amethyst Arbour</h3>
+
+                <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+                <p class="text-lg text-zinc-900 mt-3">$3.2 M</p>
+
+                <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                    3 Bed
+
+                    <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                    2 Bath
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Card 3 -->
+
+        <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-sm sm:w-[420px]">
+
+            <img src="https://assets.prebuiltui.com/components/card/card-houseImage2.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+            <div class="ml-4">
+
+                <h3 class="text-lg text-zinc-900">The Amethyst Arbour</h3>
+
+                <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+                <p class="text-lg text-zinc-900 mt-3">$3.2 M</p>
+
+                <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                    3 Bed
+
+                    <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                    2 Bath
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Card 4 -->
+
+        <div class="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-sm sm:w-[420px]">
+
+            <img src="https://assets.prebuiltui.com/components/card/card-houseImage1.png" alt="House" class="w-full max-w-[118px] rounded-lg object-cover" />
+
+            <div class="ml-4">
+
+                <h3 class="text-lg text-zinc-900">The Ridgewood Apartment</h3>
+
+                <p class="text-base text-zinc-600">Aspen, Colorado</p>
+
+                <p class="text-lg text-zinc-900 mt-3">$2.5 M</p>
+
+                <div class="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                    4 Bed
+
+                    <div class='size-1 rounded-full bg-[#777777]'></div>
+
+                    3 Bath
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> react . const App = () => {
+
+    const cards = [
+
+        { id: 1, img: "https://assets.prebuiltui.com/components/card/card-houseImage1.png", title: "The Ridgewood Apartment", location: "Aspen, Colorado", price: "$2.5 M", specs1: "4 Bed", specs2: "3 Bath" },
+
+        { id: 2, img: "https://assets.prebuiltui.com/components/card/card-houseImage2.png", title: "The Amethyst Arbour", location: "Aspen, Colorado", price: "$3.2 M", specs1: "3 Bed", specs2: "2 Bath" },
+
+        { id: 3, img: "https://assets.prebuiltui.com/components/card/card-houseImage2.png", title: "The Amethyst Arbour", location: "Aspen, Colorado", price: "$3.2 M", specs1: "3 Bed", specs2: "2 Bath" },
+
+        { id: 4, img: "https://assets.prebuiltui.com/components/card/card-houseImage1.png", title: "The Ridgewood Apartment", location: "Aspen, Colorado", price: "$2.5 M", specs1: "4 Bed", specs2: "3 Bath" }
+
+    ];
+
+
+
+    return (
+
+        <>
+
+            <style>
+
+                {`
+
+                    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+                    *{ font-family: "Geist", sans-serif; }
+
+                `}
+
+            </style>
+
+
+
+            <div className="flex flex-col items-center justify-center py-20 px-4">
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4.5">
+
+                    {cards.map((card) => (
+
+                        <div key={card.id} className="flex items-center p-2 border border-black/10 hover:border-black/20 transition-colors rounded-xl w-sm sm:w-[420px]">
+
+                            <img src={card.img} alt="House" className="w-full max-w-[118px] rounded-lg object-cover" />
+
+                            <div className="ml-4">
+
+                                <p className="text-lg text-zinc-900">{card.title}</p>
+
+                                <p className="text-base text-zinc-600">{card.location}</p>
+
+                                <p className="text-lg text-zinc-900 mt-3">{card.price}</p>
+
+                                <div className="text-sm text-zinc-600 flex items-center gap-1.5">
+
+                                    {card.specs1}
+
+                                    <div className='size-1 rounded-full bg-[#777777]'></div>
+
+                                    {card.specs2}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </div>
+
+        </>
+
+    )
+
+} product card . html <div class="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white max-w-56">
+
+    <div class="group cursor-pointer flex items-center justify-center px-2">
+
+        <img class="group-hover:scale-105 transition max-w-[160px]" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImageWithoutBg.png" alt="Product Image" />
+
+    </div>
+
+    
+
+    <div class="text-gray-500/60 text-sm">
+
+        <p>Sports</p>
+
+        <p class="text-gray-700 font-medium text-lg truncate w-full">Casual Shoes</p>
+
+
+
+        <div class="flex items-center gap-0.5">
+
+            <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="#615fff" />
+
+            </svg>
+
+            <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="#615fff" />
+
+            </svg>
+
+            <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="#615fff" />
+
+            </svg>
+
+            <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="#615fff" />
+
+            </svg>
+
+            <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M8.04894 0.927049C8.3483 0.00573802 9.6517 0.00574017 9.95106 0.927051L11.2451 4.90983C11.379 5.32185 11.763 5.60081 12.1962 5.60081H16.3839C17.3527 5.60081 17.7554 6.84043 16.9717 7.40983L13.5838 9.87132C13.2333 10.126 13.0866 10.5773 13.2205 10.9894L14.5146 14.9721C14.8139 15.8934 13.7595 16.6596 12.9757 16.0902L9.58778 13.6287C9.2373 13.374 8.7627 13.374 8.41221 13.6287L5.02426 16.0902C4.24054 16.6596 3.18607 15.8934 3.48542 14.9721L4.7795 10.9894C4.91338 10.5773 4.76672 10.126 4.41623 9.87132L1.02827 7.40983C0.244561 6.84043 0.647338 5.60081 1.61606 5.60081H5.8038C6.23703 5.60081 6.62099 5.32185 6.75486 4.90983L8.04894 0.927049Z" fill="#615fff" fill-opacity="0.35" />
+
+            </svg>
+
+            <p>(4)</p>
+
+        </div>
+
+
+
+        <div class="flex items-end justify-between mt-2">
+
+            <p class="md:text-xl text-base font-medium text-indigo-500">
+
+                $28 <span class="text-gray-500/60 md:text-sm text-xs line-through">$40</span>
+
+            </p>
+
+            <button class="flex items-center justify-center gap-1 bg-indigo-100 border border-indigo-300 md:w-[80px] w-[64px] h-[34px] rounded text-indigo-600 font-medium">
+
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="#615fff" stroke-linecap="round" stroke-linejoin="round"/>
+
+                </svg>
+
+                Add
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>  react . const App = () => {
+
+    const [count, setCount] = React.useState(0);
+
+
+
+    const product = {
+
+        name: "Casual Shoes",
+
+        category: "Sports",
+
+        price: 100,
+
+        offerPrice: 80,
+
+        rating: 4,
+
+        image: "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImageWithoutBg.png",
+
+    };
+
+
+
+    return (
+
+        <div className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full">
+
+            <div className="group cursor-pointer flex items-center justify-center px-2">
+
+                <img className="group-hover:scale-105 transition max-w-26 md:max-w-36" src={product.image} alt={product.name} />
+
+            </div>
+
+            <div className="text-gray-500/60 text-sm">
+
+                <p>{product.category}</p>
+
+                <p className="text-gray-700 font-medium text-lg truncate w-full">{product.name}</p>
+
+                <div className="flex items-center gap-0.5">
+
+                    {Array(5).fill('').map((_, i) => (
+
+                        product.rating > i ? (
+
+                            <svg key={i} width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="M8.049.927c.3-.921 1.603-.921 1.902 0l1.294 3.983a1 1 0 0 0 .951.69h4.188c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 0 0-.364 1.118l1.295 3.983c.299.921-.756 1.688-1.54 1.118L9.589 13.63a1 1 0 0 0-1.176 0l-3.389 2.46c-.783.57-1.838-.197-1.539-1.118L4.78 10.99a1 1 0 0 0-.363-1.118L1.028 7.41c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 0 0 .95-.69z" fill="#615fff" />
+
+                            </svg>
+
+                        ) : (
+
+                            <svg width="14" height="13" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                <path d="M8.04894 0.927049C8.3483 0.00573802 9.6517 0.00574017 9.95106 0.927051L11.2451 4.90983C11.379 5.32185 11.763 5.60081 12.1962 5.60081H16.3839C17.3527 5.60081 17.7554 6.84043 16.9717 7.40983L13.5838 9.87132C13.2333 10.126 13.0866 10.5773 13.2205 10.9894L14.5146 14.9721C14.8139 15.8934 13.7595 16.6596 12.9757 16.0902L9.58778 13.6287C9.2373 13.374 8.7627 13.374 8.41221 13.6287L5.02426 16.0902C4.24054 16.6596 3.18607 15.8934 3.48542 14.9721L4.7795 10.9894C4.91338 10.5773 4.76672 10.126 4.41623 9.87132L1.02827 7.40983C0.244561 6.84043 0.647338 5.60081 1.61606 5.60081H5.8038C6.23703 5.60081 6.62099 5.32185 6.75486 4.90983L8.04894 0.927049Z" fill="#615fff" fill-opacity="0.35" />
+
+                            </svg>
+
+                        )
+
+                    ))}
+
+                    <p>({product.rating})</p>
+
+                </div>
+
+                <div className="flex items-end justify-between mt-3">
+
+                    <p className="md:text-xl text-base font-medium text-indigo-500">
+
+                        ${product.offerPrice} <span className="text-gray-500/60 md:text-sm text-xs line-through">${product.price}</span>
+
+                    </p>
+
+                    <div className="text-indigo-500">
+
+                        {count === 0 ? (
+
+                            <button className="flex items-center justify-center gap-1 bg-indigo-100 border border-indigo-300 md:w-[80px] w-[64px] h-[34px] rounded text-indigo-600 font-medium" onClick={() => setCount(1)} >
+
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                    <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="#615fff" stroke-linecap="round" stroke-linejoin="round" />
+
+                                </svg>
+
+                                Add
+
+                            </button>
+
+                        ) : (
+
+                            <div className="flex items-center justify-center gap-2 md:w-20 w-16 h-[34px] bg-indigo-500/25 rounded select-none">
+
+                                <button onClick={() => setCount((prev) => Math.max(prev - 1, 0))} className="cursor-pointer text-md px-2 h-full" >
+
+                                    -
+
+                                </button>
+
+                                <span className="w-5 text-center">{count}</span>
+
+                                <button onClick={() => setCount((prev) => prev + 1)} className="cursor-pointer text-md px-2 h-full" >
+
+                                    +
+
+                                </button>
+
+                            </div>
+
+                        )}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+};  user profile card full . html .<div class="flex flex-wrap items-center justify-center gap-4">
+
+    <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+        <img class="w-64 h-52 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400" alt="userImage2">
+
+        <div class="flex flex-col items-center">
+
+            <p class="font-medium mt-3">Kelvin John</p>
+
+            <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+            <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5">
+
+                <p class="mb-1">message</p>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+        <img class="w-64 h-52 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400" alt="userImage2">
+
+        <div class="flex flex-col items-center">
+
+            <p class="font-medium mt-3">Kelvin John</p>
+
+            <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+            <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5 flex items-center justify-center gap-1">
+
+                <svg class="mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="m7.107 11.684.31-.521-.736-.436-.309.522zm-2.28-.521.308.521.735-.435-.309-.522zm1.545.086a.297.297 0 0 1-.502 0l-.735.435a1.15 1.15 0 0 0 1.972 0zM5.267.854h1.708V0H5.267zm6.121 4.413v.57h.854v-.57zm-10.534.57v-.57H0v.57zm-.854 0c0 .657 0 1.171.028 1.586.029.42.088.768.221 1.09l.79-.327c-.084-.2-.133-.446-.159-.82-.026-.38-.026-.86-.026-1.53zm3.731 3.838c-.715-.012-1.09-.058-1.383-.18l-.327.79c.459.19.98.232 1.695.244zM.249 8.513c.333.802.97 1.44 1.772 1.772l.327-.79a2.42 2.42 0 0 1-1.31-1.309zm11.14-2.677c0 .67-.001 1.15-.027 1.53-.026.374-.075.62-.158.82l.79.327c.133-.322.192-.67.22-1.09.028-.415.028-.93.028-1.587zM8.525 10.53c.715-.012 1.237-.054 1.695-.244l-.327-.79c-.293.122-.668.168-1.383.18zm2.678-2.343a2.42 2.42 0 0 1-1.31 1.31l.327.789a3.27 3.27 0 0 0 1.772-1.772zM6.975.854c.94 0 1.616 0 2.142.05.52.05.852.145 1.116.307l.446-.729C10.259.225 9.78.11 9.199.054 8.621 0 7.898 0 6.974 0zm5.267 4.413c0-.924 0-1.646-.054-2.223-.056-.583-.17-1.06-.428-1.48l-.728.446c.161.264.256.595.306 1.115.05.527.05 1.202.05 2.142zm-2.01-4.056c.326.2.6.473.8.799l.728-.447c-.27-.44-.64-.81-1.081-1.08zM5.268 0c-.924 0-1.646 0-2.223.054-.583.056-1.06.17-1.48.428l.446.729c.264-.162.595-.257 1.115-.306.527-.05 1.202-.05 2.142-.05zM.854 5.267c0-.94 0-1.615.05-2.142.05-.52.145-.851.307-1.115l-.729-.447c-.257.421-.372.898-.428 1.481C0 3.621 0 4.344 0 5.267zm.71-4.785A3.3 3.3 0 0 0 .482 1.563l.729.447c.2-.326.473-.6.799-.8zM5.56 10.728a6 6 0 0 0-.316-.503 1.3 1.3 0 0 0-.388-.368l-.43.739a.4.4 0 0 1 .128.131c.07.095.147.226.271.436zm-1.845-.199c.25.004.409.008.53.02a.45.45 0 0 1 .182.047l.429-.739a1.3 1.3 0 0 0-.518-.156c-.169-.019-.374-.022-.608-.026zm3.7.634c.124-.21.202-.34.271-.436a.4.4 0 0 1 .128-.131l-.43-.739a1.3 1.3 0 0 0-.388.368c-.099.135-.2.307-.316.502zM8.51 9.675c-.234.004-.439.007-.608.026-.178.02-.351.06-.518.156l.43.739a.45.45 0 0 1 .182-.046 6 6 0 0 1 .529-.02z" fill="#6B7280"/>
+
+                    <path d="M3.844 5.552h.005m2.268 0h.005m2.272 0H8.4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                </svg>
+
+                <p class="mb-1">message</p>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>  react . export default function Example() {
+
+    return (
+
+        <div className="flex flex-wrap items-center justify-center gap-4">
+
+            <div className="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+                <img className="w-64 h-52 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400" alt="userImage2" />
+
+                <div className="flex flex-col items-center">
+
+                    <p className="font-medium mt-3">Kelvin John</p>
+
+                    <p className="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                    <button className="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5">
+
+                        <p className="mb-1">message</p>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        
+
+            <div className="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+                <img className="w-64 h-52 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400" alt="userImage2" />
+
+                <div className="flex flex-col items-center">
+
+                    <p className="font-medium mt-3">Kelvin John</p>
+
+                    <p className="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                    <button className="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5 flex items-center justify-center gap-1">
+
+                        <svg className="mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <path d="m7.107 11.684.31-.521-.736-.436-.309.522zm-2.28-.521.308.521.735-.435-.309-.522zm1.545.086a.297.297 0 0 1-.502 0l-.735.435a1.15 1.15 0 0 0 1.972 0zM5.267.854h1.708V0H5.267zm6.121 4.413v.57h.854v-.57zm-10.534.57v-.57H0v.57zm-.854 0c0 .657 0 1.171.028 1.586.029.42.088.768.221 1.09l.79-.327c-.084-.2-.133-.446-.159-.82-.026-.38-.026-.86-.026-1.53zm3.731 3.838c-.715-.012-1.09-.058-1.383-.18l-.327.79c.459.19.98.232 1.695.244zM.249 8.513c.333.802.97 1.44 1.772 1.772l.327-.79a2.42 2.42 0 0 1-1.31-1.309zm11.14-2.677c0 .67-.001 1.15-.027 1.53-.026.374-.075.62-.158.82l.79.327c.133-.322.192-.67.22-1.09.028-.415.028-.93.028-1.587zM8.525 10.53c.715-.012 1.237-.054 1.695-.244l-.327-.79c-.293.122-.668.168-1.383.18zm2.678-2.343a2.42 2.42 0 0 1-1.31 1.31l.327.789a3.27 3.27 0 0 0 1.772-1.772zM6.975.854c.94 0 1.616 0 2.142.05.52.05.852.145 1.116.307l.446-.729C10.259.225 9.78.11 9.199.054 8.621 0 7.898 0 6.974 0zm5.267 4.413c0-.924 0-1.646-.054-2.223-.056-.583-.17-1.06-.428-1.48l-.728.446c.161.264.256.595.306 1.115.05.527.05 1.202.05 2.142zm-2.01-4.056c.326.2.6.473.8.799l.728-.447c-.27-.44-.64-.81-1.081-1.08zM5.268 0c-.924 0-1.646 0-2.223.054-.583.056-1.06.17-1.48.428l.446.729c.264-.162.595-.257 1.115-.306.527-.05 1.202-.05 2.142-.05zM.854 5.267c0-.94 0-1.615.05-2.142.05-.52.145-.851.307-1.115l-.729-.447c-.257.421-.372.898-.428 1.481C0 3.621 0 4.344 0 5.267zm.71-4.785A3.3 3.3 0 0 0 .482 1.563l.729.447c.2-.326.473-.6.799-.8zM5.56 10.728a6 6 0 0 0-.316-.503 1.3 1.3 0 0 0-.388-.368l-.43.739a.4.4 0 0 1 .128.131c.07.095.147.226.271.436zm-1.845-.199c.25.004.409.008.53.02a.45.45 0 0 1 .182.047l.429-.739a1.3 1.3 0 0 0-.518-.156c-.169-.019-.374-.022-.608-.026zm3.7.634c.124-.21.202-.34.271-.436a.4.4 0 0 1 .128-.131l-.43-.739a1.3 1.3 0 0 0-.388.368c-.099.135-.2.307-.316.502zM8.51 9.675c-.234.004-.439.007-.608.026-.178.02-.351.06-.518.156l.43.739a.45.45 0 0 1 .182-.046 6 6 0 0 1 .529-.02z" fill="#6B7280"/>
+
+                            <path d="M3.844 5.552h.005m2.268 0h.005m2.272 0H8.4" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+
+                        </svg>
+
+                        <p className="mb-1">message</p>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+}; vue . <template>
+
+    <div class="flex flex-wrap items-center justify-center gap-4">
+
+        <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+            <img class="w-64 h-52 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400" alt="userImage2">
+
+            <div class="flex flex-col items-center">
+
+                <p class="font-medium mt-3">Kelvin John</p>
+
+                <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5">
+
+                    <p class="mb-1">message</p>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    
+
+        <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+            <img class="w-64 h-52 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=400" alt="userImage2">
+
+            <div class="flex flex-col items-center">
+
+                <p class="font-medium mt-3">Kelvin John</p>
+
+                <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5 flex items-center justify-center gap-1">
+
+                    <svg class="mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <path d="m7.107 11.684.31-.521-.736-.436-.309.522zm-2.28-.521.308.521.735-.435-.309-.522zm1.545.086a.297.297 0 0 1-.502 0l-.735.435a1.15 1.15 0 0 0 1.972 0zM5.267.854h1.708V0H5.267zm6.121 4.413v.57h.854v-.57zm-10.534.57v-.57H0v.57zm-.854 0c0 .657 0 1.171.028 1.586.029.42.088.768.221 1.09l.79-.327c-.084-.2-.133-.446-.159-.82-.026-.38-.026-.86-.026-1.53zm3.731 3.838c-.715-.012-1.09-.058-1.383-.18l-.327.79c.459.19.98.232 1.695.244zM.249 8.513c.333.802.97 1.44 1.772 1.772l.327-.79a2.42 2.42 0 0 1-1.31-1.309zm11.14-2.677c0 .67-.001 1.15-.027 1.53-.026.374-.075.62-.158.82l.79.327c.133-.322.192-.67.22-1.09.028-.415.028-.93.028-1.587zM8.525 10.53c.715-.012 1.237-.054 1.695-.244l-.327-.79c-.293.122-.668.168-1.383.18zm2.678-2.343a2.42 2.42 0 0 1-1.31 1.31l.327.789a3.27 3.27 0 0 0 1.772-1.772zM6.975.854c.94 0 1.616 0 2.142.05.52.05.852.145 1.116.307l.446-.729C10.259.225 9.78.11 9.199.054 8.621 0 7.898 0 6.974 0zm5.267 4.413c0-.924 0-1.646-.054-2.223-.056-.583-.17-1.06-.428-1.48l-.728.446c.161.264.256.595.306 1.115.05.527.05 1.202.05 2.142zm-2.01-4.056c.326.2.6.473.8.799l.728-.447c-.27-.44-.64-.81-1.081-1.08zM5.268 0c-.924 0-1.646 0-2.223.054-.583.056-1.06.17-1.48.428l.446.729c.264-.162.595-.257 1.115-.306.527-.05 1.202-.05 2.142-.05zM.854 5.267c0-.94 0-1.615.05-2.142.05-.52.145-.851.307-1.115l-.729-.447c-.257.421-.372.898-.428 1.481C0 3.621 0 4.344 0 5.267zm.71-4.785A3.3 3.3 0 0 0 .482 1.563l.729.447c.2-.326.473-.6.799-.8zM5.56 10.728a6 6 0 0 0-.316-.503 1.3 1.3 0 0 0-.388-.368l-.43.739a.4.4 0 0 1 .128.131c.07.095.147.226.271.436zm-1.845-.199c.25.004.409.008.53.02a.45.45 0 0 1 .182.047l.429-.739a1.3 1.3 0 0 0-.518-.156c-.169-.019-.374-.022-.608-.026zm3.7.634c.124-.21.202-.34.271-.436a.4.4 0 0 1 .128-.131l-.43-.739a1.3 1.3 0 0 0-.388.368c-.099.135-.2.307-.316.502zM8.51 9.675c-.234.004-.439.007-.608.026-.178.02-.351.06-.518.156l.43.739a.45.45 0 0 1 .182-.046 6 6 0 0 1 .529-.02z" fill="#6B7280"/>
+
+                        <path d="M3.844 5.552h.005m2.268 0h.005m2.272 0H8.4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    </svg>
+
+                    <p class="mb-1">message</p>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>   experience card . html . <div class="w-full border border-gray-200 p-6 rounded-xl mx-2 max-w-2xl">
+
+    <div class="flex flex-col md:flex-row items-start gap-3 md:items-center justify-between w-full text-gray-500">
+
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-3">
+
+            <div class="bg-gray-50 border border-gray-200 rounded-lg p-3">
+
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.222 12.632c0-1.016-.082-1.758-.26-2.527H12.358v4.586h6.81c-.137 1.14-.878 2.856-2.526 4.01l-.023.153 3.668 2.842.255.025c2.334-2.155 3.68-5.327 3.68-9.09" fill="#4285f4"/><path d="M12.36 24.714c3.336 0 6.137-1.098 8.183-2.993l-3.9-3.02c-1.043.727-2.444 1.235-4.284 1.235-3.267 0-6.04-2.156-7.03-5.135l-.144.012-3.815 2.952-.05.139c2.032 4.036 6.206 6.81 11.04 6.81" fill="#34a853"/><path d="M5.327 14.801a7.6 7.6 0 0 1-.412-2.444c0-.851.151-1.675.399-2.444l-.007-.164L1.444 6.75l-.126.06A12.4 12.4 0 0 0 0 12.357c0 1.991.48 3.872 1.318 5.547z" fill="#fbbc05"/><path d="M12.36 4.778c2.32 0 3.885 1.002 4.778 1.84l3.487-3.405C18.483 1.222 15.695 0 12.359 0 7.526 0 3.352 2.773 1.32 6.81l3.996 3.103c1.002-2.98 3.776-5.135 7.043-5.135" fill="#eb4335"/></svg>
+
+            </div>
+
+            <div>
+
+                <h3 class="text-base font-medium text-gray-800">
+
+                    Sr. Software engineer
+
+                </h3>
+
+                <span>Google</span>
+
+            </div>
+
+        </div>
+
+        <span>Jan 2024 - Present</span>
+
+    </div>
+
+    <ul class="list-disc px-5 mt-6 text-gray-500 space-y-2">
+
+        <li>Lead end-to-end development of large-scale, high-performance systems used by millions of users.</li>
+
+        <li>Mentor junior engineers, conduct code reviews, and uphold engineering best practices.</li>
+
+    </ul>
+
+</div>  react . export default function Example() {
+
+    return (
+
+        <div className="w-full border border-gray-200 p-6 rounded-xl mx-2 max-w-2xl">
+
+            <div className="flex flex-col md:flex-row items-start gap-3 md:items-center justify-between w-full text-gray-500">
+
+                <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.222 12.632c0-1.016-.082-1.758-.26-2.527H12.358v4.586h6.81c-.137 1.14-.878 2.856-2.526 4.01l-.023.153 3.668 2.842.255.025c2.334-2.155 3.68-5.327 3.68-9.09" fill="#4285f4"/><path d="M12.36 24.714c3.336 0 6.137-1.098 8.183-2.993l-3.9-3.02c-1.043.727-2.444 1.235-4.284 1.235-3.267 0-6.04-2.156-7.03-5.135l-.144.012-3.815 2.952-.05.139c2.032 4.036 6.206 6.81 11.04 6.81" fill="#34a853"/><path d="M5.327 14.801a7.6 7.6 0 0 1-.412-2.444c0-.851.151-1.675.399-2.444l-.007-.164L1.444 6.75l-.126.06A12.4 12.4 0 0 0 0 12.357c0 1.991.48 3.872 1.318 5.547z" fill="#fbbc05"/><path d="M12.36 4.778c2.32 0 3.885 1.002 4.778 1.84l3.487-3.405C18.483 1.222 15.695 0 12.359 0 7.526 0 3.352 2.773 1.32 6.81l3.996 3.103c1.002-2.98 3.776-5.135 7.043-5.135" fill="#eb4335"/></svg>
+
+                    </div>
+
+                    <div>
+
+                        <h3 className="text-base font-medium text-gray-800">
+
+                            Sr. Software engineer
+
+                        </h3>
+
+                        <span>Google</span>
+
+                    </div>
+
+                </div>
+
+                <span>Jan 2024 - Present</span>
+
+            </div>
+
+            <ul className="list-disc px-5 mt-6 text-gray-500 space-y-2">
+
+                <li>Lead end-to-end development of large-scale, high-performance systems used by millions of users.</li>
+
+                <li>Mentor junior engineers, conduct code reviews, and uphold engineering best practices.</li>
+
+            </ul>
+
+        </div>
+
+    );
+
+};  vue . <template>
+
+    <div class="w-full border border-gray-200 p-6 rounded-xl mx-2 max-w-2xl">
+
+        <div class="flex flex-col md:flex-row items-start gap-3 md:items-center justify-between w-full text-gray-500">
+
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-3">
+
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-3">
+
+                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.222 12.632c0-1.016-.082-1.758-.26-2.527H12.358v4.586h6.81c-.137 1.14-.878 2.856-2.526 4.01l-.023.153 3.668 2.842.255.025c2.334-2.155 3.68-5.327 3.68-9.09" fill="#4285f4"/><path d="M12.36 24.714c3.336 0 6.137-1.098 8.183-2.993l-3.9-3.02c-1.043.727-2.444 1.235-4.284 1.235-3.267 0-6.04-2.156-7.03-5.135l-.144.012-3.815 2.952-.05.139c2.032 4.036 6.206 6.81 11.04 6.81" fill="#34a853"/><path d="M5.327 14.801a7.6 7.6 0 0 1-.412-2.444c0-.851.151-1.675.399-2.444l-.007-.164L1.444 6.75l-.126.06A12.4 12.4 0 0 0 0 12.357c0 1.991.48 3.872 1.318 5.547z" fill="#fbbc05"/><path d="M12.36 4.778c2.32 0 3.885 1.002 4.778 1.84l3.487-3.405C18.483 1.222 15.695 0 12.359 0 7.526 0 3.352 2.773 1.32 6.81l3.996 3.103c1.002-2.98 3.776-5.135 7.043-5.135" fill="#eb4335"/></svg>
+
+                </div>
+
+                <div>
+
+                    <h3 class="text-base font-medium text-gray-800">
+
+                        Sr. Software engineer
+
+                    </h3>
+
+                    <span>Google</span>
+
+                </div>
+
+            </div>
+
+            <span>Jan 2024 - Present</span>
+
+        </div>
+
+        <ul class="list-disc px-5 mt-6 text-gray-500 space-y-2">
+
+            <li>Lead end-to-end development of large-scale, high-performance systems used by millions of users.</li>
+
+            <li>Mentor junior engineers, conduct code reviews, and uphold engineering best practices.</li>
+
+        </ul>
+
+    </div>
+
+</template>  simple card . html . <div class="p-4 bg-white border border-gray-200 hover:-translate-y-1 transition duration-300 rounded-lg shadow shadow-black/10 max-w-80">
+
+    <img class="rounded-md max-h-40 w-full object-cover" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=400" alt="officeImage">
+
+    <p class="text-gray-900 text-xl font-semibold ml-2 mt-4">
+
+        Your Card Title
+
+    </p>
+
+    <p class="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2">
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore..
+
+    </p>
+
+</div>  react . export default function Example() {
+
+    return (
+
+        <div className="p-4 bg-white border border-gray-200 hover:-translate-y-1 transition duration-300 rounded-lg shadow shadow-black/10 max-w-80">
+
+            <img className="rounded-md max-h-40 w-full object-cover" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=400" alt="officeImage" />
+
+            <p className="text-gray-900 text-xl font-semibold ml-2 mt-4">
+
+                Your Card Title
+
+            </p>
+
+            <p className="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2">
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore..
+
+            </p>
+
+        </div>
+
+    );
+
+}; vue . <template>
+
+    <div class="p-4 bg-white border border-gray-200 hover:-translate-y-1 transition duration-300 rounded-lg shadow shadow-black/10 max-w-80">
+
+        <img class="rounded-md max-h-40 w-full object-cover" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=400" alt="officeImage">
+
+        <p class="text-gray-900 text-xl font-semibold ml-2 mt-4">
+
+            Your Card Title
+
+        </p>
+
+        <p class="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2">
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore..
+
+        </p>
+
+    </div>
+
+</template>   on hover tilt effect card . const App = () => {
+
+    const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+
+
+
+    // Adjust the threshold value to control the tilt effect
+
+    const threshold = 12;
+
+
+
+    const handleMove = (e) => {
+
+        const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+
+        const x = (e.clientX - left) / width - 0.5;
+
+        const y = (e.clientY - top) / height - 0.5;
+
+        setTilt({ x: y * -threshold, y: x * threshold });
+
+    };
+
+
+
+    return (
+
+        <div className="rounded-xl shadow-xl overflow-hidden transition-transform duration-200 ease-out cursor-pointer max-w-80 bg-white"
+
+            onMouseMove={handleMove}
+
+            onMouseLeave={() => setTilt({ x: 0, y: 0 })}
+
+            style={{ transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
+
+        >
+
+            <img src="https://images.unsplash.com/photo-1747134392471-831ea9a48e1e?q=80&w=2000&auto=format&fit=crop"
+
+                alt="City skyline" className="w-full h-52 object-cover"
+
+            />
+
+            <h3 className="mt-3 px-4 pt-3 mb-1 text-lg font-semibold text-gray-800">
+
+                Interactive City Card
+
+            </h3>
+
+            <p className="text-sm px-4 pb-6 text-gray-600 w-5/6">
+
+                Move your cursor over this card to experience a smooth 3D tilt animation, bringing depth and interactivity to your UI.
+
+            </p>
+
+        </div>
+
+
+
+    );
+
+};   receipt card  . html . <div class="flex items-center justify-center flex-wrap gap-10 w-full">
+
+    <div class="bg-indigo-500/5 border border-gray-500/20 text-sm text-gray-500 flex flex-col items-center w-80 rounded-lg">
+
+        <div class="flex items-center justify-between w-full px-4 py-2">
+
+            <div class="flex items-center justify-between gap-3">
+
+                <div class="bg-white p-1.5 rounded border border-gray-500/30">
+
+                    <img class="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyFavicon.svg" alt="dummyFavicon">
+
+                </div>
+
+                <p class="text-lg text-gray-800">Router</p>
+
+            </div>
+
+            <button type="button" aria-label="more">
+
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="M11 11.917a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833M11 5.5a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833m0 12.834a.917.917 0 1 0 0-1.834.917.917 0 0 0 0 1.834" stroke="#6B7280" stroke-opacity=".8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+        <div class="flex flex-col items-center gap-2 w-full p-4 pb-2 rounded-b-lg bg-white border-t border-gray-500/20">
+
+            <div class="flex items-center w-full justify-between">
+
+                <p>Last invoice</p>
+
+                <p>January 18, 2024</p>
+
+            </div>
+
+            <div class="w-full h-px bg-gray-300/60"></div>
+
+            <div class="flex items-center w-full justify-between">
+
+                <p>Amount</p>
+
+                <div class="flex items-center gap-2">
+
+                    <p>$500.00</p>
+
+                    <p class="bg-green-500/20 px-3 py-0.5 rounded border border-green-500/30 text-green-600">Paid</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+     <div class="bg-indigo-500/5 border border-gray-500/20 text-sm text-gray-500 flex flex-col items-center w-80 rounded-lg">
+
+        <div class="flex items-center justify-between w-full px-4 py-2">
+
+            <div class="flex items-center justify-between gap-3">
+
+                <div class="bg-white p-1.5 rounded border border-gray-500/30">
+
+                    <img class="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyFavicon.svg" alt="dummyFavicon">
+
+                </div>
+
+                <p class="text-lg text-gray-800">Router</p>
+
+            </div>
+
+            <button type="button" aria-label="more">
+
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="M11 11.917a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833M11 5.5a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833m0 12.834a.917.917 0 1 0 0-1.834.917.917 0 0 0 0 1.834" stroke="#6B7280" stroke-opacity=".8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+        <div class="flex flex-col items-center gap-2 w-full p-4 pb-2 rounded-b-lg bg-white border-t border-gray-500/20">
+
+            <div class="flex items-center w-full justify-between">
+
+                <p>Last invoice</p>
+
+                <p>December 24, 2023</p>
+
+            </div>
+
+            <div class="w-full h-px bg-gray-300/60"></div>
+
+            <div class="flex items-center w-full justify-between">
+
+                <p>Amount</p>
+
+                <div class="flex items-center gap-2">
+
+                    <p>$800.00</p>
+
+                    <p class="bg-red-500/20 px-3 py-0.5 rounded border border-red-500/30 text-red-600">Overdue</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div> react . export default function Example() {
+
+    return (
+
+        <div className="flex items-center justify-center flex-wrap gap-10 w-full">
+
+            <div className="bg-indigo-500/5 border border-gray-500/20 text-sm text-gray-500 flex flex-col items-center w-80 rounded-lg">
+
+                <div className="flex items-center justify-between w-full px-4 py-2">
+
+                    <div className="flex items-center justify-between gap-3">
+
+                        <div className="bg-white p-1.5 rounded border border-gray-500/30">
+
+                            <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyFavicon.svg" alt="dummyFavicon" />
+
+                        </div>
+
+                        <p className="text-lg text-gray-800">Router</p>
+
+                    </div>
+
+                    <button type="button" aria-label="more">
+
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <path d="M11 11.917a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833M11 5.5a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833m0 12.834a.917.917 0 1 0 0-1.834.917.917 0 0 0 0 1.834" stroke="#6B7280" strokeOpacity=".8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+                <div className="flex flex-col items-center gap-2 w-full p-4 pb-2 rounded-b-lg bg-white border-t border-gray-500/20">
+
+                    <div className="flex items-center w-full justify-between">
+
+                        <p>Last invoice</p>
+
+                        <p>January 18, 2024</p>
+
+                    </div>
+
+                    <div className="w-full h-px bg-gray-300/60"></div>
+
+                    <div className="flex items-center w-full justify-between">
+
+                        <p>Amount</p>
+
+                        <div className="flex items-center gap-2">
+
+                            <p>$500.00</p>
+
+                            <p className="bg-green-500/20 px-3 py-0.5 rounded border border-green-500/30 text-green-600">Paid</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        
+
+             <div className="bg-indigo-500/5 border border-gray-500/20 text-sm text-gray-500 flex flex-col items-center w-80 rounded-lg">
+
+                <div className="flex items-center justify-between w-full px-4 py-2">
+
+                    <div className="flex items-center justify-between gap-3">
+
+                        <div className="bg-white p-1.5 rounded border border-gray-500/30">
+
+                            <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyFavicon.svg" alt="dummyFavicon" />
+
+                        </div>
+
+                        <p className="text-lg text-gray-800">Router</p>
+
+                    </div>
+
+                    <button type="button" aria-label="more">
+
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <path d="M11 11.917a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833M11 5.5a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833m0 12.834a.917.917 0 1 0 0-1.834.917.917 0 0 0 0 1.834" stroke="#6B7280" strokeOpacity=".8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+                <div className="flex flex-col items-center gap-2 w-full p-4 pb-2 rounded-b-lg bg-white border-t border-gray-500/20">
+
+                    <div className="flex items-center w-full justify-between">
+
+                        <p>Last invoice</p>
+
+                        <p>December 24, 2023</p>
+
+                    </div>
+
+                    <div className="w-full h-px bg-gray-300/60"></div>
+
+                    <div className="flex items-center w-full justify-between">
+
+                        <p>Amount</p>
+
+                        <div className="flex items-center gap-2">
+
+                            <p>$800.00</p>
+
+                            <p className="bg-red-500/20 px-3 py-0.5 rounded border border-red-500/30 text-red-600">Overdue</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+}; . vue . <template>
+
+    <div class="flex items-center justify-center flex-wrap gap-10 w-full">
+
+        <div class="bg-indigo-500/5 border border-gray-500/20 text-sm text-gray-500 flex flex-col items-center w-80 rounded-lg">
+
+            <div class="flex items-center justify-between w-full px-4 py-2">
+
+                <div class="flex items-center justify-between gap-3">
+
+                    <div class="bg-white p-1.5 rounded border border-gray-500/30">
+
+                        <img class="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyFavicon.svg" alt="dummyFavicon">
+
+                    </div>
+
+                    <p class="text-lg text-gray-800">Router</p>
+
+                </div>
+
+                <button type="button" aria-label="more">
+
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <path d="M11 11.917a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833M11 5.5a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833m0 12.834a.917.917 0 1 0 0-1.834.917.917 0 0 0 0 1.834" stroke="#6B7280" stroke-opacity=".8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+            <div class="flex flex-col items-center gap-2 w-full p-4 pb-2 rounded-b-lg bg-white border-t border-gray-500/20">
+
+                <div class="flex items-center w-full justify-between">
+
+                    <p>Last invoice</p>
+
+                    <p>January 18, 2024</p>
+
+                </div>
+
+                <div class="w-full h-px bg-gray-300/60"></div>
+
+                <div class="flex items-center w-full justify-between">
+
+                    <p>Amount</p>
+
+                    <div class="flex items-center gap-2">
+
+                        <p>$500.00</p>
+
+                        <p class="bg-green-500/20 px-3 py-0.5 rounded border border-green-500/30 text-green-600">Paid</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    
+
+         <div class="bg-indigo-500/5 border border-gray-500/20 text-sm text-gray-500 flex flex-col items-center w-80 rounded-lg">
+
+            <div class="flex items-center justify-between w-full px-4 py-2">
+
+                <div class="flex items-center justify-between gap-3">
+
+                    <div class="bg-white p-1.5 rounded border border-gray-500/30">
+
+                        <img class="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyFavicon.svg" alt="dummyFavicon">
+
+                    </div>
+
+                    <p class="text-lg text-gray-800">Router</p>
+
+                </div>
+
+                <button type="button" aria-label="more">
+
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <path d="M11 11.917a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833M11 5.5a.917.917 0 1 0 0-1.833.917.917 0 0 0 0 1.833m0 12.834a.917.917 0 1 0 0-1.834.917.917 0 0 0 0 1.834" stroke="#6B7280" stroke-opacity=".8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+            <div class="flex flex-col items-center gap-2 w-full p-4 pb-2 rounded-b-lg bg-white border-t border-gray-500/20">
+
+                <div class="flex items-center w-full justify-between">
+
+                    <p>Last invoice</p>
+
+                    <p>December 24, 2023</p>
+
+                </div>
+
+                <div class="w-full h-px bg-gray-300/60"></div>
+
+                <div class="flex items-center w-full justify-between">
+
+                    <p>Amount</p>
+
+                    <div class="flex items-center gap-2">
+
+                        <p>$800.00</p>
+
+                        <p class="bg-red-500/20 px-3 py-0.5 rounded border border-red-500/30 text-red-600">Overdue</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>    user profile card rounded . html . <div class="flex flex-wrap items-center justify-center gap-8">
+
+    <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+        <div class="w-64 flex justify-center pt-10">
+
+            <div class="w-28 h-28 rounded-full overflow-hidden">
+
+                <img class="h-32 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage2">
+
+            </div>
+
+        </div>
+
+        <div class="flex flex-col items-center">
+
+            <p class="font-medium mt-3">Kelvin John</p>
+
+            <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+            <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5">
+
+                <p class="mb-1">message</p>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+        <div class="w-64 flex justify-center pt-10">
+
+            <div class="w-28 h-28 rounded-full overflow-hidden">
+
+                <img class="h-32 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage2">
+
+            </div>
+
+        </div>
+
+        <div class="flex flex-col items-center">
+
+            <p class="font-medium mt-3">Kelvin John</p>
+
+            <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+            <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5 flex items-center justify-center gap-1">
+
+                <svg class="mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    <path d="m7.107 11.684.31-.521-.736-.436-.309.522zm-2.28-.521.308.521.735-.435-.309-.522zm1.545.086a.297.297 0 0 1-.502 0l-.735.435a1.15 1.15 0 0 0 1.972 0zM5.267.854h1.708V0H5.267zm6.121 4.413v.57h.854v-.57zm-10.534.57v-.57H0v.57zm-.854 0c0 .657 0 1.171.028 1.586.029.42.088.768.221 1.09l.79-.327c-.084-.2-.133-.446-.159-.82-.026-.38-.026-.86-.026-1.53zm3.731 3.838c-.715-.012-1.09-.058-1.383-.18l-.327.79c.459.19.98.232 1.695.244zM.249 8.513c.333.802.97 1.44 1.772 1.772l.327-.79a2.42 2.42 0 0 1-1.31-1.309zm11.14-2.677c0 .67-.001 1.15-.027 1.53-.026.374-.075.62-.158.82l.79.327c.133-.322.192-.67.22-1.09.028-.415.028-.93.028-1.587zM8.525 10.53c.715-.012 1.237-.054 1.695-.244l-.327-.79c-.293.122-.668.168-1.383.18zm2.678-2.343a2.42 2.42 0 0 1-1.31 1.31l.327.789a3.27 3.27 0 0 0 1.772-1.772zM6.975.854c.94 0 1.616 0 2.142.05.52.05.852.145 1.116.307l.446-.729C10.259.225 9.78.11 9.199.054 8.621 0 7.898 0 6.974 0zm5.267 4.413c0-.924 0-1.646-.054-2.223-.056-.583-.17-1.06-.428-1.48l-.728.446c.161.264.256.595.306 1.115.05.527.05 1.202.05 2.142zm-2.01-4.056c.326.2.6.473.8.799l.728-.447c-.27-.44-.64-.81-1.081-1.08zM5.268 0c-.924 0-1.646 0-2.223.054-.583.056-1.06.17-1.48.428l.446.729c.264-.162.595-.257 1.115-.306.527-.05 1.202-.05 2.142-.05zM.854 5.267c0-.94 0-1.615.05-2.142.05-.52.145-.851.307-1.115l-.729-.447c-.257.421-.372.898-.428 1.481C0 3.621 0 4.344 0 5.267zm.71-4.785A3.3 3.3 0 0 0 .482 1.563l.729.447c.2-.326.473-.6.799-.8zM5.56 10.728a6 6 0 0 0-.316-.503 1.3 1.3 0 0 0-.388-.368l-.43.739a.4.4 0 0 1 .128.131c.07.095.147.226.271.436zm-1.845-.199c.25.004.409.008.53.02a.45.45 0 0 1 .182.047l.429-.739a1.3 1.3 0 0 0-.518-.156c-.169-.019-.374-.022-.608-.026zm3.7.634c.124-.21.202-.34.271-.436a.4.4 0 0 1 .128-.131l-.43-.739a1.3 1.3 0 0 0-.388.368c-.099.135-.2.307-.316.502zM8.51 9.675c-.234.004-.439.007-.608.026-.178.02-.351.06-.518.156l.43.739a.45.45 0 0 1 .182-.046 6 6 0 0 1 .529-.02z" fill="#6B7280"/>
+
+                    <path d="M3.844 5.552h.005m2.268 0h.005m2.272 0H8.4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                </svg>
+
+                <p class="mb-1">message</p>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>  react . export default function Example() {
+
+    return (
+
+        <div className="flex flex-wrap items-center justify-center gap-8">
+
+            <div className="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+                <div className="w-64 flex justify-center pt-10">
+
+                    <div className="w-28 h-28 rounded-full overflow-hidden">
+
+                        <img className="h-32 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage2" />
+
+                    </div>
+
+                </div>
+
+                <div className="flex flex-col items-center">
+
+                    <p className="font-medium mt-3">Kelvin John</p>
+
+                    <p className="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                    <button className="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5">
+
+                        <p className="mb-1">message</p>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        
+
+            <div className="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+                <div className="w-64 flex justify-center pt-10">
+
+                    <div className="w-28 h-28 rounded-full overflow-hidden">
+
+                        <img className="h-32 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage2" />
+
+                    </div>
+
+                </div>
+
+                <div className="flex flex-col items-center">
+
+                    <p className="font-medium mt-3">Kelvin John</p>
+
+                    <p className="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                    <button className="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5 flex items-center justify-center gap-1">
+
+                        <svg className="mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                            <path d="m7.107 11.684.31-.521-.736-.436-.309.522zm-2.28-.521.308.521.735-.435-.309-.522zm1.545.086a.297.297 0 0 1-.502 0l-.735.435a1.15 1.15 0 0 0 1.972 0zM5.267.854h1.708V0H5.267zm6.121 4.413v.57h.854v-.57zm-10.534.57v-.57H0v.57zm-.854 0c0 .657 0 1.171.028 1.586.029.42.088.768.221 1.09l.79-.327c-.084-.2-.133-.446-.159-.82-.026-.38-.026-.86-.026-1.53zm3.731 3.838c-.715-.012-1.09-.058-1.383-.18l-.327.79c.459.19.98.232 1.695.244zM.249 8.513c.333.802.97 1.44 1.772 1.772l.327-.79a2.42 2.42 0 0 1-1.31-1.309zm11.14-2.677c0 .67-.001 1.15-.027 1.53-.026.374-.075.62-.158.82l.79.327c.133-.322.192-.67.22-1.09.028-.415.028-.93.028-1.587zM8.525 10.53c.715-.012 1.237-.054 1.695-.244l-.327-.79c-.293.122-.668.168-1.383.18zm2.678-2.343a2.42 2.42 0 0 1-1.31 1.31l.327.789a3.27 3.27 0 0 0 1.772-1.772zM6.975.854c.94 0 1.616 0 2.142.05.52.05.852.145 1.116.307l.446-.729C10.259.225 9.78.11 9.199.054 8.621 0 7.898 0 6.974 0zm5.267 4.413c0-.924 0-1.646-.054-2.223-.056-.583-.17-1.06-.428-1.48l-.728.446c.161.264.256.595.306 1.115.05.527.05 1.202.05 2.142zm-2.01-4.056c.326.2.6.473.8.799l.728-.447c-.27-.44-.64-.81-1.081-1.08zM5.268 0c-.924 0-1.646 0-2.223.054-.583.056-1.06.17-1.48.428l.446.729c.264-.162.595-.257 1.115-.306.527-.05 1.202-.05 2.142-.05zM.854 5.267c0-.94 0-1.615.05-2.142.05-.52.145-.851.307-1.115l-.729-.447c-.257.421-.372.898-.428 1.481C0 3.621 0 4.344 0 5.267zm.71-4.785A3.3 3.3 0 0 0 .482 1.563l.729.447c.2-.326.473-.6.799-.8zM5.56 10.728a6 6 0 0 0-.316-.503 1.3 1.3 0 0 0-.388-.368l-.43.739a.4.4 0 0 1 .128.131c.07.095.147.226.271.436zm-1.845-.199c.25.004.409.008.53.02a.45.45 0 0 1 .182.047l.429-.739a1.3 1.3 0 0 0-.518-.156c-.169-.019-.374-.022-.608-.026zm3.7.634c.124-.21.202-.34.271-.436a.4.4 0 0 1 .128-.131l-.43-.739a1.3 1.3 0 0 0-.388.368c-.099.135-.2.307-.316.502zM8.51 9.675c-.234.004-.439.007-.608.026-.178.02-.351.06-.518.156l.43.739a.45.45 0 0 1 .182-.046 6 6 0 0 1 .529-.02z" fill="#6B7280"/>
+
+                            <path d="M3.844 5.552h.005m2.268 0h.005m2.272 0H8.4" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+
+                        </svg>
+
+                        <p className="mb-1">message</p>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+}; vue . <template>
+
+    <div class="flex flex-wrap items-center justify-center gap-8">
+
+        <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+            <div class="w-64 flex justify-center pt-10">
+
+                <div class="w-28 h-28 rounded-full overflow-hidden">
+
+                    <img class="h-32 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage2">
+
+                </div>
+
+            </div>
+
+            <div class="flex flex-col items-center">
+
+                <p class="font-medium mt-3">Kelvin John</p>
+
+                <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5">
+
+                    <p class="mb-1">message</p>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    
+
+        <div class="bg-white rounded-2xl pb-4 overflow-hidden border border-gray-200 hover:-translate-y-1 transition duration-300">
+
+            <div class="w-64 flex justify-center pt-10">
+
+                <div class="w-28 h-28 rounded-full overflow-hidden">
+
+                    <img class="h-32 object-cover object-top" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="userImage2">
+
+                </div>
+
+            </div>
+
+            <div class="flex flex-col items-center">
+
+                <p class="font-medium mt-3">Kelvin John</p>
+
+                <p class="text-gray-500 text-sm">kelvin.john@gmail.com</p>
+
+                <button class="border text-sm text-gray-500 border-gray-200 hover:bg-gray-100 transition cursor-pointer px-6 py-1 rounded-full mt-5 flex items-center justify-center gap-1">
+
+                    <svg class="mt-0.5" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <path d="m7.107 11.684.31-.521-.736-.436-.309.522zm-2.28-.521.308.521.735-.435-.309-.522zm1.545.086a.297.297 0 0 1-.502 0l-.735.435a1.15 1.15 0 0 0 1.972 0zM5.267.854h1.708V0H5.267zm6.121 4.413v.57h.854v-.57zm-10.534.57v-.57H0v.57zm-.854 0c0 .657 0 1.171.028 1.586.029.42.088.768.221 1.09l.79-.327c-.084-.2-.133-.446-.159-.82-.026-.38-.026-.86-.026-1.53zm3.731 3.838c-.715-.012-1.09-.058-1.383-.18l-.327.79c.459.19.98.232 1.695.244zM.249 8.513c.333.802.97 1.44 1.772 1.772l.327-.79a2.42 2.42 0 0 1-1.31-1.309zm11.14-2.677c0 .67-.001 1.15-.027 1.53-.026.374-.075.62-.158.82l.79.327c.133-.322.192-.67.22-1.09.028-.415.028-.93.028-1.587zM8.525 10.53c.715-.012 1.237-.054 1.695-.244l-.327-.79c-.293.122-.668.168-1.383.18zm2.678-2.343a2.42 2.42 0 0 1-1.31 1.31l.327.789a3.27 3.27 0 0 0 1.772-1.772zM6.975.854c.94 0 1.616 0 2.142.05.52.05.852.145 1.116.307l.446-.729C10.259.225 9.78.11 9.199.054 8.621 0 7.898 0 6.974 0zm5.267 4.413c0-.924 0-1.646-.054-2.223-.056-.583-.17-1.06-.428-1.48l-.728.446c.161.264.256.595.306 1.115.05.527.05 1.202.05 2.142zm-2.01-4.056c.326.2.6.473.8.799l.728-.447c-.27-.44-.64-.81-1.081-1.08zM5.268 0c-.924 0-1.646 0-2.223.054-.583.056-1.06.17-1.48.428l.446.729c.264-.162.595-.257 1.115-.306.527-.05 1.202-.05 2.142-.05zM.854 5.267c0-.94 0-1.615.05-2.142.05-.52.145-.851.307-1.115l-.729-.447c-.257.421-.372.898-.428 1.481C0 3.621 0 4.344 0 5.267zm.71-4.785A3.3 3.3 0 0 0 .482 1.563l.729.447c.2-.326.473-.6.799-.8zM5.56 10.728a6 6 0 0 0-.316-.503 1.3 1.3 0 0 0-.388-.368l-.43.739a.4.4 0 0 1 .128.131c.07.095.147.226.271.436zm-1.845-.199c.25.004.409.008.53.02a.45.45 0 0 1 .182.047l.429-.739a1.3 1.3 0 0 0-.518-.156c-.169-.019-.374-.022-.608-.026zm3.7.634c.124-.21.202-.34.271-.436a.4.4 0 0 1 .128-.131l-.43-.739a1.3 1.3 0 0 0-.388.368c-.099.135-.2.307-.316.502zM8.51 9.675c-.234.004-.439.007-.608.026-.178.02-.351.06-.518.156l.43.739a.45.45 0 0 1 .182-.046 6 6 0 0 1 .529-.02z" fill="#6B7280"/>
+
+                        <path d="M3.844 5.552h.005m2.268 0h.005m2.272 0H8.4" stroke="#6B7280" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    </svg>
+
+                    <p class="mb-1">message</p>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>   gradient border hover card  . const App = () => {
+
+  const [visible, setVisible] = React.useState(false);
+
+    const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+    const divRef = React.useRef(null);
+
+
+
+    const handleMouseMove = (e) => {
+
+        const bounds = divRef.current.getBoundingClientRect();
+
+        setPosition({ x: e.clientX - bounds.left, y: e.clientY - bounds.top });
+
+    };
+
+
+
+    return (
+
+        <div ref={divRef} onMouseMove={handleMouseMove} onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}
+
+            className="relative w-80 h-96 rounded-xl p-0.5 bg-white backdrop-blur-md text-gray-800 overflow-hidden shadow-lg cursor-pointer"
+
+        >
+
+            {visible && (
+
+                <div className="pointer-events-none blur-xl bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 size-60 absolute z-0 transition-opacity duration-300"
+
+                    style={{ top: position.y - 120, left: position.x - 120,}}
+
+                />
+
+            )}
+
+
+
+            <div className="relative z-10 bg-white p-6 h-full w-full rounded-[10px] flex flex-col items-center justify-center text-center">
+
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200" alt="Profile Avatar" className="w-24 h-24 rounded-full shadow-md my-4" />
+
+                <h2 className="text-2xl font-bold text-gray-800 mb-1">Richard Nelson</h2>
+
+                <p className="text-sm text-indigo-500 font-medium mb-4">Software Developer</p>
+
+                <p className="text-sm text-gray-500 mb-4 px-4">
+
+                    Passionate about clean code, scalable systems, and solving real-world problems with elegant software.
+
+                </p>
+
+                <div className="flex space-x-4 mb-4 text-xl text-indigo-600">
+
+                    <a href="#" target="_blank" className='hover:-translate-y-0.5 transition'>
+
+                        <svg className="size-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+
+                            <path fillRule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clipRule="evenodd" />
+
+                        </svg>
+
+                    </a>
+
+                    <a href="#" target="_blank" className='hover:-translate-y-0.5 transition'>
+
+                        <svg className="size-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+
+                            <path fillRule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clipRule="evenodd" />
+
+                            <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
+
+                        </svg>
+
+                    </a>
+
+                    <a href="#" target="_blank" className='hover:-translate-y-0.5 transition'>
+
+                        <svg className="size-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+
+                            <path fillRule="evenodd" d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z" clipRule="evenodd" />
+
+                        </svg>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+}   blog card components .  html . <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+    * {
+
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+</style>
+
+<h1 class="text-3xl font-semibold text-center mx-auto">Latest Blog</h1>
+
+<p class="text-sm text-slate-500 text-center mt-2 max-w-lg mx-auto">
+
+    Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
+
+</p>
+
+
+
+<div class="flex flex-wrap items-center justify-center gap-8 pt-12">
+
+    <div class="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+        <img class="rounded-xl" src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=1200&h=800&auto=format&fit=crop&q=60" alt="">
+
+        <h3 class="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+        <p class="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+    </div>
+
+    <div class="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+        <img class="rounded-xl" src="https://images.unsplash.com/photo-1714974528646-ea024a3db7a7?w=1200&h=800&auto=format&fit=crop&q=60" alt="">
+
+        <h3 class="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+        <p class="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+    </div>
+
+    <div class="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+        <img class="rounded-xl" src="https://images.unsplash.com/photo-1713947501966-34897f21162e?w=1200&h=800&auto=format&fit=crop&q=60" alt="">
+
+        <h3 class="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+        <p class="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+    </div>
+
+</div>  . react . export default function Example() {
+
+    return (
+
+        <>
+
+            <style>{`
+
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+            
+
+                * {
+
+                    font-family: 'Poppins', sans-serif;
+
+                }
+
+            `}</style>
+
+            <h1 className="text-3xl font-semibold text-center mx-auto">Latest Blog</h1>
+
+            <p className="text-sm text-slate-500 text-center mt-2 max-w-lg mx-auto">
+
+                Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
+
+            </p>
+
+            
+
+            <div className="flex flex-wrap items-center justify-center gap-8 pt-12">
+
+                <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+                    <img className="rounded-xl" src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=1200&h=800&auto=format&fit=crop&q=60" alt="" />
+
+                    <h3 className="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+                    <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+                </div>
+
+                <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+                    <img className="rounded-xl" src="https://images.unsplash.com/photo-1714974528646-ea024a3db7a7?w=1200&h=800&auto=format&fit=crop&q=60" alt="" />
+
+                    <h3 className="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+                    <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+                </div>
+
+                <div className="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+                    <img className="rounded-xl" src="https://images.unsplash.com/photo-1713947501966-34897f21162e?w=1200&h=800&auto=format&fit=crop&q=60" alt="" />
+
+                    <h3 className="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+                    <p className="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+                </div>
+
+            </div>
+
+        </>
+
+    );
+
+}; .  vue . <template>
+
+    <h1 class="text-3xl font-semibold text-center mx-auto">Latest Blog</h1>
+
+    <p class="text-sm text-slate-500 text-center mt-2 max-w-lg mx-auto">
+
+        Stay ahead of the curve with fresh content on code, design, startups, and everything in between.
+
+    </p>
+
+    
+
+    <div class="flex flex-wrap items-center justify-center gap-8 pt-12">
+
+        <div class="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+            <img class="rounded-xl" src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd67e?w=1200&h=800&auto=format&fit=crop&q=60" alt="">
+
+            <h3 class="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+            <p class="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+        </div>
+
+        <div class="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+            <img class="rounded-xl" src="https://images.unsplash.com/photo-1714974528646-ea024a3db7a7?w=1200&h=800&auto=format&fit=crop&q=60" alt="">
+
+            <h3 class="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+            <p class="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+        </div>
+
+        <div class="max-w-72 w-full hover:-translate-y-0.5 transition duration-300">
+
+            <img class="rounded-xl" src="https://images.unsplash.com/photo-1713947501966-34897f21162e?w=1200&h=800&auto=format&fit=crop&q=60" alt="">
+
+            <h3 class="text-base text-slate-900 font-medium mt-3">Color Psychology in UI: How to Choose the Right Palette</h3>
+
+            <p class="text-xs text-indigo-600 font-medium mt-1">UI/UX design</p>
+
+        </div>
+
+    </div>
+
+</template>
+
+
+
+<style scoped>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+    * {
+
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+</style>  blog card with hover effect . const App = () => {
+
+    const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+    const [tooltipVisible, setTooltipVisible] = React.useState(false);
+
+    const divRef = React.useRef(null);
+
+
+
+    const handleMouseMove = (e) => {
+
+        const bounds = divRef.current.getBoundingClientRect();
+
+        setPosition({ x: e.clientX - bounds.left, y: e.clientY - bounds.top });
+
+    };
+
+
+
+    return (
+
+        <div ref={divRef} onMouseMove={handleMouseMove} onMouseEnter={() => setTooltipVisible(true)} onMouseLeave={() => setTooltipVisible(false)}
+
+            className="relative max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm"
+
+        >
+
+            <span className="absolute px-2 py-1 z-10 whitespace-nowrap text-sm rounded bg-white/20 border border-gray-200 backdrop-blur-[4px] text-gray-900 font-medium pointer-events-none"
+
+                style={{
+
+                    top: position.y + 10,
+
+                    left: position.x + 10,
+
+                    opacity: tooltipVisible ? 1 : 0,
+
+                    transform: tooltipVisible ? 'scale(1)' : 'scale(0.6)',
+
+                    transition: 'all 0.2s ease-out',
+
+                }}
+
+            >
+
+                Author: John Doe
+
+            </span>
+
+
+
+            <a href="#">
+
+                <img className="rounded-t-lg w-96 h-56 object-cover object-top" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=800" alt="" />
+
+            </a>
+
+            <div className="p-5">
+
+                <a href="#">
+
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+
+                        How AI is Transforming the Future of Work
+
+                    </h5>
+
+                </a>
+
+                <p className="mb-3 font-mal text-gray-700">Explore how artificial intelligence is reshaping industries, enhancing productivity, and opening new career paths in the modern workforce.</p>
+
+                <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:ring-4 focus:outline-none focus:ring-indigo-300">
+
+                    Read more
+
+                    <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+
+                    </svg>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    );
+
+};  flip hover card . html . <div class="group w-52 h-64 mx-auto [perspective:1000px] cursor-pointer">
+
+    <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+
+        <!-- Front Side -->
+
+        <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-white border border-gray-200">
+
+            Front Side
+
+        </div>
+
+
+
+        <!-- Back Side -->
+
+        <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-indigo-600 text-white [transform:rotateY(180deg)]">
+
+            Back Side
+
+        </div>
+
+    </div>
+
+</div> react . export default function Example() {
+
+    return (
+
+        <div className="group w-52 h-64 mx-auto [perspective:1000px] cursor-pointer">
+
+            <div className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+
+                {/* Front Side */}
+
+                <div className="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-white border border-gray-200">
+
+                    Front Side
+
+                </div>
+
+        
+
+                {/* Back Side */}
+
+                <div className="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-indigo-600 text-white [transform:rotateY(180deg)]">
+
+                    Back Side
+
+                </div>
+
+            </div>
+
+        </div>
+
+    );
+
+}; . vue . <template>
+
+    <div class="group w-52 h-64 mx-auto [perspective:1000px] cursor-pointer">
+
+        <div class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+
+            <!-- Front Side -->
+
+            <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-white border border-gray-200">
+
+                Front Side
+
+            </div>
+
+    
+
+            <!-- Back Side -->
+
+            <div class="absolute w-full h-full [backface-visibility:hidden] flex items-center justify-center rounded-md bg-indigo-600 text-white [transform:rotateY(180deg)]">
+
+                Back Side
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>  notify card with glass effect  . html . <div class="relative flex items-center justify-center text-sm text-white/80 rounded-lg shadow-sm max-w-80">
+
+    <div class="absolute bottom-2 flex items-center justify-around backdrop-blur-sm w-full max-w-72 rounded-md bg-white/10 border border-white/20 py-2">
+
+        <p class="text-center">Available soon.</p>
+
+        <button type="button" class="bg-black/50 rounded-full px-6 py-1.5">
+
+            Notify me
+
+        </button>
+
+    </div>
+
+    <img class="rounded-md" src="https://images.unsplash.com/photo-1599669454699-248893623440?q=80&w=600&auto=format&fit=crop" alt="">
+
+</div> . react . export default function Example() {
+
+    return (
+
+        <div className="relative flex items-center justify-center text-sm text-white/80 rounded-lg shadow-sm max-w-80">
+
+            <div className="absolute bottom-2 flex items-center justify-around backdrop-blur-sm w-full max-w-72 rounded-md bg-white/10 border border-white/20 py-2">
+
+                <p className="text-center">Available soon.</p>
+
+                <button type="button" className="bg-black/50 rounded-full px-6 py-1.5">
+
+                    Notify me
+
+                </button>
+
+            </div>
+
+            <img className="rounded-md" src="https://images.unsplash.com/photo-1599669454699-248893623440?q=80&w=600&auto=format&fit=crop" alt="" />
+
+        </div>
+
+    );
+
+}; . vue . <template>
+
+    <div class="relative flex items-center justify-center text-sm text-white/80 rounded-lg shadow-sm max-w-80">
+
+        <div class="absolute bottom-2 flex items-center justify-around backdrop-blur-sm w-full max-w-72 rounded-md bg-white/10 border border-white/20 py-2">
+
+            <p class="text-center">Available soon.</p>
+
+            <button type="button" class="bg-black/50 rounded-full px-6 py-1.5">
+
+                Notify me
+
+            </button>
+
+        </div>
+
+        <img class="rounded-md" src="https://images.unsplash.com/photo-1599669454699-248893623440?q=80&w=600&auto=format&fit=crop" alt="">
+
+    </div>
+
+</template>  music card . html . <div class="p-4 bg-white rounded-lg shadow max-w-80">
+
+    <p class="text-gray-900 text-xl font-semibold uppercase">Daily mix</p>
+
+    <p class="text-gray-500 text-sm">12 Tracks</p>
+
+    <p class="text-gray-900 font-semibold text-sm mb-3">Frontend Radio</p>
+
+    <img class="rounded-md" src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=700&auto=format&fit=crop" alt="">
+
+</div> react . export default function Example() {
+
+    return (
+
+        <div className="p-4 bg-white rounded-lg shadow max-w-80">
+
+            <p className="text-gray-900 text-xl font-semibold uppercase">Daily mix</p>
+
+            <p className="text-gray-500 text-sm">12 Tracks</p>
+
+            <p className="text-gray-900 font-semibold text-sm mb-3">Frontend Radio</p>
+
+            <img className="rounded-md" src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=700&auto=format&fit=crop" alt="" />
+
+        </div>
+
+    );
+
+}; . vue . <template>
+
+    <div class="p-4 bg-white rounded-lg shadow max-w-80">
+
+        <p class="text-gray-900 text-xl font-semibold uppercase">Daily mix</p>
+
+        <p class="text-gray-500 text-sm">12 Tracks</p>
+
+        <p class="text-gray-900 font-semibold text-sm mb-3">Frontend Radio</p>
+
+        <img class="rounded-md" src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=700&auto=format&fit=crop" alt="">
+
+    </div>
+
+</template> simple card with buttom . html . <div class="p-4 bg-white border border-gray-200 hover:-translate-y-1 transition duration-300 rounded-lg shadow shadow-black/10 max-w-80">
+
+    <img class="rounded-md max-h-40 w-full object-cover" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=400" alt="officeImage">
+
+    <p class="text-gray-900 text-xl font-semibold ml-2 mt-4">
+
+        Your Card Title
+
+    </p>
+
+    <p class="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2">
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore..
+
+    </p>
+
+    <button type="button" class="bg-indigo-600 hover:bg-indigo-700 transition cursor-pointer mt-4 mb-3 ml-2 px-6 py-2 font-medium rounded-md text-white text-sm">
+
+        Learn More
+
+    </button>
+
+</div> . react . export default function Example() {
+
+    return (
+
+        <div className="p-4 bg-white border border-gray-200 hover:-translate-y-1 transition duration-300 rounded-lg shadow shadow-black/10 max-w-80">
+
+            <img className="rounded-md max-h-40 w-full object-cover" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=400" alt="officeImage" />
+
+            <p className="text-gray-900 text-xl font-semibold ml-2 mt-4">
+
+                Your Card Title
+
+            </p>
+
+            <p className="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2">
+
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore..
+
+            </p>
+
+            <button type="button" className="bg-indigo-600 hover:bg-indigo-700 transition cursor-pointer mt-4 mb-3 ml-2 px-6 py-2 font-medium rounded-md text-white text-sm">
+
+                Learn More
+
+            </button>
+
+        </div>
+
+    );
+
+}; . vue . <template>
+
+    <div class="p-4 bg-white border border-gray-200 hover:-translate-y-1 transition duration-300 rounded-lg shadow shadow-black/10 max-w-80">
+
+        <img class="rounded-md max-h-40 w-full object-cover" src="https://images.unsplash.com/photo-1560264418-c4445382edbc?q=80&w=400" alt="officeImage">
+
+        <p class="text-gray-900 text-xl font-semibold ml-2 mt-4">
+
+            Your Card Title
+
+        </p>
+
+        <p class="text-zinc-400 text-sm/6 mt-2 ml-2 mb-2">
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore..
+
+        </p>
+
+        <button type="button" class="bg-indigo-600 hover:bg-indigo-700 transition cursor-pointer mt-4 mb-3 ml-2 px-6 py-2 font-medium rounded-md text-white text-sm">
+
+            Learn More
+
+        </button>
+
+    </div>
+
+</template>  payment card .  html . <div class="max-w-80 w-full">
+
+    <div class="pt-3 overflow-hidden bg-gray-100 border border-gray-200 rounded-md shadow">
+
+        <h1 class="text-gray-900 text-xl font-semibold pl-6 pb-3">Payment Type</h1>
+
+        
+
+        <div class="text-gray-900 bg-white pb-3 pl-6 pt-6 space-y-1 text-sm">
+
+            <div class="flex items-center gap-2">
+
+                <input class="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="creditCard" name="paymentMethod" checked>
+
+                <label for="creditCard">Credit Cards</label>
+
+            </div>
+
+            <div class="flex items-center gap-2">
+
+                <input class="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="debitCard" name="paymentMethod">
+
+                <label for="debitCard">Debit Cards</label>
+
+            </div>
+
+            <div class="flex items-center gap-2">
+
+                <input class="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="cashOnDelivery" name="paymentMethod">
+
+                <label for="cashOnDelivery">Cash on Delivery</label>
+
+            </div>
+
+            <div class="flex items-center gap-3 pt-5 pb-2">
+
+                <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/amexLogo.svg" alt="amexLogo">
+
+                <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/visaLogoColored.svg" alt="visaLogoColored">
+
+                <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/masterCardLogo.svg" alt="masterCardLogo">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button type="button" class="text-sm text-white bg-indigo-600 hover:bg-indigo-700 active:scale-95 transition-all w-full h-10 mt-5 rounded-md">Place an Order</button>
+
+</div> . react . export default function Example() {
+
+    return (
+
+        <div className="max-w-80 w-full">
+
+            <div className="pt-3 overflow-hidden bg-gray-100 border border-gray-200 rounded-md shadow">
+
+                <h1 className="text-gray-900 text-xl font-semibold pl-6 pb-3">Payment Type</h1>
+
+                
+
+                <div className="text-gray-900 bg-white pb-3 pl-6 pt-6 space-y-1 text-sm">
+
+                    <div className="flex items-center gap-2">
+
+                        <input className="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="creditCard" name="paymentMethod" checked />
+
+                        <label htmlFor="creditCard">Credit Cards</label>
+
+                    </div>
+
+                    <div className="flex items-center gap-2">
+
+                        <input className="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="debitCard" name="paymentMethod" />
+
+                        <label htmlFor="debitCard">Debit Cards</label>
+
+                    </div>
+
+                    <div className="flex items-center gap-2">
+
+                        <input className="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="cashOnDelivery" name="paymentMethod" />
+
+                        <label htmlFor="cashOnDelivery">Cash on Delivery</label>
+
+                    </div>
+
+                    <div className="flex items-center gap-3 pt-5 pb-2">
+
+                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/amexLogo.svg" alt="amexLogo" />
+
+                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/visaLogoColored.svg" alt="visaLogoColored" />
+
+                        <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/masterCardLogo.svg" alt="masterCardLogo" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button type="button" className="text-sm text-white bg-indigo-600 hover:bg-indigo-700 active:scale-95 transition-all w-full h-10 mt-5 rounded-md">Place an Order</button>
+
+        </div>
+
+    );
+
+}; . vue . <template>
+
+    <div class="max-w-80 w-full">
+
+        <div class="pt-3 overflow-hidden bg-gray-100 border border-gray-200 rounded-md shadow">
+
+            <h1 class="text-gray-900 text-xl font-semibold pl-6 pb-3">Payment Type</h1>
+
+            
+
+            <div class="text-gray-900 bg-white pb-3 pl-6 pt-6 space-y-1 text-sm">
+
+                <div class="flex items-center gap-2">
+
+                    <input class="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="creditCard" name="paymentMethod" checked>
+
+                    <label for="creditCard">Credit Cards</label>
+
+                </div>
+
+                <div class="flex items-center gap-2">
+
+                    <input class="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="debitCard" name="paymentMethod">
+
+                    <label for="debitCard">Debit Cards</label>
+
+                </div>
+
+                <div class="flex items-center gap-2">
+
+                    <input class="h-4 w-4 appearance-none rounded-full checked:appearance-auto checked:accent-blue-600 indeterminate:bg-white border border-gray-300" type="radio" id="cashOnDelivery" name="paymentMethod">
+
+                    <label for="cashOnDelivery">Cash on Delivery</label>
+
+                </div>
+
+                <div class="flex items-center gap-3 pt-5 pb-2">
+
+                    <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/amexLogo.svg" alt="amexLogo">
+
+                    <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/visaLogoColored.svg" alt="visaLogoColored">
+
+                    <img src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/paymentCard/masterCardLogo.svg" alt="masterCardLogo">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <button type="button" class="text-sm text-white bg-indigo-600 hover:bg-indigo-700 active:scale-95 transition-all w-full h-10 mt-5 rounded-md">Place an Order</button>
+
+    </div>
+
+</template>  product cards with discount . html . <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+    *{
+
+        font-family: "Geist", sans-serif;
+
+    }
+
+</style>
+
+<section class="bg-white flex items-center justify-center px-4 py-16">
+
+    <div class="flex flex-wrap items-stretch justify-center gap-5">
+
+        <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-46">
+
+            <div class="flex items-center justify-between mb-2">
+
+                <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
+
+                <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+
+                    <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                </div>
+
+            </div>
+
+            <div class="flex items-center justify-center h-30 mb-2">
+
+                <img src="https://assets.prebuiltui.com/components/card/card-lamp-image.png" alt="lamp" class="max-h-full max-w-full object-contain" />
+
+            </div>
+
+            <p class="text-sm text-neutral-500 mb-2 px-2">Cylindrical Modern Table Lamp</p>
+
+            <div class="flex items-center gap-2 px-2">
+
+                <span class="text-sm font-semibold text-neutral-800">$29.00</span>
+
+                <span class="text-xs text-neutral-500 line-through">$59.00</span>
+
+            </div>
+
+        </div>
+
+        <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col max-w-46">
+
+            <div class="flex items-center justify-between mb-2">
+
+                <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
+
+                <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+
+                    <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                </div>
+
+            </div>
+
+            <div class="flex items-center justify-center h-30 mb-2">
+
+                <img src="https://assets.prebuiltui.com/components/card/card-watch-image.png" alt="watch" class="max-h-full max-w-full object-contain" />
+
+            </div>
+
+            <p class="text-sm text-neutral-500 mb-2 px-2">Modern Smart Watch for Men/women</p>
+
+            <div class="flex items-center gap-2 px-2">
+
+                <span class="text-sm font-semibold text-neutral-800">$48.00</span>
+
+                <span class="text-xs text-neutral-500 line-through">$59.00</span>
+
+            </div>
+
+        </div>
+
+        <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col max-w-46">
+
+            <div class="flex items-center justify-between mb-2">
+
+                <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
+
+                <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+
+                    <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                </div>
+
+            </div>
+
+            <div class="flex items-center justify-center h-30 mb-2">
+
+                <img src="https://assets.prebuiltui.com/components/card/card-bag-image.png" alt="bag" class="max-h-full max-w-full object-contain" />
+
+            </div>
+
+            <p class="text-sm text-neutral-500 mb-2 px-2">Luxury and modern ladies bag</p>
+
+            <div class="flex items-center gap-2 px-2">
+
+                <span class="text-sm font-semibold text-neutral-800">$24.00</span>
+
+                <span class="text-xs text-neutral-500 line-through">$59.00</span>
+
+            </div>
+
+        </div>
+
+        <div class="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col max-w-46">
+
+            <div class="flex items-center justify-between mb-2">
+
+                <span class="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span class="font-bold">20%</span> off</span>
+
+                <div class="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+
+                    <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                </div>
+
+            </div>
+
+            <div class="flex items-center justify-center h-30 mb-2">
+
+                <img src="https://assets.prebuiltui.com/components/card/card-speaker-image.png" alt="speaker" class="max-h-full max-w-full object-contain" />
+
+            </div>
+
+            <p class="text-sm text-neutral-500 mb-2 px-2">Modern Smart AI Speaker</p>
+
+            <div class="flex items-center gap-2 px-2">
+
+                <span class="text-sm font-semibold text-neutral-800">$29.00</span>
+
+                <span class="text-xs text-neutral-500 line-through">$59.00</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section> . react . const App = () => {
+
+    const products = [
+
+        { image: "https://assets.prebuiltui.com/components/card/card-lamp-image.png", name: 'Cylindrical Modern Table Lamp', price: '$29.00', oldPrice: '$59.00' },
+
+        { image: "https://assets.prebuiltui.com/components/card/card-watch-image.png", name: 'Modern Smart Watch for Men/women', price: '$48.00', oldPrice: '$59.00' },
+
+        { image: "https://assets.prebuiltui.com/components/card/card-bag-image.png", name: 'Luxury and modern ladies bag', price: '$24.00', oldPrice: '$59.00' },
+
+        { image: "https://assets.prebuiltui.com/components/card/card-speaker-image.png", name: 'Modern Smart AI Speaker', price: '$29.00', oldPrice: '$59.00' }
+
+    ]
+
+
+
+    return (
+
+        <>
+
+            <style>
+
+                {`
+
+                    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+                    *{
+
+                        font-family: "Geist", sans-serif;
+
+                    }
+
+                `}
+
+            </style>
+
+
+
+            <section className="bg-white flex items-center justify-center px-4 py-16">
+
+                <div className="flex flex-wrap items-stretch justify-center gap-5">
+
+                    {products.map((item, index) => (
+
+                        <div key={index} className="border border-zinc-200 hover:border-zinc-300 transition-colors rounded-xl p-2 flex flex-col w-46">
+
+                            {/* Top row: badge + bookmark */}
+
+                            <div className="flex items-center justify-between mb-2">
+
+                                <span className="bg-lime-300 text-neutral-800 text-xs px-2 py-0.5 rounded-full"><span className="font-bold">20%</span> off</span>
+
+                                <div className="size-7 rounded-full border border-zinc-300 flex items-center justify-center cursor-pointer">
+
+                                    <svg width="9" height="11" viewBox="0 0 9 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.357.5c.303 0 .594.117.808.325s.335.491.335.786v8.334a.54.54 0 0 1-.076.277.584.584 0 0 1-.779.205L5.067 8.995a1.17 1.17 0 0 0-1.134 0l-2.578 1.432a.584.584 0 0 1-.779-.205.54.54 0 0 1-.076-.277V1.61c0-.295.12-.577.335-.786A1.16 1.16 0 0 1 1.643.5z" stroke="#27272a" strokeLinecap="round" strokeLinejoin="round"/></svg>
+
+                                </div>
+
+                            </div>
+
+
+
+                            {/* Product Image */}
+
+                            <div className="flex items-center justify-center h-30 mb-2">
+
+                                <img src={item.image} alt={item.name} className="max-h-full max-w-full object-contain" />
+
+                            </div>
+
+
+
+                            {/* Product Name */}
+
+                            <p className="text-sm text-neutral-500 mb-2 px-2">{item.name}</p>
+
+
+
+                            {/* Price */}
+
+                            <div className="flex items-center gap-2 px-2">
+
+                                <span className="text-sm font-semibold text-neutral-800">{item.price}</span>
+
+                                <span className="text-xs text-neutral-500 line-through">{item.oldPrice}</span>
+
+                            </div>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </section>
+
+        </>
+
+    )
+
+} 
+
+   
+
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-20T00:01:53+05:30.
+
+The user's current state is as follows:
+Active Document: /Untitled-1 (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 1
+Running terminal commands:
+- npm run dev (in d:\Downloads\linkden post\task\Easeui-project, running for 4h51m6s)
+</ADDITIONAL_METADATA>
