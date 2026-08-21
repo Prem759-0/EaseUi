@@ -12,9 +12,10 @@ interface CodeBlockProps {
   language?: string;
   tabs?: CodeTab[];
   showLineNumbers?: boolean;
+  variant?: "default" | "light";
 }
 
-const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
+const CodeBlock = ({ code, language = "tsx", tabs, variant = "default" }: CodeBlockProps) => {
   const hasTabs = tabs && tabs.length > 0;
   const initialCode = hasTabs ? tabs[0].code : (code || "");
   const [activeTabIndex, setActiveTabIndex] = useState(0);
@@ -22,6 +23,7 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
 
   const activeCode = hasTabs ? tabs[activeTabIndex].code : initialCode;
   const activeLanguage = hasTabs ? tabs[activeTabIndex].language : language;
+  const isLight = variant === "light";
 
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(activeCode);
@@ -30,8 +32,8 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
   };
 
   return (
-    <div className="relative bg-white dark:bg-zinc-800 flex flex-col w-full rounded-xl overflow-hidden">
-      <div className="flex items-center justify-between bg-neo-blue border-b-[4px] border-black dark:border-white px-4 py-3">
+    <div className={`relative flex flex-col w-full rounded-xl overflow-hidden ${isLight ? "border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]" : "bg-white dark:bg-zinc-800"}`}>
+      <div className={`flex items-center justify-between border-b-[4px] border-black px-4 py-3 ${isLight ? "bg-gray-100" : "bg-neo-blue dark:border-white"}`}>
         <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
           {hasTabs ? (
             <div className="flex gap-2">
@@ -61,9 +63,9 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
           {copied ? "Copied!" : "Copy"}
         </button>
       </div>
-      <div className="bg-[#1e1e1e] p-6 overflow-x-auto w-full">
+      <div className={`p-6 overflow-x-auto w-full ${isLight ? "bg-white" : "bg-[#1e1e1e]"}`}>
         <pre className="m-0">
-          <code className="text-sm font-mono text-neo-green leading-loose whitespace-pre">{activeCode}</code>
+          <code className={`text-sm font-mono leading-loose whitespace-pre ${isLight ? "text-black" : "text-neo-green"}`}>{activeCode}</code>
         </pre>
       </div>
     </div>
