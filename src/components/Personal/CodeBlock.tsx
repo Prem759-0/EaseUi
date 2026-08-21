@@ -11,6 +11,7 @@ interface CodeBlockProps {
   code?: string;
   language?: string;
   tabs?: CodeTab[];
+  showLineNumbers?: boolean;
 }
 
 const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {

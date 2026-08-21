@@ -9,11 +9,11 @@ export type Translations = {
 };
 
 export function useTranslation(translations: Translations, defaultLang: string = "en") {
-  const language = defaultLang;
+  const [language, setLang] = React.useState(defaultLang);
   const currentTranslation = translations[language] || translations["en"];
 
   const t = currentTranslation?.values || {};
   const dir = currentTranslation?.dir || "ltr";
 
-  return { language, dir, t };
+  return { language, lang: language, setLang, dir, t };
 }

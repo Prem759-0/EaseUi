@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useNavigate } from "react-router";
 import { Search, FileText, Component, Box, AppWindow, Square, ArrowRight, View, PanelsTopLeft, CreditCard, Paintbrush, Terminal, Rocket } from "lucide-react";
