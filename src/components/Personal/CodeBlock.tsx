@@ -33,7 +33,7 @@ const CodeBlock = ({ code, language = "tsx", tabs, variant = "default" }: CodeBl
 
   return (
     <div className={`relative flex flex-col w-full rounded-xl overflow-hidden ${isLight ? "border-[3px] border-black bg-white shadow-[4px_4px_0_0_rgba(0,0,0,1)]" : "bg-white dark:bg-zinc-800"}`}>
-      <div className={`flex items-center justify-between border-b-[4px] border-black px-4 py-3 ${isLight ? "bg-gray-100" : "bg-neo-blue dark:border-white"}`}>
+      <div className={`flex items-center justify-between border-b-[4px] border-black px-4 py-3 ${isLight ? "bg-black" : "bg-neo-blue dark:border-white"}`}>
         <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
           {hasTabs ? (
             <div className="flex gap-2">
@@ -52,12 +52,12 @@ const CodeBlock = ({ code, language = "tsx", tabs, variant = "default" }: CodeBl
               ))}
             </div>
           ) : (
-            <span className="text-sm font-bold font-comic text-black uppercase tracking-wider">{activeLanguage}</span>
+            <span className={`text-sm font-bold font-comic uppercase tracking-wider ${isLight ? "text-white" : "text-black"}`}>{activeLanguage}</span>
           )}
         </div>
         <button
           onClick={copyToClipboard}
-          className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-lg bg-white text-black border-2 border-black hover:bg-neo-yellow transition-all hover:-translate-y-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] shrink-0 ml-4"
+          className={`flex items-center gap-2 px-3 py-1.5 text-xs font-bold rounded-lg bg-white text-black border-2 border-black transition-all hover:-translate-y-0.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] shrink-0 ml-4 ${isLight ? "hover:bg-gray-200" : "hover:bg-neo-yellow"}`}
         >
           {copied ? <Check size={14} className="text-neo-green" /> : <Copy size={14} />}
           {copied ? "Copied!" : "Copy"}
