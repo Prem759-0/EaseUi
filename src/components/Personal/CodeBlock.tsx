@@ -30,20 +30,24 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
   };
 
   return (
-    <div className="relative flex flex-col w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-950 shadow-sm mt-4">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-900 border-b border-zinc-800/50">
-        <div className="flex items-center gap-4 overflow-x-auto no-scrollbar">
+    <div className="relative flex w-full flex-col overflow-hidden rounded-none border-[4px] border-black bg-zinc-950 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:border-white dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.65)]">
+      <div className="flex items-center justify-between border-b-[4px] border-black bg-neo-yellow px-4 py-2 dark:border-white">
+        <div className="flex min-w-0 items-center gap-3 overflow-x-auto no-scrollbar">
+          <div className="hidden gap-1.5 sm:flex">
+            <span className="h-3.5 w-3.5 rounded-full border-2 border-black bg-neo-red" />
+            <span className="h-3.5 w-3.5 rounded-full border-2 border-black bg-neo-blue" />
+            <span className="h-3.5 w-3.5 rounded-full border-2 border-black bg-neo-green" />
+          </div>
           {hasTabs ? (
-            <div className="flex gap-1">
+            <div className="flex gap-2">
               {tabs.map((tab, index) => (
                 <button
                   key={tab.name}
                   onClick={() => setActiveTabIndex(index)}
-                  className={`text-xs font-medium px-3 py-1.5 rounded-md transition-all whitespace-nowrap ${
-                    activeTabIndex === index 
-                      ? "bg-zinc-800 text-zinc-100 shadow-sm" 
-                      : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+                  className={`whitespace-nowrap border-2 border-black px-3 py-1 text-xs font-black uppercase tracking-wide text-black transition-transform hover:-translate-y-0.5 ${
+                    activeTabIndex === index
+                      ? "bg-neo-pink shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                      : "bg-white hover:bg-neo-blue"
                   }`}
                 >
                   {tab.name}
@@ -51,25 +55,24 @@ const CodeBlock = ({ code, language = "tsx", tabs }: CodeBlockProps) => {
               ))}
             </div>
           ) : (
-            <div className="flex items-center gap-2">
-              <Terminal size={14} className="text-zinc-400" />
-              <span className="text-xs font-medium text-zinc-400 lowercase tracking-wide">{activeLanguage}</span>
+            <div className="flex items-center gap-2 border-2 border-black bg-white px-3 py-1 text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              <Terminal size={14} />
+              <span className="text-xs font-black uppercase tracking-wide">{activeLanguage}</span>
             </div>
           )}
         </div>
         <button
           onClick={copyToClipboard}
-          className="flex items-center justify-center w-8 h-8 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors shrink-0 ml-4"
+          className="ml-4 flex h-9 w-9 shrink-0 items-center justify-center border-2 border-black bg-white text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-0.5 hover:bg-neo-green active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
           title="Copy code"
         >
-          {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
+          {copied ? <Check size={16} /> : <Copy size={16} />}
         </button>
       </div>
-      
-      {/* Code Area */}
-      <div className="p-4 overflow-x-auto w-full bg-zinc-950">
+
+      <div className="w-full overflow-x-auto bg-zinc-950 p-4">
         <pre className="m-0">
-          <code className="text-[13px] font-mono text-zinc-300 leading-relaxed whitespace-pre">
+          <code className="whitespace-pre font-mono text-[13px] leading-relaxed text-zinc-100">
             {activeCode}
           </code>
         </pre>
