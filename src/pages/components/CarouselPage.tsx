@@ -46,7 +46,7 @@ const CarouselPage: React.FC = () => {
     });
   };
 
-  const allExamplesCode = `import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+  const allExamplesCode = `import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@prem_gaikwad/easeui"
 
 export function App() {
   return (
@@ -166,10 +166,10 @@ export function App() {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"`}</code>
+} from "@prem_gaikwad/easeui"`}</code>
             </pre>
             <button
-              onClick={() => copyToClipboard(`import {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from "@/components/ui/carousel"`, setCopiedImport)}
+              onClick={() => copyToClipboard(`import {\n  Carousel,\n  CarouselContent,\n  CarouselItem,\n  CarouselNext,\n  CarouselPrevious,\n} from "@prem_gaikwad/easeui"`, setCopiedImport)}
               className="absolute top-3 right-3 p-2 bg-white text-black border-[2px] border-black shadow-[2px_2px_0_0_rgba(0,0,0,1)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none transition-all"
             >
               {copiedImport ? <Check size={16} className="text-neo-green" /> : <Copy size={16} />}
