@@ -1,11 +1,11 @@
 export const customTooltipCodes: Record<string, { react: string, html?: string, vue?: string }> = {
   "TooltipDemo": {
-    react: `import { Button } from "@/components/ui/button"
+    react: `import { Button } from "@prem_gaikwad/easeui"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@prem_gaikwad/easeui"
 
 export function TooltipDemo() {
   return (
@@ -20,12 +20,12 @@ export function TooltipDemo() {
 `,
   },
   "TooltipSides": {
-    react: `import { Button } from "@/components/ui/button"
+    react: `import { Button } from "@prem_gaikwad/easeui"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@prem_gaikwad/easeui"
 
 export function TooltipSides() {
   return (
@@ -46,13 +46,13 @@ export function TooltipSides() {
   "TooltipKeyboard": {
     react: `import { SaveIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Kbd } from "@/components/ui/kbd"
+import { Button } from "@prem_gaikwad/easeui"
+import { Kbd } from "@prem_gaikwad/easeui"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@prem_gaikwad/easeui"
 
 export function TooltipKeyboard() {
   return (
@@ -67,12 +67,12 @@ export function TooltipKeyboard() {
 `,
   },
   "TooltipDisabled": {
-    react: `import { Button } from "@/components/ui/button"
+    react: `import { Button } from "@prem_gaikwad/easeui"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@prem_gaikwad/easeui"
 
 export function TooltipDisabled() {
   return (
@@ -97,12 +97,12 @@ import {
   useTranslation,
   type Translations,
 } from "@/components/language-selector"
-import { Button } from "@/components/ui/button"
+import { Button } from "@prem_gaikwad/easeui"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@prem_gaikwad/easeui"
 
 const translations: Translations = {
   en: {
