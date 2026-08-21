@@ -34,14 +34,18 @@ const Navbar = () => {
             EaseUi<span className="text-neo-pink">.</span>
           </h1>
 
-          <div className="hidden md:flex items-center bg-white dark:bg-zinc-800 px-3 py-2 neo-box">
+          <button 
+            onClick={() => window.dispatchEvent(new Event("open-search"))}
+            className="hidden md:flex items-center bg-white dark:bg-zinc-800 px-3 py-2 neo-box cursor-pointer group"
+          >
             <Search size={20} className="text-black dark:text-white" />
-            <input
-              type="text"
-              placeholder="Search components"
-              className="ml-2 bg-transparent outline-none text-base font-bold placeholder-gray-500 dark:text-white w-full"
-            />
-          </div>
+            <span className="ml-2 text-gray-500 dark:text-gray-400 font-bold text-base w-32 text-left">
+              Search...
+            </span>
+            <kbd className="ml-auto pointer-events-none inline-flex h-6 select-none items-center gap-1 rounded border-2 border-black bg-neo-yellow px-1.5 font-mono text-[11px] font-black text-black opacity-100 group-hover:scale-105 transition-transform">
+              <span className="text-xs">⌘</span>K
+            </kbd>
+          </button>
         </div>
 
         <ul className="hidden md:flex items-center gap-8 font-bold text-lg">
@@ -120,14 +124,18 @@ const Navbar = () => {
           </button>
         </div>
         <div className="flex-1 flex flex-col p-6 gap-6 bg-neo-bg dark:bg-zinc-900">
-          <div className="flex items-center bg-white dark:bg-zinc-800 px-3 py-3 neo-box w-full mb-4">
+          <button 
+            onClick={() => {
+              setMobileMenuOpen(false);
+              window.dispatchEvent(new Event("open-search"));
+            }}
+            className="flex items-center bg-white dark:bg-zinc-800 px-3 py-3 neo-box w-full mb-4 cursor-pointer"
+          >
             <Search size={20} className="text-black dark:text-white" />
-            <input
-              type="text"
-              placeholder="Search components"
-              className="ml-2 bg-transparent outline-none text-base font-bold placeholder-gray-500 dark:text-white w-full"
-            />
-          </div>
+            <span className="ml-2 text-gray-500 dark:text-gray-400 font-bold text-base w-full text-left">
+              Search components...
+            </span>
+          </button>
           
           <ul className="flex flex-col gap-4 font-black text-3xl font-comic">
             <li

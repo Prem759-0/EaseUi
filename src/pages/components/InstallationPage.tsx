@@ -1,5 +1,53 @@
-import { Terminal, Copy, Check, Package, Zap } from "lucide-react";
+import { Terminal, Copy, Check, Package, Zap, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
+import CodeBlock from "@/components/Personal/CodeBlock";
+
+const tailwindConfigCode = `/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: ["class"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}`;
+
+const indexCssCode = `@tailwind base;
+@tailwind components;
+@tailwind utilities;`;
+
+const fontCode = `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">`;
+
+const tsconfigCode = `{
+  "compilerOptions": {
+    // ... other options
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/libs/*": ["./src/libs/*"]
+    }
+  }
+}`;
+
+const viteConfigCode = `import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from "path"
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})`;
 
 const InstallationPage = () => {
   const [copied, setCopied] = useState<string | null>(null);
@@ -12,7 +60,7 @@ const InstallationPage = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 pb-20 animate-fadeIn">
+    <div className="flex flex-col gap-8 pb-32 animate-fadeIn">
       {/* Header */}
       <div>
         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight mb-4 text-black dark:text-white drop-shadow-[2px_2px_0_rgba(0,0,0,0.1)] dark:drop-shadow-[2px_2px_0_rgba(255,255,255,0.2)]">
@@ -35,11 +83,110 @@ const InstallationPage = () => {
         </div>
       </div>
 
-      {/* Step 1: Init */}
+      {/* Step 1: Create Project */}
       <div className="flex flex-col gap-4 mt-4">
         <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
           <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
             1
+          </span>
+          Create a new project
+        </h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          Start by creating a new React project using Vite. If you already have a project, you can skip this step.
+        </p>
+
+        <CodeBlock
+          language="bash"
+          code="npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install"
+        />
+      </div>
+
+      <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
+
+      {/* Step 2: Tailwind CSS */}
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
+          <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
+            2
+          </span>
+          Install Tailwind CSS
+        </h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          EaseUI components are styled using Tailwind CSS. Install it and its peer dependencies.
+        </p>
+
+        <CodeBlock
+          language="bash"
+          code="npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p"
+        />
+
+        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
+          Add your template paths to <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tailwind.config.js</code>. We also highly recommend adding <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">darkMode: ["class"]</code> to support our dark mode components:
+        </p>
+        <CodeBlock language="javascript" code={tailwindConfigCode} />
+
+        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
+          Add the Tailwind directives to your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">src/index.css</code> file:
+        </p>
+        <CodeBlock language="css" code={indexCssCode} />
+      </div>
+
+      <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
+
+      {/* Step 3: Typography */}
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
+          <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
+            3
+          </span>
+          Setup Typography
+        </h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          Neo-Brutalist design relies on strong typography. We highly recommend using a thick geometric font like <b>Space Grotesk</b> or <b>Archivo</b>.
+        </p>
+
+        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
+          Add the following to the <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">&lt;head&gt;</code> of your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">index.html</code>:
+        </p>
+        <CodeBlock language="html" code={fontCode} />
+      </div>
+
+      <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
+
+      {/* Step 4: Path Aliases */}
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
+          <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
+            4
+          </span>
+          Configure Path Aliases
+        </h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          EaseUI uses absolute paths like <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">@/components</code> to ensure imports never break.
+        </p>
+
+        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
+          First, configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tsconfig.json</code>:
+        </p>
+        <CodeBlock language="json" code={tsconfigCode} />
+
+        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
+          Next, install Node types and configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">vite.config.ts</code>:
+        </p>
+        <CodeBlock language="bash" code="npm install -D @types/node" />
+        <CodeBlock language="typescript" code={viteConfigCode} />
+      </div>
+
+      <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
+
+      {/* Step 5: Init */}
+      <div className="flex flex-col gap-4 mt-4">
+        <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
+          <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
+            5
           </span>
           Initialize the CLI
         </h2>
@@ -64,11 +211,11 @@ const InstallationPage = () => {
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
 
-      {/* Step 2: Add Components */}
+      {/* Step 6: Add Components */}
       <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
           <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
-            2
+            6
           </span>
           Add Components
         </h2>
@@ -90,8 +237,8 @@ const InstallationPage = () => {
           </button>
         </div>
       </div>
-      
-      {/* Step 3: Add All */}
+
+      {/* Step 7: Add All */}
       <div className="neo-box bg-neo-pink text-black p-6 mt-6 border-4 border-black">
         <h3 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2 mb-3">
           <Package className="shrink-0" size={28} />
@@ -115,20 +262,29 @@ const InstallationPage = () => {
           </button>
         </div>
       </div>
-      
-      <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
+
+      <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-8" />
 
       {/* Done */}
       <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
           <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
-            3
+            8
           </span>
           That's it!
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
           You can now start using the components in your application. Because the source code is downloaded directly into your project, you have complete control to customize and tweak the components to match your exact design requirements.
         </p>
+
+        {/* Call to Action */}
+        <Link
+          to="/components/button"
+          className="group inline-flex items-center gap-3 bg-neo-yellow text-black font-black uppercase tracking-wider px-8 py-4 border-4 border-black rounded-full shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-[6px_6px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all w-max mt-6 text-lg"
+        >
+          Browse Components
+          <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
 
     </div>

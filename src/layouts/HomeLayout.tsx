@@ -1,5 +1,6 @@
 import { Outlet } from "react-router";
 import Navbar from "../components/Personal/Navbar";
+import { CommandMenu } from "../components/Personal/CommandMenu";
 
 type Props = {};
 
@@ -13,6 +14,8 @@ const HomeLayout = ({ }: Props) => {
       <main className="flex-grow">
         <Outlet />
       </main>
+      
+      <CommandMenu />
     </div>
   );
 };

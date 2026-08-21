@@ -11,6 +11,10 @@ import NavbarPage from "../pages/components/NavbarPage";
 import TooltipPage from "../pages/components/TooltipPage";
 import InstallationPage from "@/pages/components/InstallationPage";
 import CarouselPage from "@/pages/components/CarouselPage";
+import IntroductionPage from "@/pages/components/IntroductionPage";
+import ThemingPage from "@/pages/components/ThemingPage";
+import CliPage from "@/pages/components/CliPage";
+import ChangelogPage from "@/pages/components/ChangelogPage";
 
 type Props = {};
 
@@ -33,8 +37,24 @@ const AppRouter = ({}: Props) => {
           element: <ComponentLayout />,
           children: [
             {
+              path: "introduction",
+              element: <IntroductionPage />,
+            },
+            {
               path: "installation",
               element: <InstallationPage />,
+            },
+            {
+              path: "theming",
+              element: <ThemingPage />,
+            },
+            {
+              path: "cli",
+              element: <CliPage />,
+            },
+            {
+              path: "changelog",
+              element: <ChangelogPage />,
             },
             {
               path: "button",

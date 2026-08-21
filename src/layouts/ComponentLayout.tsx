@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { Menu, X, Search } from "lucide-react";
 import gsap from "gsap";
+import { componentGroups } from "@/config/docs";
 
 type Props = {};
 
@@ -20,28 +21,7 @@ const ComponentLayout = ({ }: Props) => {
     );
   }, []);
 
-  const componentGroups = [
-    {
-      name: "Getting Started",
-      items: ["Installation"],
-    },
-    {
-      name: "Elements",
-      items: ["Button", "Card", "Input"],
-    },
-    {
-      name: "Overlays",
-      items: ["Modal", "Tooltip"],
-    },
-    {
-      name: "Navigation & Data",
-      items: ["Navbar", "Carousel"],
-    },
-    {
-      name: "Layout",
-      items: ["Layout"],
-    }
-  ];
+
 
   return (
     <div className="flex min-h-[calc(100vh-5rem)] relative">
@@ -75,15 +55,22 @@ const ComponentLayout = ({ }: Props) => {
           </button>
         </div>
 
-        {/* Fake Search UI */}
-        <div className="mb-6 neo-box-no-hover bg-white dark:bg-zinc-800 border-[3px] border-black dark:border-white flex items-center px-3 py-2">
+        {/* Search UI */}
+        <button 
+          onClick={() => {
+            setSidebarOpen(false);
+            window.dispatchEvent(new Event("open-search"));
+          }}
+          className="mb-6 neo-box-no-hover bg-white dark:bg-zinc-800 border-[3px] border-black dark:border-white flex items-center px-3 py-2 cursor-pointer group"
+        >
           <Search size={18} className="text-gray-500" />
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full bg-transparent outline-none ml-2 font-bold text-sm text-black dark:text-white"
-          />
-        </div>
+          <span className="w-full bg-transparent outline-none ml-2 font-bold text-sm text-gray-500 dark:text-gray-400 text-left">
+            Search...
+          </span>
+          <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border-2 border-black bg-neo-yellow px-1 font-mono text-[10px] font-black text-black opacity-100 group-hover:scale-105 transition-transform">
+            <span className="text-[10px]">⌘</span>K
+          </kbd>
+        </button>
 
         <div className="flex flex-col gap-8 pb-10">
           {componentGroups.map((group, gIdx) => (
