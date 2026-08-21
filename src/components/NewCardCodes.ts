@@ -1,7 +1,7 @@
 export const CardImageTabs = [
-  { name: 'React', language: 'tsx', code: `import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+  { name: 'React', language: 'tsx', code: `import { Badge } from "@prem_gaikwad/easeui"
+import { Button } from "@prem_gaikwad/easeui"
+import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@prem_gaikwad/easeui"
 
 export function CardImage() {
   return (
@@ -31,8 +31,8 @@ export function CardImage() {
 ];
 
 export const CardEdgeToEdgeTabs = [
-  { name: 'React', language: 'tsx', code: `import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+  { name: 'React', language: 'tsx', code: `import { Button } from "@prem_gaikwad/easeui"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@prem_gaikwad/easeui"
 
 export function CardEdgeToEdge() {
   return (
@@ -75,11 +75,11 @@ export function CardEdgeToEdge() {
 
 export const CardSpacingTabs = [
   { name: 'React', language: 'tsx', code: `import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Button } from "@prem_gaikwad/easeui"
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@prem_gaikwad/easeui"
+import { Input } from "@prem_gaikwad/easeui"
+import { Label } from "@prem_gaikwad/easeui"
+import { ToggleGroup, ToggleGroupItem } from "@prem_gaikwad/easeui"
 
 const spacingOptions = [
   { className: "[--card-spacing:--spacing(4)]", label: "16px", value: "4" },
@@ -154,8 +154,8 @@ export function CardSpacing() {
 
 export const CardSmallTabs = [
   { name: 'React', language: 'tsx', code: `import { ChevronRightIcon } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@prem_gaikwad/easeui"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@prem_gaikwad/easeui"
 
 export function CardSmall() {
   const featureName = "Scheduled reports"
@@ -198,10 +198,10 @@ export function CardSmall() {
 ];
 
 export const CardDemoTabs = [
-  { name: 'React', language: 'tsx', code: `import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+  { name: 'React', language: 'tsx', code: `import { Button } from "@prem_gaikwad/easeui"
+import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@prem_gaikwad/easeui"
+import { Input } from "@prem_gaikwad/easeui"
+import { Label } from "@prem_gaikwad/easeui"
 
 export function CardDemo() {
   return (

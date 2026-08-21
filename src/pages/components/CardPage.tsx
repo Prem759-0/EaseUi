@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import { Card } from "@/components/Card/Card";
 import ComponentDemo from "../ComponentsDemo";
 import PropsTable from "@/components/Personal/PropsTable";
-import { Button } from "@/components";
+import { Button } from "@/components/Button/Button";
 import * as CardDemos from "@/components/CardDemos";
 import * as NewCardCodes from "@/components/NewCardCodes";
 
@@ -38,8 +38,8 @@ const CardPage = () => {
     );
   }, []);
 
-  const reactCodeDark = `import { Card } from "@/components/Card/Card";
-import { Button } from "@/components/Button/Button";
+  const reactCodeDark = `import { Card } from "@prem_gaikwad/easeui";
+import { Button } from "@prem_gaikwad/easeui";
 
 export default function App() {
   return (
@@ -79,8 +79,8 @@ export default function App() {
     { name: "HTML", language: "html", code: htmlCodeDark }
   ];
 
-  const reactCodeOutline = `import { Card } from "@/components/Card/Card";
-import { Button } from "@/components/Button/Button";
+  const reactCodeOutline = `import { Card } from "@prem_gaikwad/easeui";
+import { Button } from "@prem_gaikwad/easeui";
 
 export default function App() {
   return (
@@ -120,8 +120,8 @@ export default function App() {
     { name: "HTML", language: "html", code: htmlCodeOutline }
   ];
 
-  const reactCodeLight = `import { Card } from "@/components/Card/Card";
-import { Button } from "@/components/Button/Button";
+  const reactCodeLight = `import { Card } from "@prem_gaikwad/easeui";
+import { Button } from "@prem_gaikwad/easeui";
 
 export default function App() {
   return (
@@ -244,7 +244,7 @@ export default function App() {
               <button onClick={() => navigate("/components/button")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                 <ChevronLeft size={20} />
               </button>
-              <button onClick={() => navigate("/components/badge")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+              <button onClick={() => navigate("/components/modal")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                 <ChevronRight size={20} />
               </button>
             </div>
@@ -335,10 +335,10 @@ export default function App() {
         <div className="space-y-4">
           <div className="bg-[#0d1117] text-white p-5 font-mono text-sm border-4 border-black dark:border-zinc-700 rounded-xl flex justify-between items-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-none hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all">
              <span className="overflow-x-auto">
-               <span className="text-neo-pink">import</span> {'{'} Card {'}'} <span className="text-neo-pink">from</span> <span className="text-neo-yellow">"@/components/ui/card"</span>
+               <span className="text-neo-pink">import</span> {'{'} Card {'}'} <span className="text-neo-pink">from</span> <span className="text-neo-yellow">"@prem_gaikwad/easeui"</span>
              </span>
              <button 
-               onClick={() => copyToClipboard('import { Card } from "@/components/ui/card"', setCopiedImport)}
+               onClick={() => copyToClipboard('import { Card } from "@prem_gaikwad/easeui"', setCopiedImport)}
                className="text-gray-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 p-2 rounded-lg border border-zinc-600 transition-colors ml-4" 
                title="Copy"
              >
