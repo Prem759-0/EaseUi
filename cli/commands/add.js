@@ -7,6 +7,23 @@ import { execSync } from 'child_process';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+async function copyAndReplaceAliases(src, dest, relativeLibsPath) {
+  const stat = await fs.stat(src);
+  if (stat.isDirectory()) {
+    await fs.mkdir(dest, { recursive: true });
+    const items = await fs.readdir(src);
+    for (const item of items) {
+      await copyAndReplaceAliases(path.join(src, item), path.join(dest, item), relativeLibsPath);
+    }
+  } else if (stat.isFile() && (src.endsWith('.tsx') || src.endsWith('.ts'))) {
+    let componentCode = await fs.readFile(src, 'utf-8');
+    componentCode = componentCode.replace(/@\/libs?[\/]/g, `@/${relativeLibsPath}/`);
+    await fs.writeFile(dest, componentCode);
+  } else if (stat.isFile()) {
+    await fs.copyFile(src, dest);
+  }
+}
+
 export async function addCommand(componentName) {
   if (!componentName) {
     console.log(pc.red('Please specify a component name. Example: npx easeui add button'));
@@ -38,18 +55,27 @@ export async function addCommand(componentName) {
       
       for (const item of items) {
         if (item.isDirectory() && item.name !== 'Personal') {
-          // Recursive copy
+          // Recursive copy with alias replacement
           const srcPath = path.join(sourceComponentsDir, item.name);
           const destPath = path.join(cwd, config.components, item.name);
           
-          await fs.cp(srcPath, destPath, { recursive: true });
+          const relativeLibsPath = config.libs.startsWith('src/') ? config.libs.slice(4) : config.libs;
+          await copyAndReplaceAliases(srcPath, destPath, relativeLibsPath);
+          installedCount++;
+          console.log(pc.green(`✔ Added ${pc.bold(item.name)}`));
+        } else if (item.isFile() && (item.name.endsWith('.tsx') || item.name.endsWith('.ts'))) {
+          const srcPath = path.join(sourceComponentsDir, item.name);
+          const destPath = path.join(cwd, config.components, item.name);
+          
+          const relativeLibsPath = config.libs.startsWith('src/') ? config.libs.slice(4) : config.libs;
+          await copyAndReplaceAliases(srcPath, destPath, relativeLibsPath);
           installedCount++;
           console.log(pc.green(`✔ Added ${pc.bold(item.name)}`));
         }
       }
       
-      console.log(pc.cyan(`→ Installing @radix-ui/react-slot...`));
-      execSync(`npm install @radix-ui/react-slot`, { stdio: 'inherit' });
+      console.log(pc.cyan(`→ Installing required dependencies...`));
+      execSync(`npm install @radix-ui/react-slot @radix-ui/react-dropdown-menu @radix-ui/react-label @radix-ui/react-toggle @radix-ui/react-toggle-group @base-ui/react react-aria-components lucide-react`, { stdio: 'inherit' });
       
       console.log(pc.green(`\n✨ Successfully installed ${installedCount} components!`));
       return;
@@ -64,21 +90,31 @@ export async function addCommand(componentName) {
   const targetComponentsDir = path.join(cwd, config.components, nameCapitalized);
   await fs.mkdir(targetComponentsDir, { recursive: true });
 
-  const sourceComponentFile = path.resolve(__dirname, `../../src/components/${nameCapitalized}/${nameCapitalized}.tsx`);
-  const destComponentFile = path.join(targetComponentsDir, `${nameCapitalized}.tsx`);
+  const sourceComponentDir = path.resolve(__dirname, `../../src/components/${nameCapitalized}`);
 
   try {
-    let componentCode = await fs.readFile(sourceComponentFile, 'utf-8');
-    
     const relativeLibsPath = config.libs.startsWith('src/') ? config.libs.slice(4) : config.libs;
-    componentCode = componentCode.replace(/@\/libs\//g, `@/${relativeLibsPath}/`);
-
-    await fs.writeFile(destComponentFile, componentCode);
+    await copyAndReplaceAliases(sourceComponentDir, targetComponentsDir, relativeLibsPath);
     console.log(pc.green(`✔ Added ${pc.bold(nameCapitalized)} component to ${config.components}/${nameCapitalized}`));
 
-    if (componentName.toLowerCase() === 'button') {
-      console.log(pc.cyan(`→ Installing @radix-ui/react-slot for Button...`));
-      execSync(`npm install @radix-ui/react-slot`, { stdio: 'inherit' });
+    // Helper map for component dependencies
+    const componentDependencies = {
+      'button': ['@radix-ui/react-slot', 'react-aria-components'],
+      'tooltip': ['@base-ui/react'],
+      'dropdown-menu': ['@radix-ui/react-dropdown-menu'],
+      'label': ['@radix-ui/react-label'],
+      'toggle': ['@radix-ui/react-toggle'],
+      'toggle-group': ['@radix-ui/react-toggle-group'],
+      'card': ['@radix-ui/react-slot'],
+      'modal': ['@radix-ui/react-slot'],
+      'navbar': ['@radix-ui/react-slot'],
+      'input': ['lucide-react']
+    };
+
+    const deps = componentDependencies[componentName.toLowerCase()];
+    if (deps && deps.length > 0) {
+      console.log(pc.cyan(`→ Installing dependencies for ${nameCapitalized}: ${deps.join(', ')}...`));
+      execSync(`npm install ${deps.join(' ')}`, { stdio: 'inherit' });
     }
 
   } catch (error) {
