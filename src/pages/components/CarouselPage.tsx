@@ -88,7 +88,7 @@ export function App() {
               <button onClick={() => navigate("/components/navbar")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                 <ChevronLeft size={20} />
               </button>
-              <button onClick={() => navigate("/components/layout")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+              <button onClick={() => navigate("/components/card")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                 <ChevronRight size={20} />
               </button>
             </div>

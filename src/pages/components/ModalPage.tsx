@@ -39,8 +39,8 @@ const ModalPage = () => {
   }, []);
 
   const reactCode = `import { useState } from "react";
-import { Button } from "@/components/Button/Button";
-import { Modal } from "@/components/Modal/Modal";
+import { Button } from "@prem_gaikwad/easeui";
+import { Modal } from "@prem_gaikwad/easeui";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -210,10 +210,10 @@ export default function App() {
         <div className="space-y-4">
           <div className="bg-[#0d1117] text-white p-5 font-mono text-sm border-4 border-black dark:border-zinc-700 rounded-xl flex justify-between items-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-none hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all">
              <span className="overflow-x-auto">
-               <span className="text-neo-pink">import</span> {'{'} Modal {'}'} <span className="text-neo-pink">from</span> <span className="text-neo-yellow">"@/components/ui/modal"</span>
+               <span className="text-neo-pink">import</span> {'{'} Modal {'}'} <span className="text-neo-pink">from</span> <span className="text-neo-yellow">"@prem_gaikwad/easeui"</span>
              </span>
              <button 
-               onClick={() => copyToClipboard('import { Modal } from "@/components/ui/modal"', setCopiedImport)}
+               onClick={() => copyToClipboard('import { Modal } from "@prem_gaikwad/easeui"', setCopiedImport)}
                className="text-gray-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 p-2 rounded-lg border border-zinc-600 transition-colors ml-4" 
                title="Copy"
              >

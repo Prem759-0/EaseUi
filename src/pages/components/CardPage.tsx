@@ -38,8 +38,8 @@ const CardPage = () => {
     );
   }, []);
 
-  const reactCodeDark = `import { Card } from "@/components/Card/Card";
-import { Button } from "@/components/Button/Button";
+  const reactCodeDark = `import { Card } from "@prem_gaikwad/easeui";
+import { Button } from "@prem_gaikwad/easeui";
 
 export default function App() {
   return (
@@ -79,8 +79,8 @@ export default function App() {
     { name: "HTML", language: "html", code: htmlCodeDark }
   ];
 
-  const reactCodeOutline = `import { Card } from "@/components/Card/Card";
-import { Button } from "@/components/Button/Button";
+  const reactCodeOutline = `import { Card } from "@prem_gaikwad/easeui";
+import { Button } from "@prem_gaikwad/easeui";
 
 export default function App() {
   return (
@@ -120,8 +120,8 @@ export default function App() {
     { name: "HTML", language: "html", code: htmlCodeOutline }
   ];
 
-  const reactCodeLight = `import { Card } from "@/components/Card/Card";
-import { Button } from "@/components/Button/Button";
+  const reactCodeLight = `import { Card } from "@prem_gaikwad/easeui";
+import { Button } from "@prem_gaikwad/easeui";
 
 export default function App() {
   return (
@@ -244,7 +244,7 @@ export default function App() {
               <button onClick={() => navigate("/components/button")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                 <ChevronLeft size={20} />
               </button>
-              <button onClick={() => navigate("/components/badge")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
+              <button onClick={() => navigate("/components/modal")} className="neo-box bg-white text-black p-2 border-2 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:-translate-y-1 transition-all">
                 <ChevronRight size={20} />
               </button>
             </div>
