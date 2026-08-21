@@ -34,7 +34,7 @@ const Navbar = () => {
             EaseUi<span className="text-neo-pink">.</span>
           </h1>
 
-          <button 
+          <button
             onClick={() => window.dispatchEvent(new Event("open-search"))}
             className="hidden md:flex items-center bg-white dark:bg-zinc-800 px-3 py-2 neo-box cursor-pointer group"
           >
@@ -67,16 +67,16 @@ const Navbar = () => {
             Templates
             <span className="absolute -bottom-1 left-0 w-0 h-1 bg-neo-green transition-all group-hover:w-full"></span>
           </li>
-          
+
           <li className="ml-4 flex items-center gap-4">
-            <a 
-              href="https://github.com/Prem759-0/EaseUi.git" 
-              target="_blank" 
+            <a
+              href="https://github.com/Prem759-0/EaseUi.git"
+              target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 neo-box bg-white dark:bg-zinc-800 px-3 py-1.5 hover:bg-neo-pink dark:hover:bg-neo-pink transition-colors text-black dark:text-white dark:hover:text-black group"
             >
               <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="group-hover:rotate-12 transition-transform"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-              Star 
+              Star
               <span className="bg-neo-yellow text-black px-1.5 py-0.5 text-sm font-black border-l-2 border-black -my-1 -mr-2 ml-1">
                 1.2k
               </span>
@@ -99,7 +99,7 @@ const Navbar = () => {
           >
             {mode === "dark" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <button 
+          <button
             className="text-black neo-box p-1.5 bg-neo-green"
             onClick={() => setMobileMenuOpen(true)}
           >
@@ -109,14 +109,14 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 bg-neo-blue z-[100] border-b-[4px] border-black transition-transform duration-300 transform ${mobileMenuOpen ? "translate-y-0" : "-translate-y-full"} md:hidden flex flex-col`}
       >
         <div className="h-20 w-full flex items-center justify-between px-4 border-b-[3px] border-black bg-white dark:bg-zinc-900">
           <h1 className="font-comic font-bold text-2xl">
             EaseUi<span className="text-neo-pink">.</span>
           </h1>
-          <button 
+          <button
             className="neo-box p-1.5 bg-neo-red text-black"
             onClick={() => setMobileMenuOpen(false)}
           >
@@ -124,7 +124,7 @@ const Navbar = () => {
           </button>
         </div>
         <div className="flex-1 flex flex-col p-6 gap-6 bg-neo-bg dark:bg-zinc-900">
-          <button 
+          <button
             onClick={() => {
               setMobileMenuOpen(false);
               window.dispatchEvent(new Event("open-search"));
@@ -136,7 +136,7 @@ const Navbar = () => {
               Search components...
             </span>
           </button>
-          
+
           <ul className="flex flex-col gap-4 font-black text-3xl font-comic">
             <li
               onClick={() => {
@@ -158,9 +158,9 @@ const Navbar = () => {
           </ul>
 
           <div className="mt-auto pb-4">
-            <a 
-              href="https://github.com/Prem759-0/EaseUi.git" 
-              target="_blank" 
+            <a
+              href="https://github.com/Prem759-0/EaseUi.git"
+              target="_blank"
               rel="noreferrer"
               className="flex items-center justify-center gap-2 neo-box bg-white dark:bg-zinc-800 px-6 py-4 text-black dark:text-white text-xl font-bold w-full"
             >
