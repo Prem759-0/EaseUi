@@ -163,7 +163,7 @@ npx @prem_gaikwad/easeui add all
     },
     {
       label: "Use",
-      code: `import { Button } from "@/components/Button";
+      code: `import { Button } from "@/components/Button/Button";
 
 function App() {
   return (
