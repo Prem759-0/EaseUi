@@ -1,5 +1,4 @@
-import { Terminal, Copy, Check, Package, Zap, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { Package, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import CodeBlock from "@/components/Personal/CodeBlock";
 
@@ -50,15 +49,6 @@ export default defineConfig({
 })`;
 
 const InstallationPage = () => {
-  const [copied, setCopied] = useState<string | null>(null);
-
-  const copyCommand = (command: string, id: string) => {
-    navigator.clipboard.writeText(command).then(() => {
-      setCopied(id);
-      setTimeout(() => setCopied(null), 2000);
-    });
-  };
-
   return (
     <div className="flex flex-col gap-8 pb-32 animate-fadeIn">
       {/* Header */}
@@ -97,6 +87,7 @@ const InstallationPage = () => {
 
         <CodeBlock
           language="bash"
+          variant="docs"
           code="npm create vite@latest my-app -- --template react-ts
 cd my-app
 npm install"
@@ -119,6 +110,7 @@ npm install"
 
         <CodeBlock
           language="bash"
+          variant="docs"
           code="npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p"
         />
@@ -126,12 +118,12 @@ npx tailwindcss init -p"
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Add your template paths to <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tailwind.config.js</code>. We also highly recommend adding <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">darkMode: ["class"]</code> to support our dark mode components:
         </p>
-        <CodeBlock language="javascript" code={tailwindConfigCode} />
+        <CodeBlock language="javascript" code={tailwindConfigCode} variant="docs" />
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Add the Tailwind directives to your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">src/index.css</code> file:
         </p>
-        <CodeBlock language="css" code={indexCssCode} />
+        <CodeBlock language="css" code={indexCssCode} variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -151,7 +143,7 @@ npx tailwindcss init -p"
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Add the following to the <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">&lt;head&gt;</code> of your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">index.html</code>:
         </p>
-        <CodeBlock language="html" code={fontCode} />
+        <CodeBlock language="html" code={fontCode} variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -171,13 +163,13 @@ npx tailwindcss init -p"
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           First, configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tsconfig.json</code>:
         </p>
-        <CodeBlock language="json" code={tsconfigCode} />
+        <CodeBlock language="json" code={tsconfigCode} variant="docs" />
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Next, install Node types and configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">vite.config.ts</code>:
         </p>
-        <CodeBlock language="bash" code="npm install -D @types/node" />
-        <CodeBlock language="typescript" code={viteConfigCode} />
+        <CodeBlock language="bash" code="npm install -D @types/node" variant="docs" />
+        <CodeBlock language="typescript" code={viteConfigCode} variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -194,19 +186,7 @@ npx tailwindcss init -p"
           Run the <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">init</code> command to setup your project. This will ask you where you want to save components, install necessary dependencies (like Tailwind-merge, clsx, and GSAP), copy over utility and animation files, and automatically inject the Neo-Brutalist CSS tokens into your global stylesheet.
         </p>
 
-        <div className="neo-box-no-hover bg-black text-white p-4 font-mono text-sm sm:text-base flex justify-between items-center group relative overflow-hidden">
-          <div className="flex items-center gap-3 relative z-10">
-            <Terminal size={18} className="text-neo-pink" />
-            <span className="text-gray-300">npx <span className="text-white font-bold">@prem_gaikwad/easeui@latest</span> init</span>
-          </div>
-          <button
-            onClick={() => copyCommand("npx @prem_gaikwad/easeui@latest init", "init")}
-            className="text-gray-400 hover:text-white transition-colors relative z-10 p-2 hover:bg-zinc-800 rounded-md"
-            aria-label="Copy code"
-          >
-            {copied === "init" ? <Check size={20} className="text-neo-green" /> : <Copy size={20} />}
-          </button>
-        </div>
+        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest init" variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -223,19 +203,7 @@ npx tailwindcss init -p"
           Add specific components to your project one-by-one. The CLI will download the source code and place it directly into your configured components folder.
         </p>
 
-        <div className="neo-box-no-hover bg-black text-white p-4 font-mono text-sm sm:text-base flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Terminal size={18} className="text-neo-blue" />
-            <span className="text-gray-300">npx <span className="text-white font-bold">@prem_gaikwad/easeui@latest</span> add button</span>
-          </div>
-          <button
-            onClick={() => copyCommand("npx @prem_gaikwad/easeui@latest add button", "add-btn")}
-            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-zinc-800 rounded-md"
-            aria-label="Copy code"
-          >
-            {copied === "add-btn" ? <Check size={20} className="text-neo-green" /> : <Copy size={20} />}
-          </button>
-        </div>
+        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add button" variant="docs" />
       </div>
 
       {/* Step 7: Add All */}
@@ -248,19 +216,7 @@ npx tailwindcss init -p"
           Don't want to add components one by one? You can instantly download the <b>entire library</b> at once by passing the <code className="bg-black text-white px-2 py-0.5 mx-1 font-mono">all</code> flag.
         </p>
 
-        <div className="neo-box-no-hover bg-white text-black p-4 font-mono text-sm sm:text-base flex justify-between items-center border-4 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)]">
-          <div className="flex items-center gap-3">
-            <Terminal size={18} className="text-black" />
-            <span>npx <span className="font-bold">@prem_gaikwad/easeui@latest</span> add all</span>
-          </div>
-          <button
-            onClick={() => copyCommand("npx @prem_gaikwad/easeui@latest add all", "add-all")}
-            className="text-gray-600 hover:text-black transition-colors p-2 hover:bg-gray-200 rounded-md"
-            aria-label="Copy code"
-          >
-            {copied === "add-all" ? <Check size={20} className="text-neo-green" /> : <Copy size={20} />}
-          </button>
-        </div>
+        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add all" variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-8" />
