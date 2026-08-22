@@ -2,22 +2,9 @@ import { Package, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import CodeBlock from "@/components/Personal/CodeBlock";
 
-const tailwindConfigCode = `/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: ["class"],
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}`;
+const indexCssCode = `@import "tailwindcss";
 
-const indexCssCode = `@tailwind base;
-@tailwind components;
-@tailwind utilities;`;
+@custom-variant dark (&:where(.dark, .dark *));`;
 
 const fontCode = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,10 +24,11 @@ const tsconfigCode = `{
 
 const viteConfigCode = `import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import path from "path"
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -105,23 +93,17 @@ npm install"
           Install Tailwind CSS
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-          EaseUI components are styled using Tailwind CSS. Install it and its peer dependencies.
+          EaseUI uses Tailwind CSS v4. Install the Vite integration—Tailwind v4 does not use the old <code>init -p</code> command or generate a <code>tailwind.config.js</code> file by default.
         </p>
 
         <CodeBlock
           language="bash"
           variant="docs"
-          code="npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p"
+          code="npm install tailwindcss @tailwindcss/vite"
         />
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
-          Add your template paths to <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tailwind.config.js</code>. We also highly recommend adding <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">darkMode: ["class"]</code> to support our dark mode components:
-        </p>
-        <CodeBlock language="javascript" code={tailwindConfigCode} variant="docs" />
-
-        <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
-          Add the Tailwind directives to your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">src/index.css</code> file:
+          Add the Tailwind Vite plugin in <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">vite.config.ts</code>, then replace the contents of <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">src/index.css</code> with:
         </p>
         <CodeBlock language="css" code={indexCssCode} variant="docs" />
       </div>
@@ -166,7 +148,7 @@ npx tailwindcss init -p"
         <CodeBlock language="json" code={tsconfigCode} variant="docs" />
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
-          Next, install Node types and configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">vite.config.ts</code>:
+          Next, install Node types and configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">vite.config.ts</code>. This is also where the Tailwind Vite plugin is enabled:
         </p>
         <CodeBlock language="bash" code="npm install -D @types/node" variant="docs" />
         <CodeBlock language="typescript" code={viteConfigCode} variant="docs" />
@@ -204,6 +186,19 @@ npx tailwindcss init -p"
         </p>
 
         <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add button" variant="docs" />
+
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          Components are copied into your project, so import them from the folder you selected during initialization—not from <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">@prem_gaikwad/easeui</code>.
+        </p>
+        <CodeBlock
+          language="tsx"
+          variant="docs"
+          code={`import { Button } from "@/components/easeui/Button";
+
+export function ButtonDemo() {
+  return <Button variant="primary">Primary</Button>;
+}`}
+        />
       </div>
 
       {/* Step 7: Add All */}

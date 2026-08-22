@@ -22,35 +22,18 @@ npm install
 
 ### 2. Install Tailwind CSS
 
-EaseUI relies on Tailwind CSS for styling. Install Tailwind and its peer dependencies:
+EaseUI uses Tailwind CSS v4 with Vite. Do not run `npx tailwindcss init -p`: that command belongs to the Tailwind v3 workflow, so it does not create `tailwind.config.js` in Tailwind v4.
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+npm install tailwindcss @tailwindcss/vite
 ```
 
-Add your template paths to `tailwind.config.js`:
-
-```javascript
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
-
-Add the Tailwind directives to your global CSS file (e.g., `src/index.css`):
+Add the Tailwind import to your global CSS file (e.g., `src/index.css`):
 
 ```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 ```
 
 ### 3. Configure Path Aliases
@@ -80,10 +63,11 @@ You will need to install Node types first: `npm install -D @types/node`
 ```typescript
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import path from "path"
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -125,6 +109,16 @@ To add a specific component, run the `add` command followed by the component nam
 ```bash
 npx @prem_gaikwad/easeui@latest add button
 npx @prem_gaikwad/easeui@latest add modal
+```
+
+The CLI copies the source code into the component folder selected during initialization. With the default folder, import an added button like this (do not import it from `@prem_gaikwad/easeui`):
+
+```tsx
+import { Button } from "@/components/easeui/Button";
+
+export function ButtonDemo() {
+  return <Button variant="primary">Primary</Button>;
+}
 ```
 
 ### Adding all components
