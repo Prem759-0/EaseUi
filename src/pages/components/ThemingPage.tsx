@@ -67,7 +67,7 @@ const ThemingPage = () => {
         <p className="text-gray-700 dark:text-gray-300 font-medium mb-4">
           These tokens live in your CSS file under <code>:root</code> and <code>.dark</code>.
         </p>
-        <CodeBlock code={cssCode} language="css" showLineNumbers={false} />
+        <CodeBlock code={cssCode} language="css" showLineNumbers={false} variant="docs" />
       </div>
 
       {/* Adding New Tokens */}
