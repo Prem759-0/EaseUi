@@ -69,6 +69,15 @@ export async function initCommand() {
     await fs.copyFile(utilsSrc, utilsDest);
     console.log(pc.green(`✔ Copied utils.ts to ${pc.bold(response.libsPath)}`));
 
+    // UI primitives use the conventional @/lib/utils alias, so keep this
+    // companion utility at src/lib/utils.ts as well.
+    const sourceLibUtils = path.resolve(__dirname, '../../src/lib/utils.ts');
+    const projectSrcDir = path.join(cwd, 'src');
+    const libDestDir = path.join(projectSrcDir, 'lib');
+    await fs.mkdir(libDestDir, { recursive: true });
+    await fs.copyFile(sourceLibUtils, path.join(libDestDir, 'utils.ts'));
+    console.log(pc.green(`✔ Copied utils.ts to ${pc.bold('src/lib')}`));
+
     // Copy entranceAnimation.tsx
     const entranceSrc = path.join(sourceLibsDir, 'animations/entranceAnimation.tsx');
     const entranceDest = path.join(targetAnimationsDir, 'entranceAnimation.tsx');
