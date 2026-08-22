@@ -87,7 +87,7 @@ const InstallationPage = () => {
 
         <CodeBlock
           language="bash"
-          variant="light"
+          variant="docs"
           code="npm create vite@latest my-app -- --template react-ts
 cd my-app
 npm install"
@@ -110,7 +110,7 @@ npm install"
 
         <CodeBlock
           language="bash"
-          variant="light"
+          variant="docs"
           code="npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p"
         />
@@ -118,12 +118,12 @@ npx tailwindcss init -p"
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Add your template paths to <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tailwind.config.js</code>. We also highly recommend adding <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">darkMode: ["class"]</code> to support our dark mode components:
         </p>
-        <CodeBlock language="javascript" code={tailwindConfigCode} variant="light" />
+        <CodeBlock language="javascript" code={tailwindConfigCode} variant="docs" />
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Add the Tailwind directives to your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">src/index.css</code> file:
         </p>
-        <CodeBlock language="css" code={indexCssCode} variant="light" />
+        <CodeBlock language="css" code={indexCssCode} variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -143,7 +143,7 @@ npx tailwindcss init -p"
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Add the following to the <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">&lt;head&gt;</code> of your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">index.html</code>:
         </p>
-        <CodeBlock language="html" code={fontCode} variant="light" />
+        <CodeBlock language="html" code={fontCode} variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -163,13 +163,13 @@ npx tailwindcss init -p"
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           First, configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">tsconfig.json</code>:
         </p>
-        <CodeBlock language="json" code={tsconfigCode} variant="light" />
+        <CodeBlock language="json" code={tsconfigCode} variant="docs" />
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mt-2">
           Next, install Node types and configure your <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">vite.config.ts</code>:
         </p>
-        <CodeBlock language="bash" code="npm install -D @types/node" variant="light" />
-        <CodeBlock language="typescript" code={viteConfigCode} variant="light" />
+        <CodeBlock language="bash" code="npm install -D @types/node" variant="docs" />
+        <CodeBlock language="typescript" code={viteConfigCode} variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -186,7 +186,7 @@ npx tailwindcss init -p"
           Run the <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">init</code> command to setup your project. This will ask you where you want to save components, install necessary dependencies (like Tailwind-merge, clsx, and GSAP), copy over utility and animation files, and automatically inject the Neo-Brutalist CSS tokens into your global stylesheet.
         </p>
 
-        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest init" variant="light" />
+        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest init" variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-4" />
@@ -203,7 +203,7 @@ npx tailwindcss init -p"
           Add specific components to your project one-by-one. The CLI will download the source code and place it directly into your configured components folder.
         </p>
 
-        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add button" variant="light" />
+        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add button" variant="docs" />
       </div>
 
       {/* Step 7: Add All */}
@@ -216,7 +216,7 @@ npx tailwindcss init -p"
           Don't want to add components one by one? You can instantly download the <b>entire library</b> at once by passing the <code className="bg-black text-white px-2 py-0.5 mx-1 font-mono">all</code> flag.
         </p>
 
-        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add all" variant="light" />
+        <CodeBlock language="bash" code="npx @prem_gaikwad/easeui@latest add all" variant="docs" />
       </div>
 
       <hr className="border-t-[3px] border-dashed border-gray-300 dark:border-zinc-700 my-8" />
