@@ -67,7 +67,7 @@ const ButtonPage = () => {
     );
   }, []);
 
-  const reactCode = `import { Button } from "@prem_gaikwad/easeui"
+  const reactCode = `import { Button } from "@/components/easeui/Button"
 
 export default function App() {
   return (
@@ -101,7 +101,7 @@ export default function App() {
     { name: "HTML", language: "html", code: htmlCode }
   ];
 
-  const allExamplesCode = `import { Button } from "@prem_gaikwad/easeui"
+  const allExamplesCode = `import { Button } from "@/components/easeui/Button"
 import { ChevronRight } from "lucide-react"
 
 export function AllButtonExamples() {
@@ -280,10 +280,10 @@ export function AllButtonExamples() {
         <div className="space-y-4">
           <div className="bg-[#0d1117] text-white p-5 font-mono text-sm border-4 border-black dark:border-zinc-700 rounded-xl flex justify-between items-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-none hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all">
              <span className="overflow-x-auto">
-               <span className="text-neo-pink">import</span> {'{'} Button {'}'} <span className="text-neo-pink">from</span> <span className="text-neo-yellow">"@prem_gaikwad/easeui"</span>
+               <span className="text-neo-pink">import</span> {'{'} Button {'}'} <span className="text-neo-pink">from</span> <span className="text-neo-yellow">"@/components/easeui/Button"</span>
              </span>
              <button 
-               onClick={() => copyToClipboard('import { Button } from "@prem_gaikwad/easeui"', setCopiedImport)}
+               onClick={() => copyToClipboard('import { Button } from "@/components/easeui/Button"', setCopiedImport)}
                className="text-gray-400 hover:text-white bg-zinc-800 hover:bg-zinc-700 p-2 rounded-lg border border-zinc-600 transition-colors ml-4" 
                title="Copy"
              >
@@ -316,7 +316,7 @@ export function AllButtonExamples() {
         {/* Primary Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Primary</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\n\nexport function ButtonDemo() {\n  return <Button variant="primary">Primary</Button>\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\n\nexport function ButtonDemo() {\n  return <Button variant="primary">Primary</Button>\n}' }]}>
             <Button variant="primary">Primary</Button>
           </ComponentDemo>
         </div>
@@ -324,7 +324,7 @@ export function AllButtonExamples() {
         {/* Secondary Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Secondary</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\n\nexport function ButtonSecondary() {\n  return <Button variant="secondary">Secondary</Button>\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\n\nexport function ButtonSecondary() {\n  return <Button variant="secondary">Secondary</Button>\n}' }]}>
             <Button variant="secondary">Secondary</Button>
           </ComponentDemo>
         </div>
@@ -332,7 +332,7 @@ export function AllButtonExamples() {
         {/* Destructive Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Destructive</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\n\nexport function ButtonDestructive() {\n  return <Button variant="destructive">Destructive</Button>\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\n\nexport function ButtonDestructive() {\n  return <Button variant="destructive">Destructive</Button>\n}' }]}>
             <Button variant="destructive">Destructive</Button>
           </ComponentDemo>
         </div>
@@ -340,7 +340,7 @@ export function AllButtonExamples() {
         {/* Outline Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Outline</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\n\nexport function ButtonOutline() {\n  return <Button variant="outline">Outline</Button>\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\n\nexport function ButtonOutline() {\n  return <Button variant="outline">Outline</Button>\n}' }]}>
             <Button variant="outline">Outline</Button>
           </ComponentDemo>
         </div>
@@ -348,7 +348,7 @@ export function AllButtonExamples() {
         {/* Ghost Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Ghost</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\n\nexport function ButtonGhost() {\n  return <Button variant="ghost">Ghost</Button>\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\n\nexport function ButtonGhost() {\n  return <Button variant="ghost">Ghost</Button>\n}' }]}>
             <Button variant="ghost">Ghost</Button>
           </ComponentDemo>
         </div>
@@ -356,7 +356,7 @@ export function AllButtonExamples() {
         {/* Link Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Link</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\n\nexport function ButtonLink() {\n  return <Button variant="link">Link</Button>\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\n\nexport function ButtonLink() {\n  return <Button variant="link">Link</Button>\n}' }]}>
             <Button variant="link">Link</Button>
           </ComponentDemo>
         </div>
@@ -364,7 +364,7 @@ export function AllButtonExamples() {
         {/* Icon Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Icon</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\nimport { ChevronRight } from "lucide-react"\n\nexport function ButtonIcon() {\n  return (\n    <Button variant="outline" size="icon">\n      <ChevronRight size={24} />\n    </Button>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\nimport { ChevronRight } from "lucide-react"\n\nexport function ButtonIcon() {\n  return (\n    <Button variant="outline" size="icon">\n      <ChevronRight size={24} />\n    </Button>\n  )\n}' }]}>
             <Button variant="outline" size="icon">
               <ChevronRight size={24} />
             </Button>
@@ -374,7 +374,7 @@ export function AllButtonExamples() {
         {/* Sizes Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Sizes</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\nimport { ArrowUpRight } from "lucide-react"\n\nexport function ButtonSize() {\n  return (\n    <div className="flex flex-col items-start gap-4 sm:flex-row">\n      <div className="flex items-start gap-2">\n        <Button size="sm" variant="outline">Small</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n      <div className="flex items-start gap-2">\n        <Button variant="outline">Default</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n      <div className="flex items-start gap-2">\n        <Button size="lg" variant="outline">Large</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n      <div className="flex items-start gap-2">\n        <Button size="xl" variant="outline">Extra Large</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\nimport { ArrowUpRight } from "lucide-react"\n\nexport function ButtonSize() {\n  return (\n    <div className="flex flex-col items-start gap-4 sm:flex-row">\n      <div className="flex items-start gap-2">\n        <Button size="sm" variant="outline">Small</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n      <div className="flex items-start gap-2">\n        <Button variant="outline">Default</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n      <div className="flex items-start gap-2">\n        <Button size="lg" variant="outline">Large</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n      <div className="flex items-start gap-2">\n        <Button size="xl" variant="outline">Extra Large</Button>\n        <Button size="icon" variant="outline"><ArrowUpRight /></Button>\n      </div>\n    </div>\n  )\n}' }]}>
             <div className="flex flex-col items-center gap-4 sm:flex-row flex-wrap justify-center">
               <div className="flex items-center gap-2">
                 <Button size="sm" variant="outline">Small</Button>
@@ -399,7 +399,7 @@ export function AllButtonExamples() {
         {/* With Icon Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">With Icon</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\nimport { GitBranch, GitFork } from "lucide-react"\n\nexport function ButtonWithIcon() {\n  return (\n    <div className="flex gap-2">\n      <Button variant="outline">\n        <GitBranch /> New Branch\n      </Button>\n      <Button variant="outline">\n        Fork <GitFork />\n      </Button>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\nimport { GitBranch, GitFork } from "lucide-react"\n\nexport function ButtonWithIcon() {\n  return (\n    <div className="flex gap-2">\n      <Button variant="outline">\n        <GitBranch /> New Branch\n      </Button>\n      <Button variant="outline">\n        Fork <GitFork />\n      </Button>\n    </div>\n  )\n}' }]}>
             <div className="flex gap-4 justify-center">
               <Button variant="outline">
                 <GitBranch /> New Branch
@@ -414,7 +414,7 @@ export function AllButtonExamples() {
         {/* Rounded Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Rounded</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@prem_gaikwad/easeui"\nimport { ArrowUp } from "lucide-react"\n\nexport function ButtonRounded() {\n  return (\n    <div className="flex gap-2">\n      <Button className="rounded-full">Get Started</Button>\n      <Button variant="outline" size="icon" className="rounded-full">\n        <ArrowUp />\n      </Button>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { Button } from "@/components/easeui/Button"\nimport { ArrowUp } from "lucide-react"\n\nexport function ButtonRounded() {\n  return (\n    <div className="flex gap-2">\n      <Button className="rounded-full">Get Started</Button>\n      <Button variant="outline" size="icon" className="rounded-full">\n        <ArrowUp />\n      </Button>\n    </div>\n  )\n}' }]}>
             <div className="flex gap-4 justify-center">
               <Button className="rounded-full">Get Started</Button>
               <Button variant="outline" size="icon" className="rounded-full">
@@ -435,7 +435,7 @@ export function AllButtonExamples() {
         {/* Loading Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Loading State</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@prem_gaikwad/easeui"\nimport { Spinner } from "@prem_gaikwad/easeui"\n\nexport function ButtonLoading() {\n  return (\n    <div className="flex gap-2">\n      <BaseButton variant="outline" disabled>\n        <Spinner data-icon="inline-start" />\n        Generating\n      </BaseButton>\n      <BaseButton variant="secondary" disabled>\n        Downloading\n        <Spinner data-icon="inline-start" />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/Button"\nimport { Spinner } from "@/components/easeui/Button"\n\nexport function ButtonLoading() {\n  return (\n    <div className="flex gap-2">\n      <BaseButton variant="outline" disabled>\n        <Spinner data-icon="inline-start" />\n        Generating\n      </BaseButton>\n      <BaseButton variant="secondary" disabled>\n        Downloading\n        <Spinner data-icon="inline-start" />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
             <ButtonLoading />
           </ComponentDemo>
         </div>
@@ -443,7 +443,7 @@ export function AllButtonExamples() {
         {/* Icon Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Icon Example</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { ChevronLeft, ChevronRight } from "lucide-react"\nimport { BaseButton } from "@prem_gaikwad/easeui"\n\nexport function ButtonIcon() {\n  return (\n    <div className="flex gap-4 justify-center">\n      <BaseButton variant="outline" size="icon">\n        <ChevronLeft />\n      </BaseButton>\n      <BaseButton variant="outline" size="icon">\n        <ChevronRight />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { ChevronLeft, ChevronRight } from "lucide-react"\nimport { BaseButton } from "@/components/easeui/Button"\n\nexport function ButtonIcon() {\n  return (\n    <div className="flex gap-4 justify-center">\n      <BaseButton variant="outline" size="icon">\n        <ChevronLeft />\n      </BaseButton>\n      <BaseButton variant="outline" size="icon">\n        <ChevronRight />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
             <BaseButtonIcon />
           </ComponentDemo>
         </div>
@@ -451,7 +451,7 @@ export function AllButtonExamples() {
         {/* Button Group Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Button Group</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@prem_gaikwad/easeui"\nimport { ButtonGroup } from "@prem_gaikwad/easeui"\nimport { DropdownMenu, ... } from "@prem_gaikwad/easeui"\n\nexport function ButtonGroupDemo() {\n  // (Implementation in source code)\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/Button"\nimport { ButtonGroup } from "@/components/easeui/Button"\nimport { DropdownMenu, ... } from "@/components/easeui/Button"\n\nexport function ButtonGroupDemo() {\n  // (Implementation in source code)\n}' }]}>
              <ButtonGroupDemo />
           </ComponentDemo>
         </div>
@@ -459,7 +459,7 @@ export function AllButtonExamples() {
         {/* As Link Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">As Link</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { baseButtonVariants } from "@prem_gaikwad/easeui"\n\nexport function ButtonRender() {\n  return (\n    <a\n      href="#"\n      className={baseButtonVariants({ variant: "secondary", size: "sm" })}\n    >\n      Login\n    </a>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { baseButtonVariants } from "@/components/easeui/Button"\n\nexport function ButtonRender() {\n  return (\n    <a\n      href="#"\n      className={baseButtonVariants({ variant: "secondary", size: "sm" })}\n    >\n      Login\n    </a>\n  )\n}' }]}>
             <div className="flex justify-center">
               <ButtonRender />
             </div>
@@ -469,7 +469,7 @@ export function AllButtonExamples() {
         {/* RTL Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">RTL Support</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@prem_gaikwad/easeui"\nimport { useTranslation } from "@/components/language-selector"\n\nexport function ButtonRtl() {\n  // (Implementation in source code)\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/Button"\nimport { useTranslation } from "@/components/language-selector"\n\nexport function ButtonRtl() {\n  // (Implementation in source code)\n}' }]}>
              <ButtonRtl />
           </ComponentDemo>
         </div>
