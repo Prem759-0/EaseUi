@@ -121,6 +121,24 @@ export function ButtonDemo() {
 }
 ```
 
+### Test your first component
+
+The component preview in this documentation site is already running with Tailwind CSS and EaseUI's global styles. To see the same result in a new app, replace `src/App.tsx` after running `init` and `add button`:
+
+```tsx
+import { Button } from "@/components/easeui/Button";
+
+export default function App() {
+  return (
+    <main className="p-8">
+      <Button variant="primary">Click me</Button>
+    </main>
+  );
+}
+```
+
+Then run `npm run dev`. If the button appears unstyled, restart the dev server after editing `vite.config.ts` or `src/index.css`, and make sure `src/main.tsx` still includes `import "./index.css"`.
+
 ### Adding all components
 
 If you want to explore everything EaseUI has to offer, you can install the entire component library at once:

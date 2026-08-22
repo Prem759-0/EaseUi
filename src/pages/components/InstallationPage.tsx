@@ -201,12 +201,45 @@ export function ButtonDemo() {
         />
       </div>
 
-      {/* Step 7: Add All */}
+      {/* Step 7: Test Your First Component */}
+      <div className="flex flex-col gap-4">
+        <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
+          <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
+            7
+          </span>
+          Test your first Button
+        </h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300">
+          Replace the contents of <code className="bg-gray-200 dark:bg-zinc-800 px-2 py-1 rounded font-mono font-bold text-black dark:text-white border-2 border-black dark:border-white neo-box-no-hover text-sm">src/App.tsx</code> with this small example, then start the Vite development server:
+        </p>
+        <CodeBlock
+          language="tsx"
+          variant="docs"
+          code={`import { Button } from "@/components/easeui/Button";
+
+export default function App() {
+  return (
+    <main className="p-8">
+      <Button variant="primary">Click me</Button>
+    </main>
+  );
+}`}
+        />
+        <CodeBlock language="bash" code="npm run dev" variant="docs" />
+        <div className="neo-box bg-neo-blue text-black p-5 font-medium">
+          The preview container on this documentation site already has Tailwind CSS and EaseUI's global styles loaded. Your app will show the same styled button only after completing the Tailwind, alias, and <code>init</code> steps above. Restart <code>npm run dev</code> after changing <code>vite.config.ts</code> or <code>src/index.css</code>, and keep the default <code>import "./index.css"</code> in <code>src/main.tsx</code>.
+        </div>
+      </div>
+
+      {/* Step 8: Add All */}
       <div className="neo-box bg-neo-pink text-black p-6 mt-6 border-4 border-black">
-        <h3 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2 mb-3">
+        <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2 mb-3">
+          <span className="bg-black text-white w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
+            8
+          </span>
           <Package className="shrink-0" size={28} />
           The "Add All" Super Command
-        </h3>
+        </h2>
         <p className="text-lg font-medium mb-4">
           Don't want to add components one by one? You can instantly download the <b>entire library</b> at once by passing the <code className="bg-black text-white px-2 py-0.5 mx-1 font-mono">all</code> flag.
         </p>
@@ -220,7 +253,7 @@ export function ButtonDemo() {
       <div className="flex flex-col gap-4">
         <h2 className="text-2xl font-black uppercase tracking-wider flex items-center gap-2">
           <span className="bg-black text-white dark:bg-white dark:text-black w-8 h-8 inline-flex items-center justify-center rounded-full font-sans text-xl">
-            8
+            9
           </span>
           That's it!
         </h2>

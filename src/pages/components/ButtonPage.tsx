@@ -429,13 +429,13 @@ export function AllButtonExamples() {
       <section className="page-section space-y-12 opacity-0 pt-12 border-t-4 border-black dark:border-white">
         <div>
           <h2 className="text-3xl font-comic font-black text-black dark:text-white mb-2">Base UI Button</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 font-bold">Standard Base UI / Shadcn style variants using the separate BaseButton component.</p>
+          <p className="text-lg text-gray-700 dark:text-gray-300 font-bold">Standard Base UI / Shadcn style variants using the separate BaseButton component. Run <code>npx @prem_gaikwad/easeui add all</code> before using these advanced examples.</p>
         </div>
         
         {/* Loading Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Loading State</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/Button"\nimport { Spinner } from "@/components/easeui/Button"\n\nexport function ButtonLoading() {\n  return (\n    <div className="flex gap-2">\n      <BaseButton variant="outline" disabled>\n        <Spinner data-icon="inline-start" />\n        Generating\n      </BaseButton>\n      <BaseButton variant="secondary" disabled>\n        Downloading\n        <Spinner data-icon="inline-start" />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/ui/base-button"\nimport { Spinner } from "@/components/easeui/ui/spinner"\n\nexport function ButtonLoading() {\n  return (\n    <div className="flex gap-2">\n      <BaseButton variant="outline" disabled>\n        <Spinner data-icon="inline-start" />\n        Generating\n      </BaseButton>\n      <BaseButton variant="secondary" disabled>\n        Downloading\n        <Spinner data-icon="inline-start" />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
             <ButtonLoading />
           </ComponentDemo>
         </div>
@@ -443,7 +443,7 @@ export function AllButtonExamples() {
         {/* Icon Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Icon Example</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { ChevronLeft, ChevronRight } from "lucide-react"\nimport { BaseButton } from "@/components/easeui/Button"\n\nexport function ButtonIcon() {\n  return (\n    <div className="flex gap-4 justify-center">\n      <BaseButton variant="outline" size="icon">\n        <ChevronLeft />\n      </BaseButton>\n      <BaseButton variant="outline" size="icon">\n        <ChevronRight />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { ChevronLeft, ChevronRight } from "lucide-react"\nimport { BaseButton } from "@/components/easeui/ui/base-button"\n\nexport function ButtonIcon() {\n  return (\n    <div className="flex gap-4 justify-center">\n      <BaseButton variant="outline" size="icon">\n        <ChevronLeft />\n      </BaseButton>\n      <BaseButton variant="outline" size="icon">\n        <ChevronRight />\n      </BaseButton>\n    </div>\n  )\n}' }]}>
             <BaseButtonIcon />
           </ComponentDemo>
         </div>
@@ -451,7 +451,7 @@ export function AllButtonExamples() {
         {/* Button Group Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">Button Group</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/Button"\nimport { ButtonGroup } from "@/components/easeui/Button"\nimport { DropdownMenu, ... } from "@/components/easeui/Button"\n\nexport function ButtonGroupDemo() {\n  // (Implementation in source code)\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/ui/base-button"\nimport { ButtonGroup } from "@/components/easeui/ui/button-group"\nimport { DropdownMenu } from "@/components/easeui/ui/dropdown-menu"\n\nexport function ButtonGroupDemo() {\n  // (Implementation in source code)\n}' }]}>
              <ButtonGroupDemo />
           </ComponentDemo>
         </div>
@@ -459,7 +459,7 @@ export function AllButtonExamples() {
         {/* As Link Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">As Link</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { baseButtonVariants } from "@/components/easeui/Button"\n\nexport function ButtonRender() {\n  return (\n    <a\n      href="#"\n      className={baseButtonVariants({ variant: "secondary", size: "sm" })}\n    >\n      Login\n    </a>\n  )\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { baseButtonVariants } from "@/components/easeui/ui/base-button"\n\nexport function ButtonRender() {\n  return (\n    <a\n      href="#"\n      className={baseButtonVariants({ variant: "secondary", size: "sm" })}\n    >\n      Login\n    </a>\n  )\n}' }]}>
             <div className="flex justify-center">
               <ButtonRender />
             </div>
@@ -469,7 +469,7 @@ export function AllButtonExamples() {
         {/* RTL Example */}
         <div className="space-y-4">
           <h3 className="text-2xl font-bold text-black dark:text-white">RTL Support</h3>
-          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/Button"\nimport { useTranslation } from "@/components/language-selector"\n\nexport function ButtonRtl() {\n  // (Implementation in source code)\n}' }]}>
+          <ComponentDemo tabs={[{ name: "React", language: "tsx", code: 'import { BaseButton } from "@/components/easeui/ui/base-button"\nimport { useTranslation } from "@/components/easeui/language-selector"\n\nexport function ButtonRtl() {\n  // (Implementation in source code)\n}' }]}>
              <ButtonRtl />
           </ComponentDemo>
         </div>
