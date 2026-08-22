@@ -1003,11 +1003,11 @@ export const glowingButtonHoverEffectCode = [
     language: "tsx",
     code: `export function GlowingButtonHoverEffect() {
     return (
-        <div className="relative group overflow-hidden bg-white/20 p-0.5 h-9 w-20 rounded-md active:scale-100 hover:scale-105 transition-all duration-300">
-            <button className="text-white text-sm bg-gradient-to-t from-black/50 to-black h-full w-full rounded">
+        <div className="relative group overflow-hidden bg-black p-1 h-12 w-28 rounded-lg active:scale-100 hover:scale-105 transition-all duration-300 shadow-[4px_4px_0_0_rgba(0,0,0,1)] border-2 border-black flex items-center justify-center">
+            <button className="text-white font-bold text-sm bg-zinc-800 h-full w-full rounded border border-zinc-700 z-10 relative">
                 Button
             </button>
-            <div className="absolute -bottom-12 group-hover:-bottom-10 transition-all duration-200 left-1/2 -z-10 -translate-x-1/2 blur size-14 rounded-full bg-white"></div>
+            <div className="absolute -bottom-16 group-hover:-bottom-6 transition-all duration-300 left-1/2 z-0 -translate-x-1/2 blur-xl size-20 rounded-full bg-neo-pink"></div>
         </div>
     );
 };`
@@ -1015,22 +1015,22 @@ export const glowingButtonHoverEffectCode = [
   {
     name: "HTML",
     language: "html",
-    code: `<div class="relative group overflow-hidden bg-white/20 p-0.5 h-9 w-20 rounded-md active:scale-100 hover:scale-105 transition-all duration-300">
-            <button class="text-white text-sm bg-gradient-to-t from-black/50 to-black h-full w-full rounded">
+    code: `<div class="relative group overflow-hidden bg-black p-1 h-12 w-28 rounded-lg border-2 border-black flex items-center justify-center shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:scale-100 hover:scale-105 transition-all duration-300">
+            <button class="text-white font-bold text-sm bg-zinc-800 h-full w-full rounded border border-zinc-700 z-10 relative">
                 Button
             </button>
-            <div class="absolute -bottom-12 group-hover:-bottom-10 transition-all duration-200 left-1/2 -z-10 -translate-x-1/2 blur size-14 rounded-full bg-white"></div>
+            <div class="absolute -bottom-16 group-hover:-bottom-6 transition-all duration-300 left-1/2 z-0 -translate-x-1/2 blur-xl size-20 rounded-full bg-neo-pink"></div>
         </div>`
   },
   {
     name: "Vue",
     language: "vue",
     code: `<template>
-<div class="relative group overflow-hidden bg-white/20 p-0.5 h-9 w-20 rounded-md active:scale-100 hover:scale-105 transition-all duration-300">
-            <button class="text-white text-sm bg-gradient-to-t from-black/50 to-black h-full w-full rounded">
+<div class="relative group overflow-hidden bg-black p-1 h-12 w-28 rounded-lg border-2 border-black flex items-center justify-center shadow-[4px_4px_0_0_rgba(0,0,0,1)] active:scale-100 hover:scale-105 transition-all duration-300">
+            <button class="text-white font-bold text-sm bg-zinc-800 h-full w-full rounded border border-zinc-700 z-10 relative">
                 Button
             </button>
-            <div class="absolute -bottom-12 group-hover:-bottom-10 transition-all duration-200 left-1/2 -z-10 -translate-x-1/2 blur size-14 rounded-full bg-white"></div>
+            <div class="absolute -bottom-16 group-hover:-bottom-6 transition-all duration-300 left-1/2 z-0 -translate-x-1/2 blur-xl size-20 rounded-full bg-neo-pink"></div>
         </div>
 </template>`
   }

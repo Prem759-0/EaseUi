@@ -26,7 +26,7 @@ const CliPage = () => {
         <p className="text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-4">
           EaseUI provides a command-line interface that allows you to copy components directly into your codebase without any copy-pasting. 
         </p>
-        <CodeBlock code="npx easeui --help" language="bash" showLineNumbers={false} />
+        <CodeBlock code="npx easeui --help" language="bash" showLineNumbers={false} variant="docs" />
       </div>
 
       {/* Init Command */}
@@ -37,7 +37,7 @@ const CliPage = () => {
         <p className="text-gray-700 dark:text-gray-300 font-medium mb-4">
           Use the <code>init</code> command to initialize configuration and dependencies for an existing project. It configures CSS variables and sets up the Neo-Brutalist utility classes.
         </p>
-        <CodeBlock code="npx easeui init" language="bash" showLineNumbers={false} />
+        <CodeBlock code="npx easeui init" language="bash" showLineNumbers={false} variant="docs" />
       </div>
 
       {/* Add Command */}
@@ -48,7 +48,7 @@ const CliPage = () => {
         <p className="text-gray-700 dark:text-gray-300 font-medium mb-4">
           Use the <code>add</code> command to pull a specific component's source code directly into your <code>components/</code> directory.
         </p>
-        <CodeBlock code="npx easeui add button" language="bash" showLineNumbers={false} />
+        <CodeBlock code="npx easeui add button" language="bash" showLineNumbers={false} variant="docs" />
         
         <div className="mt-6 neo-box bg-neo-green p-6 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <p className="text-black font-bold">
